@@ -1,0 +1,41 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "com.adloveyou.uaa",
+      "nativeLanguage": "fr"
+    },
+    "jhipsterVersion": "4.13.0",
+    "baseName": "uaa",
+    "packageName": "com.adloveyou.uaa",
+    "packageFolder": "com/adloveyou/uaa",
+    "serverPort": "9999",
+    "authenticationType": "uaa",
+    "hibernateCache": "hazelcast",
+    "clusteredHttpSession": false,
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "h2Disk",
+    "prodDatabaseType": "postgresql",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": "eureka",
+    "buildTool": "gradle",
+    "enableSocialSignIn": false,
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "e228849b00ee4a06ae0b90551811cf74ff571c09",
+    "enableTranslation": true,
+    "applicationType": "uaa",
+    "testFrameworks": [
+      "gatling",
+      "cucumber"
+    ],
+    "jhiPrefix": "jhi",
+    "nativeLanguage": "fr",
+    "languages": [
+      "fr",
+      "en"
+    ],
+    "clientPackageManager": "yarn",
+    "skipClient": true
+  }
+}

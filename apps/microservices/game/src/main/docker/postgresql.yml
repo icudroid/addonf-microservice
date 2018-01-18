@@ -1,0 +1,11 @@
+version: '2'
+services:
+    game-postgresql:
+        image: postgres:9.6.5
+        # volumes:
+        #     - ~/volumes/jhipster/game/postgresql/:/var/lib/postgresql/data/
+        environment:
+            - POSTGRES_USER=game
+            - POSTGRES_PASSWORD=
+        ports:
+            - 5432:5432

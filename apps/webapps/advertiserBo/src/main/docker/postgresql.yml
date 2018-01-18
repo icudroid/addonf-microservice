@@ -1,0 +1,11 @@
+version: '2'
+services:
+    advertiserbo-postgresql:
+        image: postgres:9.6.5
+        # volumes:
+        #     - ~/volumes/jhipster/advertiserBo/postgresql/:/var/lib/postgresql/data/
+        environment:
+            - POSTGRES_USER=advertiserBo
+            - POSTGRES_PASSWORD=
+        ports:
+            - 5432:5432

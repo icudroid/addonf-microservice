@@ -1,0 +1,9 @@
+version: '2'
+services:
+    ad-elasticsearch:
+        image: elasticsearch:2.4.1
+        # volumes:
+        #     - ~/volumes/jhipster/ad/elasticsearch/:/usr/share/elasticsearch/data/
+        ports:
+            - 9200:9200
+            - 9300:9300

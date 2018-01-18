@@ -1,0 +1,214 @@
+entity AdCampaing {
+	name String
+    initialAmount BigDecimal
+    start ZonedDateTime
+    end ZonedDateTime
+}
+
+entity Brand {
+	name String
+	userId Long
+	siret String
+    siren String
+    legalStatus LegalStatus
+    logo ImageBlob
+}
+
+entity BrandUser {
+	userId Long
+}
+
+enum Sex {
+	MR, MME
+}
+
+enum AgeGroup {
+	FROM_0_TO_9,
+    FROM_10_TO_14,
+    FROM_14_TO_17,
+    FROM_18_TO_24,
+    FROM_25_TO_34,
+    FROM_35_TO_49,
+    FROM_50_TO_64,
+    MORE_THAN_65
+}
+
+enum MediaType {
+	WEB, MOBILE, RADIO, TV, STREAMING_VIDEO, STREAMING_AUDIO
+}
+
+enum AdStatus {
+	UPLOADING, UPLOADED, ENCODED, DELETED, READY_TO_USE
+}
+
+entity CustomerTarget {
+	sex Sex
+    age AgeGroup
+}
+
+entity Agency {
+	name String
+	siret String
+    siren String
+    legalStatus LegalStatus
+    logo ImageBlob
+}
+
+entity AgencyUser {
+	userId Long
+}
+
+entity Ad {
+	duration Long
+    status AdStatus
+    adfileId Long
+}
+
+entity Sector {
+    code String
+	description String
+}
+
+entity Product {
+	name String
+    description String
+    publicPrice BigDecimal
+    adPrice Integer
+    image ImageBlob
+}
+
+entity AdRule {
+
+}
+
+entity Category {
+	key String
+}
+
+entity BidCategoryMedia {
+	bid BigDecimal
+    mediaType MediaType
+}
+
+entity Media {
+	name String
+    passPhrase String
+    extId String
+	siret String
+    siren String
+    legalStatus LegalStatus
+    logo ImageBlob
+}
+
+entity MediaUser {
+	userId Long
+}
+
+
+entity Contact {
+	lastname String
+    firstname String
+}
+
+entity MeanOfContact {
+	value String
+    type MeanOfContactType
+}
+
+entity FileAttachement {
+	file ImageBlob
+}
+
+enum MeanOfContactType {
+	EMAIL,
+	ADDRESS,
+	PHONE
+}
+
+enum LegalStatus {
+	SARL,
+	SA,
+	SAS,
+	SASU,
+	SNC,
+	EURL,
+	EI,
+	ASSOCIATION,
+	AUTO_ENTREPRENEUR
+}
+
+
+
+
+relationship ManyToOne {
+    Brand{sector} to Sector
+}
+
+relationship ManyToOne {
+	AdCampaing{brand} to Brand
+    AdCampaing{sector} to Sector
+    AdCampaing{providedBy} to Agency
+}
+
+relationship ManyToOne {
+    Category{main} to Category
+}
+
+relationship ManyToOne {
+	BidCategoryMedia{category} to Category
+    BidCategoryMedia{media} to Media
+}
+
+relationship OneToMany {
+	Brand{products} to Product
+    Brand{targets} to CustomerTarget
+    Brand{targetMedia} to MediaType
+    Brand{users} to BrandUser
+}
+
+relationship OneToMany {
+    AdCampaing{ads} to Ad
+    AdCampaing{products} to Product
+}
+
+relationship OneToMany {
+	Ad{bids} to BidCategoryMedia
+    Ad{rules} to AdRule
+}
+
+relationship OneToMany {
+    Agency{users} to AgencyUser
+}
+
+relationship OneToMany {
+    Media{users} to MediaUser
+}
+
+relationship OneToMany {
+    Agency{contacts} to Contact
+    Media{contacts} to Contact
+    Brand{contacts} to Contact
+
+    Agency{attachements} to FileAttachement
+    Media{attachements} to FileAttachement
+    Brand{attachements} to FileAttachement
+
+    Contact{meanOfContacts} to MeanOfContact
+}
+
+
+
+
+
+
+// Set pagination options
+paginate all with pagination
+dto all with mapstruct
+service all with serviceImpl
+
+
+
+
+
+
+
