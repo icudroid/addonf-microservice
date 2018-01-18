@@ -69,7 +69,7 @@ classes/
 # Gradle
 ######################
 .gradle/
-/build/
+build/
 
 ######################
 # Package Files
