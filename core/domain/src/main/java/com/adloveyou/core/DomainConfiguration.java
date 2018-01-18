@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @Configuration
 @EnableJpaRepositories("com.adloveyou.core.repository")
 @EnableTransactionManagement
-@EntityScan
+@EntityScan("com.adloveyou.core.domain")
 @ComponentScan
 public class DomainConfiguration {
 

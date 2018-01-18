@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity BidCategoryMedia.
+    -->
+    <changeSet id="20180118212634-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="ad_id"
+                                 baseTableName="bid_category_media"
+                                 constraintName="fk_bid_category_media_ad_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="ad"/>
+
+        <addForeignKeyConstraint baseColumnNames="category_id"
+                                 baseTableName="bid_category_media"
+                                 constraintName="fk_bid_category_media_category_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="category"/>
+
+        <addForeignKeyConstraint baseColumnNames="media_id"
+                                 baseTableName="bid_category_media"
+                                 constraintName="fk_bid_category_media_media_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="media"/>
+
+    </changeSet>
+</databaseChangeLog>

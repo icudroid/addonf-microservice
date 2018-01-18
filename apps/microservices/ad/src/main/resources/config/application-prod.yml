@@ -16,7 +16,7 @@
 logging:
     level:
         ROOT: INFO
-        com.adloveyou.ms.ad: INFO
+        com.adloveyou.ms: INFO
         io.github.jhipster: INFO
 
 eureka:

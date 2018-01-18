@@ -23,11 +23,11 @@ public class AsyncConfiguration implements AsyncConfigurer {
 
     private final JHipsterProperties jHipsterProperties;
 
-    private final ApplicationProperties applicationProperties;
+    private final MsApplicationProperties msApplicationProperties;
 
-    public AsyncConfiguration(JHipsterProperties jHipsterProperties, ApplicationProperties applicationProperties) {
+    public AsyncConfiguration(JHipsterProperties jHipsterProperties, MsApplicationProperties msApplicationProperties) {
         this.jHipsterProperties = jHipsterProperties;
-        this.applicationProperties = applicationProperties;
+        this.msApplicationProperties = msApplicationProperties;
     }
 
     @Override
@@ -38,7 +38,7 @@ public class AsyncConfiguration implements AsyncConfigurer {
         executor.setCorePoolSize(jHipsterProperties.getAsync().getCorePoolSize());
         executor.setMaxPoolSize(jHipsterProperties.getAsync().getMaxPoolSize());
         executor.setQueueCapacity(jHipsterProperties.getAsync().getQueueCapacity());
-        executor.setThreadNamePrefix(applicationProperties.getThreadNamePrefix());
+        executor.setThreadNamePrefix(msApplicationProperties.getThreadNamePrefix());
         return new ExceptionHandlingAsyncTaskExecutor(executor);
     }
 

@@ -14,8 +14,8 @@ swagger {
     addDynamicProperty 'java8', true
 
     additionalProperties = [
-        'modelPackage' : 'com.adloveyou.ms.ad.web.api.model',
-        'apiPackage'   : 'com.adloveyou.ms.ad.web.api'
+        'modelPackage' : 'com.adloveyou.ms.web.api.model',
+        'apiPackage'   : 'com.adloveyou.ms.web.api'
     ]
 
     systemProperties = [

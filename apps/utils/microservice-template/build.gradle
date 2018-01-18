@@ -200,7 +200,7 @@ dependencies {
     }
     //jhipster-needle-gradle-dependency - JHipster will add additional dependencies here
 
-
+    testCompile project(":apps:utils:test-utils")
     compile project(":core:domain")
 }
 

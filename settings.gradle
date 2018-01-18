@@ -38,3 +38,6 @@ include 'apps:utils:microservice-template'
 
 include 'tools'
 include 'core:domain'
+include 'apps:utils:test-utils'
+findProject(':apps:utils:test-utils')?.name = 'test-utils'
+

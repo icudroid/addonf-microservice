@@ -1,7 +1,7 @@
 package com.adloveyou.ms;
 
 import com.adloveyou.ms.client.OAuth2InterceptedFeignConfiguration;
-import com.adloveyou.ms.config.ApplicationProperties;
+import com.adloveyou.ms.config.MsApplicationProperties;
 import com.adloveyou.ms.config.DefaultProfileUtil;
 
 import io.github.jhipster.config.JHipsterConstants;
@@ -28,7 +28,7 @@ import java.util.Collection;
     excludeFilters = @ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE, classes = OAuth2InterceptedFeignConfiguration.class)
 )
 @EnableAutoConfiguration(exclude = {MetricFilterAutoConfiguration.class, MetricRepositoryAutoConfiguration.class})
-@EnableConfigurationProperties({LiquibaseProperties.class, ApplicationProperties.class})
+@EnableConfigurationProperties({LiquibaseProperties.class, MsApplicationProperties.class})
 @EnableDiscoveryClient
 public class MicroserviceTemplateApp {
 

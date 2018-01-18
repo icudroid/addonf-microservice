@@ -1,0 +1,26 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "brand",
+            "otherEntityName": "brand",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "mediaType",
+            "fieldType": "AdMediaType",
+            "fieldValues": "WEB,MOBILE,RADIO,TV,STREAMING_VIDEO,STREAMING_AUDIO"
+        }
+    ],
+    "changelogDate": "20180118212640",
+    "entityTableName": "media_target",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "searchEngine": "elasticsearch",
+    "microserviceName": "ad"
+}

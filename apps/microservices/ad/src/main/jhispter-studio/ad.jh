@@ -33,7 +33,7 @@ enum AgeGroup {
     MORE_THAN_65
 }
 
-enum MediaType {
+enum AdMediaType {
 	WEB, MOBILE, RADIO, TV, STREAMING_VIDEO, STREAMING_AUDIO
 }
 
@@ -87,7 +87,7 @@ entity Category {
 
 entity BidCategoryMedia {
 	bid BigDecimal
-    mediaType MediaType
+    mediaType AdMediaType
 }
 
 entity Media {
@@ -138,7 +138,9 @@ enum LegalStatus {
 }
 
 
-
+entity MediaTarget{
+    mediaType AdMediaType
+}
 
 relationship ManyToOne {
     Brand{sector} to Sector
@@ -162,7 +164,7 @@ relationship ManyToOne {
 relationship OneToMany {
 	Brand{products} to Product
     Brand{targets} to CustomerTarget
-    Brand{targetMedia} to MediaType
+    Brand{targetsMedia} to MediaTarget
     Brand{users} to BrandUser
 }
 
@@ -201,11 +203,11 @@ relationship OneToMany {
 
 
 
-// Set pagination options
+
 paginate all with pagination
 dto all with mapstruct
 service all with serviceImpl
-
+search all with elasticsearch
 
 
 
