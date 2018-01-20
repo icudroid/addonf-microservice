@@ -14,7 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Service
 @Transactional
-public class AdRuleServiceImpl extends GenericServiceImpl<AdRule,AdRuleDTO,Long> implements AdRuleService{
+public class AdRuleServiceImpl extends GenericServiceWithDTOImpl<AdRule,AdRuleDTO,Long> implements AdRuleService{
 
     public AdRuleServiceImpl(EntityMapper<AdRuleDTO, AdRule> mapper, ElasticsearchRepository<AdRule, Long> elasticsearchRepository, JpaRepository<AdRule, Long> repository) {
         super(mapper, elasticsearchRepository, repository);

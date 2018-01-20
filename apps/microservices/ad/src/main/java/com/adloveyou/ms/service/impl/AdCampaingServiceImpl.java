@@ -14,7 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Service
 @Transactional
-public class AdCampaingServiceImpl extends GenericServiceImpl<AdCampaing,AdCampaingDTO,Long> implements AdCampaingService{
+public class AdCampaingServiceImpl extends GenericServiceWithDTOImpl<AdCampaing,AdCampaingDTO,Long> implements AdCampaingService{
 
     public AdCampaingServiceImpl(AdCampaingRepository adCampaingRepository, AdCampaingMapper adCampaingMapper, AdCampaingSearchRepository adCampaingSearchRepository) {
         super(adCampaingMapper,adCampaingSearchRepository,adCampaingRepository);

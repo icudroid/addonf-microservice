@@ -14,7 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Service
 @Transactional
-public class BidCategoryMediaServiceImpl  extends GenericServiceImpl<BidCategoryMedia, BidCategoryMediaDTO, Long> implements BidCategoryMediaService{
+public class BidCategoryMediaServiceImpl  extends GenericServiceWithDTOImpl<BidCategoryMedia, BidCategoryMediaDTO, Long> implements BidCategoryMediaService{
 
     public BidCategoryMediaServiceImpl(EntityMapper<BidCategoryMediaDTO, BidCategoryMedia> mapper, ElasticsearchRepository<BidCategoryMedia, Long> elasticsearchRepository, JpaRepository<BidCategoryMedia, Long> repository) {
         super(mapper, elasticsearchRepository, repository);

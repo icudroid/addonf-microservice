@@ -14,7 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Service
 @Transactional
-public class FileAttachementServiceImpl extends GenericServiceImpl<FileAttachement, FileAttachementDTO, Long> implements FileAttachementService{
+public class FileAttachementServiceImpl extends GenericServiceWithDTOImpl<FileAttachement, FileAttachementDTO, Long> implements FileAttachementService{
 
     public FileAttachementServiceImpl(EntityMapper<FileAttachementDTO, FileAttachement> mapper, ElasticsearchRepository<FileAttachement, Long> elasticsearchRepository, JpaRepository<FileAttachement, Long> repository) {
         super(mapper, elasticsearchRepository, repository);

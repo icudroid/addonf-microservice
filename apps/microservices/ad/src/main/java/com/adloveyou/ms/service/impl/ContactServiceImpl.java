@@ -14,7 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Service
 @Transactional
-public class ContactServiceImpl extends GenericServiceImpl<Contact, ContactDTO, Long> implements ContactService{
+public class ContactServiceImpl extends GenericServiceWithDTOImpl<Contact, ContactDTO, Long> implements ContactService{
 
     public ContactServiceImpl(EntityMapper<ContactDTO, Contact> mapper, ElasticsearchRepository<Contact, Long> elasticsearchRepository, JpaRepository<Contact, Long> repository) {
         super(mapper, elasticsearchRepository, repository);

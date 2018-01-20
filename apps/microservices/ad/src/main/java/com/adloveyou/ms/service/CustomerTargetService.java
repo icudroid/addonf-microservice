@@ -6,6 +6,6 @@ import com.adloveyou.ms.service.dto.CustomerTargetDTO;
 /**
  * Service Interface for managing CustomerTarget.
  */
-public interface CustomerTargetService extends GenericService<CustomerTarget, CustomerTargetDTO, Long> {
+public interface CustomerTargetService extends GenericServiceWithDTO<CustomerTarget, CustomerTargetDTO, Long> {
 
 }

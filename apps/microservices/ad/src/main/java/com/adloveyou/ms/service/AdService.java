@@ -6,6 +6,6 @@ import com.adloveyou.ms.service.dto.AdDTO;
 /**
  * Service Interface for managing Ad.
  */
-public interface AdService extends GenericService<Ad, AdDTO, Long> {
+public interface AdService extends GenericServiceWithDTO<Ad, AdDTO, Long> {
 
 }

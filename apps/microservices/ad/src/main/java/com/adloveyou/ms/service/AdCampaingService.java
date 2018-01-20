@@ -6,6 +6,6 @@ import com.adloveyou.ms.service.dto.AdCampaingDTO;
 /**
  * Service Interface for managing AdCampaing.
  */
-public interface AdCampaingService extends GenericService<AdCampaing,AdCampaingDTO,Long> {
+public interface AdCampaingService extends GenericServiceWithDTO<AdCampaing,AdCampaingDTO,Long> {
 
 }

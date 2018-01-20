@@ -14,7 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Service
 @Transactional
-public class MediaUserServiceImpl extends GenericServiceImpl<MediaUser, MediaUserDTO, Long> implements MediaUserService{
+public class MediaUserServiceImpl extends GenericServiceWithDTOImpl<MediaUser, MediaUserDTO, Long> implements MediaUserService{
 
     public MediaUserServiceImpl(EntityMapper<MediaUserDTO, MediaUser> mapper, ElasticsearchRepository<MediaUser, Long> elasticsearchRepository, JpaRepository<MediaUser, Long> repository) {
         super(mapper, elasticsearchRepository, repository);

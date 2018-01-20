@@ -14,7 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Service
 @Transactional
-public class CategoryServiceImpl extends GenericServiceImpl<Category, CategoryDTO, Long> implements CategoryService{
+public class CategoryServiceImpl extends GenericServiceWithDTOImpl<Category, CategoryDTO, Long> implements CategoryService{
 
     public CategoryServiceImpl(EntityMapper<CategoryDTO, Category> mapper, ElasticsearchRepository<Category, Long> elasticsearchRepository, JpaRepository<Category, Long> repository) {
         super(mapper, elasticsearchRepository, repository);

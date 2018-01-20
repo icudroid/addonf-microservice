@@ -6,6 +6,6 @@ import com.adloveyou.ms.service.dto.MediaDTO;
 /**
  * Service Interface for managing Media.
  */
-public interface MediaService extends GenericService<Media, MediaDTO, Long> {
+public interface MediaService extends GenericServiceWithDTO<Media, MediaDTO, Long> {
 
 }

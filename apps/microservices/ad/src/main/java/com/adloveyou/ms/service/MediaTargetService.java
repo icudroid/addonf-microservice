@@ -6,6 +6,6 @@ import com.adloveyou.ms.service.dto.MediaTargetDTO;
 /**
  * Service Interface for managing MediaTarget.
  */
-public interface MediaTargetService extends GenericService<MediaTarget, MediaTargetDTO, Long> {
+public interface MediaTargetService extends GenericServiceWithDTO<MediaTarget, MediaTargetDTO, Long> {
 
 }

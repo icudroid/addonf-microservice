@@ -14,7 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Service
 @Transactional
-public class AgencyServiceImpl extends GenericServiceImpl<Agency, AgencyDTO, Long> implements AgencyService{
+public class AgencyServiceImpl extends GenericServiceWithDTOImpl<Agency, AgencyDTO, Long> implements AgencyService{
 
     public AgencyServiceImpl(EntityMapper<AgencyDTO, Agency> mapper, ElasticsearchRepository<Agency, Long> elasticsearchRepository, JpaRepository<Agency, Long> repository) {
         super(mapper, elasticsearchRepository, repository);

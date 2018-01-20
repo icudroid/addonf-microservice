@@ -6,6 +6,6 @@ import com.adloveyou.ms.service.dto.ContactDTO;
 /**
  * Service Interface for managing Contact.
  */
-public interface ContactService extends GenericService<Contact, ContactDTO, Long> {
+public interface ContactService extends GenericServiceWithDTO<Contact, ContactDTO, Long> {
 
 }

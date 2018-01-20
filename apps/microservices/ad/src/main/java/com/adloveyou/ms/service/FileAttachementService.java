@@ -6,6 +6,6 @@ import com.adloveyou.ms.service.dto.FileAttachementDTO;
 /**
  * Service Interface for managing FileAttachement.
  */
-public interface FileAttachementService extends GenericService<FileAttachement, FileAttachementDTO, Long> {
+public interface FileAttachementService extends GenericServiceWithDTO<FileAttachement, FileAttachementDTO, Long> {
 
 }

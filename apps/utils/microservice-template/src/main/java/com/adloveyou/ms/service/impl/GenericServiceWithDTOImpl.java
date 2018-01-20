@@ -1,6 +1,6 @@
 package com.adloveyou.ms.service.impl;
 
-import com.adloveyou.ms.service.GenericService;
+import com.adloveyou.ms.service.GenericServiceWithDTO;
 import com.adloveyou.ms.service.mapper.EntityMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,9 +14,10 @@ import java.lang.reflect.ParameterizedType;
 
 import static org.elasticsearch.index.query.QueryBuilders.queryStringQuery;
 
-public class GenericServiceImpl<DOMAIN, PK extends Serializable> implements GenericService<DOMAIN, PK> {
+public class GenericServiceWithDTOImpl<DOMAIN, DTO, PK extends Serializable> implements GenericServiceWithDTO<DOMAIN, DTO, PK> {
 
 
+    final protected EntityMapper<DTO, DOMAIN> mapper;
     final protected ElasticsearchRepository<DOMAIN, PK> elasticsearchRepository;
     final protected JpaRepository<DOMAIN, PK> repository;
     /**
@@ -25,33 +26,38 @@ public class GenericServiceImpl<DOMAIN, PK extends Serializable> implements Gene
     protected final Logger log = LoggerFactory.getLogger(getClass());
 
 
-    public GenericServiceImpl(ElasticsearchRepository<DOMAIN, PK> elasticsearchRepository, JpaRepository<DOMAIN, PK> repository) {
+    public GenericServiceWithDTOImpl(EntityMapper<DTO, DOMAIN> mapper, ElasticsearchRepository<DOMAIN, PK> elasticsearchRepository, JpaRepository<DOMAIN, PK> repository) {
+        this.mapper = mapper;
         this.elasticsearchRepository = elasticsearchRepository;
         this.repository = repository;
     }
 
 
     @Override
-    public DOMAIN save(DOMAIN dto) {
+    public DTO save(DTO dto) {
         Class<DOMAIN> aClass = (Class<DOMAIN>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
         log.debug("Request to save {} : {}", aClass.getSimpleName(), dto);
-        DOMAIN result = repository.save(dto);
-        elasticsearchRepository.save(result);
+        DOMAIN aDOMAIN = mapper.toEntity(dto);
+        aDOMAIN = repository.save(aDOMAIN);
+        DTO result = mapper.toDto(aDOMAIN);
+        elasticsearchRepository.save(aDOMAIN);
         return result;
     }
 
     @Override
-    public Page<DOMAIN> findAll(Pageable pageable) {
+    public Page<DTO> findAll(Pageable pageable) {
         Class<DOMAIN> aClass = (Class<DOMAIN>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
         log.debug("Request to get all {}", aClass.getSimpleName());
-        return repository.findAll(pageable);
+        return repository.findAll(pageable)
+            .map(mapper::toDto);
     }
 
     @Override
-    public DOMAIN findOne(PK id) {
+    public DTO findOne(PK id) {
         Class<DOMAIN> aClass = (Class<DOMAIN>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
         log.debug("Request to get {} : {}", aClass.getSimpleName(), id);
-        return repository.findOne(id);
+        DOMAIN aDOMAIN = repository.findOne(id);
+        return mapper.toDto(aDOMAIN);
     }
 
     @Override
@@ -63,11 +69,11 @@ public class GenericServiceImpl<DOMAIN, PK extends Serializable> implements Gene
     }
 
     @Override
-    public Page<DOMAIN> search(String query, Pageable pageable) {
+    public Page<DTO> search(String query, Pageable pageable) {
         Class<DOMAIN> aClass = (Class<DOMAIN>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
         log.debug("Request to search for a page of {} for query {}", aClass.getSimpleName(), query);
         Page<DOMAIN> result = elasticsearchRepository.search(queryStringQuery(query), pageable);
-        return result;
+        return result.map(mapper::toDto);
     }
 
 

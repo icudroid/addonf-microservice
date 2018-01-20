@@ -6,6 +6,6 @@ import com.adloveyou.ms.service.dto.CategoryDTO;
 /**
  * Service Interface for managing Category.
  */
-public interface CategoryService extends GenericService<Category, CategoryDTO, Long> {
+public interface CategoryService extends GenericServiceWithDTO<Category, CategoryDTO, Long> {
 
 }

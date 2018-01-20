@@ -6,6 +6,6 @@ import com.adloveyou.ms.service.dto.AdRuleDTO;
 /**
  * Service Interface for managing AdRule.
  */
-public interface AdRuleService extends GenericService<AdRule,AdRuleDTO,Long> {
+public interface AdRuleService extends GenericServiceWithDTO<AdRule,AdRuleDTO,Long> {
 
 }

@@ -6,6 +6,6 @@ import com.adloveyou.ms.service.dto.BrandUserDTO;
 /**
  * Service Interface for managing BrandUser.
  */
-public interface BrandUserService extends GenericService<BrandUser, BrandUserDTO, Long> {
+public interface BrandUserService extends GenericServiceWithDTO<BrandUser, BrandUserDTO, Long> {
 
 }

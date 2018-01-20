@@ -6,6 +6,6 @@ import com.adloveyou.ms.service.dto.AgencyDTO;
 /**
  * Service Interface for managing Agency.
  */
-public interface AgencyService extends GenericService<Agency, AgencyDTO, Long> {
+public interface AgencyService extends GenericServiceWithDTO<Agency, AgencyDTO, Long> {
 
 }

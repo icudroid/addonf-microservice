@@ -14,7 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Service
 @Transactional
-public class BrandServiceImpl extends GenericServiceImpl<Brand, BrandDTO, Long> implements BrandService{
+public class BrandServiceImpl extends GenericServiceWithDTOImpl<Brand, BrandDTO, Long> implements BrandService{
 
     public BrandServiceImpl(EntityMapper<BrandDTO, Brand> mapper, ElasticsearchRepository<Brand, Long> elasticsearchRepository, JpaRepository<Brand, Long> repository) {
         super(mapper, elasticsearchRepository, repository);

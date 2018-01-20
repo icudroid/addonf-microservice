@@ -6,6 +6,6 @@ import com.adloveyou.ms.service.dto.MediaUserDTO;
 /**
  * Service Interface for managing MediaUser.
  */
-public interface MediaUserService extends GenericService<MediaUser, MediaUserDTO, Long> {
+public interface MediaUserService extends GenericServiceWithDTO<MediaUser, MediaUserDTO, Long> {
 
 }

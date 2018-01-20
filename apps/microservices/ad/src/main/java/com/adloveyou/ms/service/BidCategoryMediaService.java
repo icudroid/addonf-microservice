@@ -6,6 +6,6 @@ import com.adloveyou.ms.service.dto.BidCategoryMediaDTO;
 /**
  * Service Interface for managing BidCategoryMedia.
  */
-public interface BidCategoryMediaService extends GenericService<BidCategoryMedia, BidCategoryMediaDTO, Long> {
+public interface BidCategoryMediaService extends GenericServiceWithDTO<BidCategoryMedia, BidCategoryMediaDTO, Long> {
 
 }

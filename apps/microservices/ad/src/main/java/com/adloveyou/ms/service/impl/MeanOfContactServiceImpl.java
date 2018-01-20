@@ -14,7 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Service
 @Transactional
-public class MeanOfContactServiceImpl extends GenericServiceImpl<MeanOfContact, MeanOfContactDTO, Long> implements MeanOfContactService{
+public class MeanOfContactServiceImpl extends GenericServiceWithDTOImpl<MeanOfContact, MeanOfContactDTO, Long> implements MeanOfContactService{
 
     public MeanOfContactServiceImpl(EntityMapper<MeanOfContactDTO, MeanOfContact> mapper, ElasticsearchRepository<MeanOfContact, Long> elasticsearchRepository, JpaRepository<MeanOfContact, Long> repository) {
         super(mapper, elasticsearchRepository, repository);

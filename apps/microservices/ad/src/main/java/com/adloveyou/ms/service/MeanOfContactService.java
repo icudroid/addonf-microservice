@@ -6,6 +6,6 @@ import com.adloveyou.ms.service.dto.MeanOfContactDTO;
 /**
  * Service Interface for managing MeanOfContact.
  */
-public interface MeanOfContactService extends GenericService<MeanOfContact, MeanOfContactDTO, Long> {
+public interface MeanOfContactService extends GenericServiceWithDTO<MeanOfContact, MeanOfContactDTO, Long> {
 
 }

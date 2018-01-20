@@ -6,6 +6,6 @@ import com.adloveyou.ms.service.dto.ProductDTO;
 /**
  * Service Interface for managing Product.
  */
-public interface ProductService extends GenericService<Product, ProductDTO, Long> {
+public interface ProductService extends GenericServiceWithDTO<Product, ProductDTO, Long> {
 
 }
