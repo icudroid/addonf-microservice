@@ -4,6 +4,7 @@ import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
+import javax.validation.constraints.*;
 
 import org.springframework.data.elasticsearch.annotations.Document;
 import java.io.Serializable;
@@ -25,10 +26,14 @@ public class Sector implements Serializable {
     @SequenceGenerator(name = "sequenceGenerator")
     private Long id;
 
-    @Column(name = "code")
+    @NotNull
+    @Size(max = 60)
+    @Column(name = "code", length = 60, nullable = false)
     private String code;
 
-    @Column(name = "description")
+    @NotNull
+    @Size(max = 256)
+    @Column(name = "description", length = 256, nullable = false)
     private String description;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove

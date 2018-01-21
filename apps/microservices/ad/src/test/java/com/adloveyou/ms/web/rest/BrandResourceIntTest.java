@@ -180,6 +180,25 @@ public class BrandResourceIntTest {
 
     @Test
     @Transactional
+    public void checkNameIsRequired() throws Exception {
+        int databaseSizeBeforeTest = brandRepository.findAll().size();
+        // set the field null
+        brand.setName(null);
+
+        // Create the Brand, which fails.
+        BrandDTO brandDTO = brandMapper.toDto(brand);
+
+        restBrandMockMvc.perform(post("/api/brands")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(brandDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<Brand> brandList = brandRepository.findAll();
+        assertThat(brandList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
     public void getAllBrands() throws Exception {
         // Initialize the database
         brandRepository.saveAndFlush(brand);

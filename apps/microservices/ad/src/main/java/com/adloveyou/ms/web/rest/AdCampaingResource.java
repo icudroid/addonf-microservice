@@ -16,6 +16,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 
@@ -51,7 +52,7 @@ public class AdCampaingResource {
      */
     @PostMapping("/ad-campaings")
     @Timed
-    public ResponseEntity<AdCampaingDTO> createAdCampaing(@RequestBody AdCampaingDTO adCampaingDTO) throws URISyntaxException {
+    public ResponseEntity<AdCampaingDTO> createAdCampaing(@Valid @RequestBody AdCampaingDTO adCampaingDTO) throws URISyntaxException {
         log.debug("REST request to save AdCampaing : {}", adCampaingDTO);
         if (adCampaingDTO.getId() != null) {
             throw new BadRequestAlertException("A new adCampaing cannot already have an ID", ENTITY_NAME, "idexists");
@@ -73,7 +74,7 @@ public class AdCampaingResource {
      */
     @PutMapping("/ad-campaings")
     @Timed
-    public ResponseEntity<AdCampaingDTO> updateAdCampaing(@RequestBody AdCampaingDTO adCampaingDTO) throws URISyntaxException {
+    public ResponseEntity<AdCampaingDTO> updateAdCampaing(@Valid @RequestBody AdCampaingDTO adCampaingDTO) throws URISyntaxException {
         log.debug("REST request to update AdCampaing : {}", adCampaingDTO);
         if (adCampaingDTO.getId() == null) {
             return createAdCampaing(adCampaingDTO);

@@ -149,6 +149,25 @@ public class AgencyUserResourceIntTest {
 
     @Test
     @Transactional
+    public void checkUserIdIsRequired() throws Exception {
+        int databaseSizeBeforeTest = agencyUserRepository.findAll().size();
+        // set the field null
+        agencyUser.setUserId(null);
+
+        // Create the AgencyUser, which fails.
+        AgencyUserDTO agencyUserDTO = agencyUserMapper.toDto(agencyUser);
+
+        restAgencyUserMockMvc.perform(post("/api/agency-users")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(agencyUserDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<AgencyUser> agencyUserList = agencyUserRepository.findAll();
+        assertThat(agencyUserList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
     public void getAllAgencyUsers() throws Exception {
         // Initialize the database
         agencyUserRepository.saveAndFlush(agencyUser);

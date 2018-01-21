@@ -155,6 +155,44 @@ public class MeanOfContactResourceIntTest {
 
     @Test
     @Transactional
+    public void checkValueIsRequired() throws Exception {
+        int databaseSizeBeforeTest = meanOfContactRepository.findAll().size();
+        // set the field null
+        meanOfContact.setValue(null);
+
+        // Create the MeanOfContact, which fails.
+        MeanOfContactDTO meanOfContactDTO = meanOfContactMapper.toDto(meanOfContact);
+
+        restMeanOfContactMockMvc.perform(post("/api/mean-of-contacts")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(meanOfContactDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<MeanOfContact> meanOfContactList = meanOfContactRepository.findAll();
+        assertThat(meanOfContactList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    public void checkTypeIsRequired() throws Exception {
+        int databaseSizeBeforeTest = meanOfContactRepository.findAll().size();
+        // set the field null
+        meanOfContact.setType(null);
+
+        // Create the MeanOfContact, which fails.
+        MeanOfContactDTO meanOfContactDTO = meanOfContactMapper.toDto(meanOfContact);
+
+        restMeanOfContactMockMvc.perform(post("/api/mean-of-contacts")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(meanOfContactDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<MeanOfContact> meanOfContactList = meanOfContactRepository.findAll();
+        assertThat(meanOfContactList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
     public void getAllMeanOfContacts() throws Exception {
         // Initialize the database
         meanOfContactRepository.saveAndFlush(meanOfContact);

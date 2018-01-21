@@ -172,6 +172,82 @@ public class AdCampaingResourceIntTest {
 
     @Test
     @Transactional
+    public void checkNameIsRequired() throws Exception {
+        int databaseSizeBeforeTest = adCampaingRepository.findAll().size();
+        // set the field null
+        adCampaing.setName(null);
+
+        // Create the AdCampaing, which fails.
+        AdCampaingDTO adCampaingDTO = adCampaingMapper.toDto(adCampaing);
+
+        restAdCampaingMockMvc.perform(post("/api/ad-campaings")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(adCampaingDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<AdCampaing> adCampaingList = adCampaingRepository.findAll();
+        assertThat(adCampaingList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    public void checkInitialAmountIsRequired() throws Exception {
+        int databaseSizeBeforeTest = adCampaingRepository.findAll().size();
+        // set the field null
+        adCampaing.setInitialAmount(null);
+
+        // Create the AdCampaing, which fails.
+        AdCampaingDTO adCampaingDTO = adCampaingMapper.toDto(adCampaing);
+
+        restAdCampaingMockMvc.perform(post("/api/ad-campaings")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(adCampaingDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<AdCampaing> adCampaingList = adCampaingRepository.findAll();
+        assertThat(adCampaingList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    public void checkStartIsRequired() throws Exception {
+        int databaseSizeBeforeTest = adCampaingRepository.findAll().size();
+        // set the field null
+        adCampaing.setStart(null);
+
+        // Create the AdCampaing, which fails.
+        AdCampaingDTO adCampaingDTO = adCampaingMapper.toDto(adCampaing);
+
+        restAdCampaingMockMvc.perform(post("/api/ad-campaings")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(adCampaingDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<AdCampaing> adCampaingList = adCampaingRepository.findAll();
+        assertThat(adCampaingList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    public void checkEndIsRequired() throws Exception {
+        int databaseSizeBeforeTest = adCampaingRepository.findAll().size();
+        // set the field null
+        adCampaing.setEnd(null);
+
+        // Create the AdCampaing, which fails.
+        AdCampaingDTO adCampaingDTO = adCampaingMapper.toDto(adCampaing);
+
+        restAdCampaingMockMvc.perform(post("/api/ad-campaings")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(adCampaingDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<AdCampaing> adCampaingList = adCampaingRepository.findAll();
+        assertThat(adCampaingList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
     public void getAllAdCampaings() throws Exception {
         // Initialize the database
         adCampaingRepository.saveAndFlush(adCampaing);

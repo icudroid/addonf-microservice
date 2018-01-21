@@ -1,6 +1,7 @@
 package com.adloveyou.ms.service.dto;
 
 
+import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
@@ -13,8 +14,12 @@ public class ContactDTO implements Serializable {
 
     private Long id;
 
+    @NotNull
+    @Size(max = 60)
     private String lastname;
 
+    @NotNull
+    @Size(max = 60)
     private String firstname;
 
     private Long brandId;

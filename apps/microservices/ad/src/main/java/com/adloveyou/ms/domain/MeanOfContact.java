@@ -4,6 +4,7 @@ import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
+import javax.validation.constraints.*;
 
 import org.springframework.data.elasticsearch.annotations.Document;
 import java.io.Serializable;
@@ -27,11 +28,14 @@ public class MeanOfContact implements Serializable {
     @SequenceGenerator(name = "sequenceGenerator")
     private Long id;
 
-    @Column(name = "jhi_value")
+    @NotNull
+    @Size(max = 60)
+    @Column(name = "jhi_value", length = 60, nullable = false)
     private String value;
 
+    @NotNull
     @Enumerated(EnumType.STRING)
-    @Column(name = "jhi_type")
+    @Column(name = "jhi_type", nullable = false)
     private MeanOfContactType type;
 
     @ManyToOne

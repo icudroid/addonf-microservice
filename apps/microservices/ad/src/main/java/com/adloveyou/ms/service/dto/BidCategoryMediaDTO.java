@@ -1,6 +1,7 @@
 package com.adloveyou.ms.service.dto;
 
 
+import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.HashSet;
@@ -15,6 +16,7 @@ public class BidCategoryMediaDTO implements Serializable {
 
     private Long id;
 
+    @NotNull
     private BigDecimal bid;
 
     private AdMediaType mediaType;

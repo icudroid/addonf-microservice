@@ -40,4 +40,6 @@ include 'tools'
 include 'core:domain'
 include 'apps:utils:test-utils'
 findProject(':apps:utils:test-utils')?.name = 'test-utils'
+include 'apps:utils:common-template'
+findProject(':apps:utils:common-template')?.name = 'common-template'
 

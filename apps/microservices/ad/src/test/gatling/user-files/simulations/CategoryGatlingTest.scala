@@ -80,7 +80,7 @@ class CategoryGatlingTest extends Simulation {
             .exec(http("Create new category")
             .post("/ad/api/categories")
             .headers(headers_http_authenticated)
-            .body(StringBody("""{"id":null, "key":"SAMPLE_TEXT"}""")).asJSON
+            .body(StringBody("""{"id":null, "key":"SAMPLE_TEXT", "description":"SAMPLE_TEXT"}""")).asJSON
             .check(status.is(201))
             .check(headerRegex("Location", "(.*)").saveAs("new_category_url"))).exitHereIfFailed
             .pause(10)

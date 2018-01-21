@@ -149,6 +149,25 @@ public class BrandUserResourceIntTest {
 
     @Test
     @Transactional
+    public void checkUserIdIsRequired() throws Exception {
+        int databaseSizeBeforeTest = brandUserRepository.findAll().size();
+        // set the field null
+        brandUser.setUserId(null);
+
+        // Create the BrandUser, which fails.
+        BrandUserDTO brandUserDTO = brandUserMapper.toDto(brandUser);
+
+        restBrandUserMockMvc.perform(post("/api/brand-users")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(brandUserDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<BrandUser> brandUserList = brandUserRepository.findAll();
+        assertThat(brandUserList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
     public void getAllBrandUsers() throws Exception {
         // Initialize the database
         brandUserRepository.saveAndFlush(brandUser);

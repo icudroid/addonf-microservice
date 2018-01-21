@@ -1,6 +1,7 @@
 package com.adloveyou.ms.service.dto;
 
 
+import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
@@ -13,7 +14,13 @@ public class CategoryDTO implements Serializable {
 
     private Long id;
 
+    @NotNull
+    @Size(max = 60)
     private String key;
+
+    @NotNull
+    @Size(max = 256)
+    private String description;
 
     private Long mainId;
 
@@ -31,6 +38,14 @@ public class CategoryDTO implements Serializable {
 
     public void setKey(String key) {
         this.key = key;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public Long getMainId() {
@@ -67,6 +82,7 @@ public class CategoryDTO implements Serializable {
         return "CategoryDTO{" +
             "id=" + getId() +
             ", key='" + getKey() + "'" +
+            ", description='" + getDescription() + "'" +
             "}";
     }
 }

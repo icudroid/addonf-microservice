@@ -16,6 +16,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 
@@ -51,7 +52,7 @@ public class MeanOfContactResource {
      */
     @PostMapping("/mean-of-contacts")
     @Timed
-    public ResponseEntity<MeanOfContactDTO> createMeanOfContact(@RequestBody MeanOfContactDTO meanOfContactDTO) throws URISyntaxException {
+    public ResponseEntity<MeanOfContactDTO> createMeanOfContact(@Valid @RequestBody MeanOfContactDTO meanOfContactDTO) throws URISyntaxException {
         log.debug("REST request to save MeanOfContact : {}", meanOfContactDTO);
         if (meanOfContactDTO.getId() != null) {
             throw new BadRequestAlertException("A new meanOfContact cannot already have an ID", ENTITY_NAME, "idexists");
@@ -73,7 +74,7 @@ public class MeanOfContactResource {
      */
     @PutMapping("/mean-of-contacts")
     @Timed
-    public ResponseEntity<MeanOfContactDTO> updateMeanOfContact(@RequestBody MeanOfContactDTO meanOfContactDTO) throws URISyntaxException {
+    public ResponseEntity<MeanOfContactDTO> updateMeanOfContact(@Valid @RequestBody MeanOfContactDTO meanOfContactDTO) throws URISyntaxException {
         log.debug("REST request to update MeanOfContact : {}", meanOfContactDTO);
         if (meanOfContactDTO.getId() == null) {
             return createMeanOfContact(meanOfContactDTO);

@@ -47,6 +47,9 @@ public class CategoryResourceIntTest {
     private static final String DEFAULT_KEY = "AAAAAAAAAA";
     private static final String UPDATED_KEY = "BBBBBBBBBB";
 
+    private static final String DEFAULT_DESCRIPTION = "AAAAAAAAAA";
+    private static final String UPDATED_DESCRIPTION = "BBBBBBBBBB";
+
     @Autowired
     private CategoryRepository categoryRepository;
 
@@ -94,7 +97,8 @@ public class CategoryResourceIntTest {
      */
     public static Category createEntity(EntityManager em) {
         Category category = new Category()
-            .key(DEFAULT_KEY);
+            .key(DEFAULT_KEY)
+            .description(DEFAULT_DESCRIPTION);
         return category;
     }
 
@@ -121,6 +125,7 @@ public class CategoryResourceIntTest {
         assertThat(categoryList).hasSize(databaseSizeBeforeCreate + 1);
         Category testCategory = categoryList.get(categoryList.size() - 1);
         assertThat(testCategory.getKey()).isEqualTo(DEFAULT_KEY);
+        assertThat(testCategory.getDescription()).isEqualTo(DEFAULT_DESCRIPTION);
 
         // Validate the Category in Elasticsearch
         Category categoryEs = categorySearchRepository.findOne(testCategory.getId());
@@ -149,6 +154,44 @@ public class CategoryResourceIntTest {
 
     @Test
     @Transactional
+    public void checkKeyIsRequired() throws Exception {
+        int databaseSizeBeforeTest = categoryRepository.findAll().size();
+        // set the field null
+        category.setKey(null);
+
+        // Create the Category, which fails.
+        CategoryDTO categoryDTO = categoryMapper.toDto(category);
+
+        restCategoryMockMvc.perform(post("/api/categories")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(categoryDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<Category> categoryList = categoryRepository.findAll();
+        assertThat(categoryList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    public void checkDescriptionIsRequired() throws Exception {
+        int databaseSizeBeforeTest = categoryRepository.findAll().size();
+        // set the field null
+        category.setDescription(null);
+
+        // Create the Category, which fails.
+        CategoryDTO categoryDTO = categoryMapper.toDto(category);
+
+        restCategoryMockMvc.perform(post("/api/categories")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(categoryDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<Category> categoryList = categoryRepository.findAll();
+        assertThat(categoryList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
     public void getAllCategories() throws Exception {
         // Initialize the database
         categoryRepository.saveAndFlush(category);
@@ -158,7 +201,8 @@ public class CategoryResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(category.getId().intValue())))
-            .andExpect(jsonPath("$.[*].key").value(hasItem(DEFAULT_KEY.toString())));
+            .andExpect(jsonPath("$.[*].key").value(hasItem(DEFAULT_KEY.toString())))
+            .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION.toString())));
     }
 
     @Test
@@ -172,7 +216,8 @@ public class CategoryResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(category.getId().intValue()))
-            .andExpect(jsonPath("$.key").value(DEFAULT_KEY.toString()));
+            .andExpect(jsonPath("$.key").value(DEFAULT_KEY.toString()))
+            .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION.toString()));
     }
 
     @Test
@@ -196,7 +241,8 @@ public class CategoryResourceIntTest {
         // Disconnect from session so that the updates on updatedCategory are not directly saved in db
         em.detach(updatedCategory);
         updatedCategory
-            .key(UPDATED_KEY);
+            .key(UPDATED_KEY)
+            .description(UPDATED_DESCRIPTION);
         CategoryDTO categoryDTO = categoryMapper.toDto(updatedCategory);
 
         restCategoryMockMvc.perform(put("/api/categories")
@@ -209,6 +255,7 @@ public class CategoryResourceIntTest {
         assertThat(categoryList).hasSize(databaseSizeBeforeUpdate);
         Category testCategory = categoryList.get(categoryList.size() - 1);
         assertThat(testCategory.getKey()).isEqualTo(UPDATED_KEY);
+        assertThat(testCategory.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
 
         // Validate the Category in Elasticsearch
         Category categoryEs = categorySearchRepository.findOne(testCategory.getId());
@@ -268,7 +315,8 @@ public class CategoryResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(category.getId().intValue())))
-            .andExpect(jsonPath("$.[*].key").value(hasItem(DEFAULT_KEY.toString())));
+            .andExpect(jsonPath("$.[*].key").value(hasItem(DEFAULT_KEY.toString())))
+            .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION.toString())));
     }
 
     @Test

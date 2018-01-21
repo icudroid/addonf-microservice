@@ -11,7 +11,21 @@
     "fields": [
         {
             "fieldName": "key",
-            "fieldType": "String"
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 60
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 256
         }
     ],
     "changelogDate": "20180118212633",

@@ -1,6 +1,7 @@
 package com.adloveyou.ms.service.dto;
 
 
+import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.HashSet;
@@ -15,14 +16,21 @@ public class ProductDTO implements Serializable {
 
     private Long id;
 
+    @NotNull
+    @Size(max = 60)
     private String name;
 
+    @NotNull
+    @Size(max = 256)
     private String description;
 
+    @NotNull
     private BigDecimal publicPrice;
 
+    @NotNull
     private Integer adPrice;
 
+    @NotNull
     @Lob
     private byte[] image;
     private String imageContentType;

@@ -175,6 +175,25 @@ public class AgencyResourceIntTest {
 
     @Test
     @Transactional
+    public void checkNameIsRequired() throws Exception {
+        int databaseSizeBeforeTest = agencyRepository.findAll().size();
+        // set the field null
+        agency.setName(null);
+
+        // Create the Agency, which fails.
+        AgencyDTO agencyDTO = agencyMapper.toDto(agency);
+
+        restAgencyMockMvc.perform(post("/api/agencies")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(agencyDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<Agency> agencyList = agencyRepository.findAll();
+        assertThat(agencyList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
     public void getAllAgencies() throws Exception {
         // Initialize the database
         agencyRepository.saveAndFlush(agency);

@@ -16,6 +16,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 
@@ -51,7 +52,7 @@ public class MediaUserResource {
      */
     @PostMapping("/media-users")
     @Timed
-    public ResponseEntity<MediaUserDTO> createMediaUser(@RequestBody MediaUserDTO mediaUserDTO) throws URISyntaxException {
+    public ResponseEntity<MediaUserDTO> createMediaUser(@Valid @RequestBody MediaUserDTO mediaUserDTO) throws URISyntaxException {
         log.debug("REST request to save MediaUser : {}", mediaUserDTO);
         if (mediaUserDTO.getId() != null) {
             throw new BadRequestAlertException("A new mediaUser cannot already have an ID", ENTITY_NAME, "idexists");
@@ -73,7 +74,7 @@ public class MediaUserResource {
      */
     @PutMapping("/media-users")
     @Timed
-    public ResponseEntity<MediaUserDTO> updateMediaUser(@RequestBody MediaUserDTO mediaUserDTO) throws URISyntaxException {
+    public ResponseEntity<MediaUserDTO> updateMediaUser(@Valid @RequestBody MediaUserDTO mediaUserDTO) throws URISyntaxException {
         log.debug("REST request to update MediaUser : {}", mediaUserDTO);
         if (mediaUserDTO.getId() == null) {
             return createMediaUser(mediaUserDTO);

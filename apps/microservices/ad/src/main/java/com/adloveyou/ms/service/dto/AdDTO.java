@@ -1,6 +1,7 @@
 package com.adloveyou.ms.service.dto;
 
 
+import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
@@ -14,10 +15,13 @@ public class AdDTO implements Serializable {
 
     private Long id;
 
+    @NotNull
     private Long duration;
 
+    @NotNull
     private AdStatus status;
 
+    @NotNull
     private Long adfileId;
 
     private Long adCampaingId;

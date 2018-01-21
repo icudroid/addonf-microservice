@@ -1,6 +1,7 @@
 package com.adloveyou.ms.service.dto;
 
 
+import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -11,8 +12,12 @@ public class SectorDTO implements Serializable {
 
     private Long id;
 
+    @NotNull
+    @Size(max = 60)
     private String code;
 
+    @NotNull
+    @Size(max = 256)
     private String description;
 
     public Long getId() {

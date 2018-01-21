@@ -154,6 +154,25 @@ public class FileAttachementResourceIntTest {
 
     @Test
     @Transactional
+    public void checkFileIsRequired() throws Exception {
+        int databaseSizeBeforeTest = fileAttachementRepository.findAll().size();
+        // set the field null
+        fileAttachement.setFile(null);
+
+        // Create the FileAttachement, which fails.
+        FileAttachementDTO fileAttachementDTO = fileAttachementMapper.toDto(fileAttachement);
+
+        restFileAttachementMockMvc.perform(post("/api/file-attachements")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(fileAttachementDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<FileAttachement> fileAttachementList = fileAttachementRepository.findAll();
+        assertThat(fileAttachementList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
     public void getAllFileAttachements() throws Exception {
         // Initialize the database
         fileAttachementRepository.saveAndFlush(fileAttachement);

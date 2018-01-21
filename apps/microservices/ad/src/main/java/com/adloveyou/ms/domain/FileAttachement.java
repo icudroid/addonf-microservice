@@ -4,6 +4,7 @@ import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
+import javax.validation.constraints.*;
 
 import org.springframework.data.elasticsearch.annotations.Document;
 import java.io.Serializable;
@@ -25,11 +26,12 @@ public class FileAttachement implements Serializable {
     @SequenceGenerator(name = "sequenceGenerator")
     private Long id;
 
+    @NotNull
     @Lob
-    @Column(name = "jhi_file")
+    @Column(name = "jhi_file", nullable = false)
     private byte[] file;
 
-    @Column(name = "jhi_file_content_type")
+    @Column(name = "jhi_file_content_type", nullable = false)
     private String fileContentType;
 
     @ManyToOne

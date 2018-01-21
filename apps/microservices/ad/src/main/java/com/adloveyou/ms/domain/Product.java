@@ -4,6 +4,7 @@ import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
+import javax.validation.constraints.*;
 
 import org.springframework.data.elasticsearch.annotations.Document;
 import java.io.Serializable;
@@ -26,23 +27,30 @@ public class Product implements Serializable {
     @SequenceGenerator(name = "sequenceGenerator")
     private Long id;
 
-    @Column(name = "name")
+    @NotNull
+    @Size(max = 60)
+    @Column(name = "name", length = 60, nullable = false)
     private String name;
 
-    @Column(name = "description")
+    @NotNull
+    @Size(max = 256)
+    @Column(name = "description", length = 256, nullable = false)
     private String description;
 
-    @Column(name = "public_price", precision=10, scale=2)
+    @NotNull
+    @Column(name = "public_price", precision=10, scale=2, nullable = false)
     private BigDecimal publicPrice;
 
-    @Column(name = "ad_price")
+    @NotNull
+    @Column(name = "ad_price", nullable = false)
     private Integer adPrice;
 
+    @NotNull
     @Lob
-    @Column(name = "image")
+    @Column(name = "image", nullable = false)
     private byte[] image;
 
-    @Column(name = "image_content_type")
+    @Column(name = "image_content_type", nullable = false)
     private String imageContentType;
 
     @ManyToOne

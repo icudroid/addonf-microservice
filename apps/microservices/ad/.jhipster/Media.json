@@ -23,15 +23,28 @@
     "fields": [
         {
             "fieldName": "name",
-            "fieldType": "String"
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 256
         },
         {
             "fieldName": "passPhrase",
-            "fieldType": "String"
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "minlength"
+            ],
+            "fieldValidateRulesMinlength": 16
         },
         {
             "fieldName": "extId",
-            "fieldType": "String"
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
         },
         {
             "fieldName": "siret",
@@ -49,7 +62,10 @@
         {
             "fieldName": "logo",
             "fieldType": "byte[]",
-            "fieldTypeBlobContent": "image"
+            "fieldTypeBlobContent": "image",
+            "fieldValidateRules": [
+                "required"
+            ]
         }
     ],
     "changelogDate": "20180118212635",

@@ -5,6 +5,7 @@ import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
+import javax.validation.constraints.*;
 
 import org.springframework.data.elasticsearch.annotations.Document;
 import java.io.Serializable;
@@ -28,10 +29,14 @@ public class Contact implements Serializable {
     @SequenceGenerator(name = "sequenceGenerator")
     private Long id;
 
-    @Column(name = "lastname")
+    @NotNull
+    @Size(max = 60)
+    @Column(name = "lastname", length = 60, nullable = false)
     private String lastname;
 
-    @Column(name = "firstname")
+    @NotNull
+    @Size(max = 60)
+    @Column(name = "firstname", length = 60, nullable = false)
     private String firstname;
 
     @ManyToOne

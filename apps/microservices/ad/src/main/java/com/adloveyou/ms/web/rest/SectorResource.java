@@ -16,6 +16,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 
@@ -51,7 +52,7 @@ public class SectorResource {
      */
     @PostMapping("/sectors")
     @Timed
-    public ResponseEntity<SectorDTO> createSector(@RequestBody SectorDTO sectorDTO) throws URISyntaxException {
+    public ResponseEntity<SectorDTO> createSector(@Valid @RequestBody SectorDTO sectorDTO) throws URISyntaxException {
         log.debug("REST request to save Sector : {}", sectorDTO);
         if (sectorDTO.getId() != null) {
             throw new BadRequestAlertException("A new sector cannot already have an ID", ENTITY_NAME, "idexists");
@@ -73,7 +74,7 @@ public class SectorResource {
      */
     @PutMapping("/sectors")
     @Timed
-    public ResponseEntity<SectorDTO> updateSector(@RequestBody SectorDTO sectorDTO) throws URISyntaxException {
+    public ResponseEntity<SectorDTO> updateSector(@Valid @RequestBody SectorDTO sectorDTO) throws URISyntaxException {
         log.debug("REST request to update Sector : {}", sectorDTO);
         if (sectorDTO.getId() == null) {
             return createSector(sectorDTO);

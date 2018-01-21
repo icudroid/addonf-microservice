@@ -150,6 +150,25 @@ public class MediaTargetResourceIntTest {
 
     @Test
     @Transactional
+    public void checkMediaTypeIsRequired() throws Exception {
+        int databaseSizeBeforeTest = mediaTargetRepository.findAll().size();
+        // set the field null
+        mediaTarget.setMediaType(null);
+
+        // Create the MediaTarget, which fails.
+        MediaTargetDTO mediaTargetDTO = mediaTargetMapper.toDto(mediaTarget);
+
+        restMediaTargetMockMvc.perform(post("/api/media-targets")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(mediaTargetDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<MediaTarget> mediaTargetList = mediaTargetRepository.findAll();
+        assertThat(mediaTargetList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
     public void getAllMediaTargets() throws Exception {
         // Initialize the database
         mediaTargetRepository.saveAndFlush(mediaTarget);

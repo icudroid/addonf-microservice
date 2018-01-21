@@ -49,8 +49,8 @@ public class MediaResourceIntTest {
     private static final String DEFAULT_NAME = "AAAAAAAAAA";
     private static final String UPDATED_NAME = "BBBBBBBBBB";
 
-    private static final String DEFAULT_PASS_PHRASE = "AAAAAAAAAA";
-    private static final String UPDATED_PASS_PHRASE = "BBBBBBBBBB";
+    private static final String DEFAULT_PASS_PHRASE = "AAAAAAAAAAAAAAAA";
+    private static final String UPDATED_PASS_PHRASE = "BBBBBBBBBBBBBBBB";
 
     private static final String DEFAULT_EXT_ID = "AAAAAAAAAA";
     private static final String UPDATED_EXT_ID = "BBBBBBBBBB";
@@ -181,6 +181,82 @@ public class MediaResourceIntTest {
         // Validate the Media in the database
         List<Media> mediaList = mediaRepository.findAll();
         assertThat(mediaList).hasSize(databaseSizeBeforeCreate);
+    }
+
+    @Test
+    @Transactional
+    public void checkNameIsRequired() throws Exception {
+        int databaseSizeBeforeTest = mediaRepository.findAll().size();
+        // set the field null
+        media.setName(null);
+
+        // Create the Media, which fails.
+        MediaDTO mediaDTO = mediaMapper.toDto(media);
+
+        restMediaMockMvc.perform(post("/api/media")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(mediaDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<Media> mediaList = mediaRepository.findAll();
+        assertThat(mediaList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    public void checkPassPhraseIsRequired() throws Exception {
+        int databaseSizeBeforeTest = mediaRepository.findAll().size();
+        // set the field null
+        media.setPassPhrase(null);
+
+        // Create the Media, which fails.
+        MediaDTO mediaDTO = mediaMapper.toDto(media);
+
+        restMediaMockMvc.perform(post("/api/media")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(mediaDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<Media> mediaList = mediaRepository.findAll();
+        assertThat(mediaList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    public void checkExtIdIsRequired() throws Exception {
+        int databaseSizeBeforeTest = mediaRepository.findAll().size();
+        // set the field null
+        media.setExtId(null);
+
+        // Create the Media, which fails.
+        MediaDTO mediaDTO = mediaMapper.toDto(media);
+
+        restMediaMockMvc.perform(post("/api/media")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(mediaDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<Media> mediaList = mediaRepository.findAll();
+        assertThat(mediaList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    public void checkLogoIsRequired() throws Exception {
+        int databaseSizeBeforeTest = mediaRepository.findAll().size();
+        // set the field null
+        media.setLogo(null);
+
+        // Create the Media, which fails.
+        MediaDTO mediaDTO = mediaMapper.toDto(media);
+
+        restMediaMockMvc.perform(post("/api/media")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(mediaDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<Media> mediaList = mediaRepository.findAll();
+        assertThat(mediaList).hasSize(databaseSizeBeforeTest);
     }
 
     @Test

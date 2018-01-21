@@ -154,6 +154,44 @@ public class SectorResourceIntTest {
 
     @Test
     @Transactional
+    public void checkCodeIsRequired() throws Exception {
+        int databaseSizeBeforeTest = sectorRepository.findAll().size();
+        // set the field null
+        sector.setCode(null);
+
+        // Create the Sector, which fails.
+        SectorDTO sectorDTO = sectorMapper.toDto(sector);
+
+        restSectorMockMvc.perform(post("/api/sectors")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(sectorDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<Sector> sectorList = sectorRepository.findAll();
+        assertThat(sectorList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    public void checkDescriptionIsRequired() throws Exception {
+        int databaseSizeBeforeTest = sectorRepository.findAll().size();
+        // set the field null
+        sector.setDescription(null);
+
+        // Create the Sector, which fails.
+        SectorDTO sectorDTO = sectorMapper.toDto(sector);
+
+        restSectorMockMvc.perform(post("/api/sectors")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(sectorDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<Sector> sectorList = sectorRepository.findAll();
+        assertThat(sectorList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
     public void getAllSectors() throws Exception {
         // Initialize the database
         sectorRepository.saveAndFlush(sector);

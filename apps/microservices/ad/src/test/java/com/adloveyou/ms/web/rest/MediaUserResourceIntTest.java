@@ -149,6 +149,25 @@ public class MediaUserResourceIntTest {
 
     @Test
     @Transactional
+    public void checkUserIdIsRequired() throws Exception {
+        int databaseSizeBeforeTest = mediaUserRepository.findAll().size();
+        // set the field null
+        mediaUser.setUserId(null);
+
+        // Create the MediaUser, which fails.
+        MediaUserDTO mediaUserDTO = mediaUserMapper.toDto(mediaUser);
+
+        restMediaUserMockMvc.perform(post("/api/media-users")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(mediaUserDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<MediaUser> mediaUserList = mediaUserRepository.findAll();
+        assertThat(mediaUserList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
     public void getAllMediaUsers() throws Exception {
         // Initialize the database
         mediaUserRepository.saveAndFlush(mediaUser);

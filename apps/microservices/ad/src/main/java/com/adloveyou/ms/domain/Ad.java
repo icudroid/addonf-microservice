@@ -5,6 +5,7 @@ import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
+import javax.validation.constraints.*;
 
 import org.springframework.data.elasticsearch.annotations.Document;
 import java.io.Serializable;
@@ -30,14 +31,17 @@ public class Ad implements Serializable {
     @SequenceGenerator(name = "sequenceGenerator")
     private Long id;
 
-    @Column(name = "duration")
+    @NotNull
+    @Column(name = "duration", nullable = false)
     private Long duration;
 
+    @NotNull
     @Enumerated(EnumType.STRING)
-    @Column(name = "status")
+    @Column(name = "status", nullable = false)
     private AdStatus status;
 
-    @Column(name = "adfile_id")
+    @NotNull
+    @Column(name = "adfile_id", nullable = false)
     private Long adfileId;
 
     @ManyToOne

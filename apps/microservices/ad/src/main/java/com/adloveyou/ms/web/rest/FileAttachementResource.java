@@ -16,6 +16,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 
@@ -51,7 +52,7 @@ public class FileAttachementResource {
      */
     @PostMapping("/file-attachements")
     @Timed
-    public ResponseEntity<FileAttachementDTO> createFileAttachement(@RequestBody FileAttachementDTO fileAttachementDTO) throws URISyntaxException {
+    public ResponseEntity<FileAttachementDTO> createFileAttachement(@Valid @RequestBody FileAttachementDTO fileAttachementDTO) throws URISyntaxException {
         log.debug("REST request to save FileAttachement : {}", fileAttachementDTO);
         if (fileAttachementDTO.getId() != null) {
             throw new BadRequestAlertException("A new fileAttachement cannot already have an ID", ENTITY_NAME, "idexists");
@@ -73,7 +74,7 @@ public class FileAttachementResource {
      */
     @PutMapping("/file-attachements")
     @Timed
-    public ResponseEntity<FileAttachementDTO> updateFileAttachement(@RequestBody FileAttachementDTO fileAttachementDTO) throws URISyntaxException {
+    public ResponseEntity<FileAttachementDTO> updateFileAttachement(@Valid @RequestBody FileAttachementDTO fileAttachementDTO) throws URISyntaxException {
         log.debug("REST request to update FileAttachement : {}", fileAttachementDTO);
         if (fileAttachementDTO.getId() == null) {
             return createFileAttachement(fileAttachementDTO);

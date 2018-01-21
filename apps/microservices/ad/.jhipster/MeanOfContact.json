@@ -11,12 +11,20 @@
     "fields": [
         {
             "fieldName": "value",
-            "fieldType": "String"
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 60
         },
         {
             "fieldName": "type",
             "fieldType": "MeanOfContactType",
-            "fieldValues": "EMAIL,ADDRESS,PHONE"
+            "fieldValues": "EMAIL,ADDRESS,PHONE",
+            "fieldValidateRules": [
+                "required"
+            ]
         }
     ],
     "changelogDate": "20180118212638",

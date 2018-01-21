@@ -23,16 +23,25 @@
     "fields": [
         {
             "fieldName": "duration",
-            "fieldType": "Long"
+            "fieldType": "Long",
+            "fieldValidateRules": [
+                "required"
+            ]
         },
         {
             "fieldName": "status",
             "fieldType": "AdStatus",
-            "fieldValues": "UPLOADING,UPLOADED,ENCODED,DELETED,READY_TO_USE"
+            "fieldValues": "UPLOADING,UPLOADED,ENCODED,DELETED,READY_TO_USE",
+            "fieldValidateRules": [
+                "required"
+            ]
         },
         {
             "fieldName": "adfileId",
-            "fieldType": "Long"
+            "fieldType": "Long",
+            "fieldValidateRules": [
+                "required"
+            ]
         }
     ],
     "changelogDate": "20180118212629",

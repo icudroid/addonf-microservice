@@ -4,6 +4,7 @@ import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
+import javax.validation.constraints.*;
 
 import org.springframework.data.elasticsearch.annotations.Document;
 import java.io.Serializable;
@@ -28,7 +29,8 @@ public class BidCategoryMedia implements Serializable {
     @SequenceGenerator(name = "sequenceGenerator")
     private Long id;
 
-    @Column(name = "bid", precision=10, scale=2)
+    @NotNull
+    @Column(name = "bid", precision=10, scale=2, nullable = false)
     private BigDecimal bid;
 
     @Enumerated(EnumType.STRING)

@@ -1,6 +1,7 @@
 package com.adloveyou.ms.service.dto;
 
 
+import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
@@ -15,6 +16,8 @@ public class BrandDTO implements Serializable {
 
     private Long id;
 
+    @NotNull
+    @Size(max = 60)
     private String name;
 
     private Long userId;

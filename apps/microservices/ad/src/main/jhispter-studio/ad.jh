@@ -1,12 +1,12 @@
 entity AdCampaing {
-	name String
-    initialAmount BigDecimal
-    start ZonedDateTime
-    end ZonedDateTime
+	name String required maxlength(60)
+    initialAmount BigDecimal required
+    start ZonedDateTime required
+    end ZonedDateTime required
 }
 
 entity Brand {
-	name String
+	name String  required maxlength(60)
 	userId Long
 	siret String
     siren String
@@ -15,7 +15,7 @@ entity Brand {
 }
 
 entity BrandUser {
-	userId Long
+	userId Long required
 }
 
 enum Sex {
@@ -47,7 +47,7 @@ entity CustomerTarget {
 }
 
 entity Agency {
-	name String
+	name String required maxlength(60)
 	siret String
     siren String
     legalStatus LegalStatus
@@ -55,26 +55,26 @@ entity Agency {
 }
 
 entity AgencyUser {
-	userId Long
+	userId Long required
 }
 
 entity Ad {
-	duration Long
-    status AdStatus
-    adfileId Long
+	duration Long required
+    status AdStatus required
+    adfileId Long required
 }
 
 entity Sector {
-    code String
-	description String
+    code String required maxlength(60)
+	description String required maxlength(256)
 }
 
 entity Product {
-	name String
-    description String
-    publicPrice BigDecimal
-    adPrice Integer
-    image ImageBlob
+	name String required maxlength(60)
+    description String required maxlength(256)
+    publicPrice BigDecimal required
+    adPrice Integer required
+    image ImageBlob required
 }
 
 entity AdRule {
@@ -82,41 +82,42 @@ entity AdRule {
 }
 
 entity Category {
-	key String
+	key String required maxlength(60)
+    description String required maxlength(256)
 }
 
 entity BidCategoryMedia {
-	bid BigDecimal
+	bid BigDecimal required
     mediaType AdMediaType
 }
 
 entity Media {
-	name String
-    passPhrase String
-    extId String
+	name String required maxlength(256)
+    passPhrase String required minlength(16)
+    extId String required
 	siret String
     siren String
     legalStatus LegalStatus
-    logo ImageBlob
+    logo ImageBlob required
 }
 
 entity MediaUser {
-	userId Long
+	userId Long required
 }
 
 
 entity Contact {
-	lastname String
-    firstname String
+	lastname String required maxlength(60)
+    firstname String required maxlength(60)
 }
 
 entity MeanOfContact {
-	value String
-    type MeanOfContactType
+	value String required maxlength(60)
+    type MeanOfContactType required
 }
 
 entity FileAttachement {
-	file ImageBlob
+	file ImageBlob required
 }
 
 enum MeanOfContactType {
@@ -139,7 +140,7 @@ enum LegalStatus {
 
 
 entity MediaTarget{
-    mediaType AdMediaType
+    mediaType AdMediaType required
 }
 
 relationship ManyToOne {
@@ -197,10 +198,6 @@ relationship OneToMany {
 
     Contact{meanOfContacts} to MeanOfContact
 }
-
-
-
-
 
 
 

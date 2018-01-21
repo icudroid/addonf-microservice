@@ -1,6 +1,7 @@
 package com.adloveyou.ms.service.dto;
 
 
+import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
@@ -15,10 +16,15 @@ public class MediaDTO implements Serializable {
 
     private Long id;
 
+    @NotNull
+    @Size(max = 256)
     private String name;
 
+    @NotNull
+    @Size(min = 16)
     private String passPhrase;
 
+    @NotNull
     private String extId;
 
     private String siret;
@@ -27,6 +33,7 @@ public class MediaDTO implements Serializable {
 
     private LegalStatus legalStatus;
 
+    @NotNull
     @Lob
     private byte[] logo;
     private String logoContentType;

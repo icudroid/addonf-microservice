@@ -22,10 +22,10 @@
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="jhi_file" type="longblob">
-                <constraints nullable="true" />
+                <constraints nullable="false" />
             </column>
             <column name="jhi_file_content_type" type="varchar(255)">
-                <constraints nullable="true" />
+                <constraints nullable="false" />
             </column>
 
             <column name="brand_id" type="bigint">

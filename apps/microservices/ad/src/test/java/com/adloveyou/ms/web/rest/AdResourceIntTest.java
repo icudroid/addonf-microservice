@@ -160,6 +160,63 @@ public class AdResourceIntTest {
 
     @Test
     @Transactional
+    public void checkDurationIsRequired() throws Exception {
+        int databaseSizeBeforeTest = adRepository.findAll().size();
+        // set the field null
+        ad.setDuration(null);
+
+        // Create the Ad, which fails.
+        AdDTO adDTO = adMapper.toDto(ad);
+
+        restAdMockMvc.perform(post("/api/ads")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(adDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<Ad> adList = adRepository.findAll();
+        assertThat(adList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    public void checkStatusIsRequired() throws Exception {
+        int databaseSizeBeforeTest = adRepository.findAll().size();
+        // set the field null
+        ad.setStatus(null);
+
+        // Create the Ad, which fails.
+        AdDTO adDTO = adMapper.toDto(ad);
+
+        restAdMockMvc.perform(post("/api/ads")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(adDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<Ad> adList = adRepository.findAll();
+        assertThat(adList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    public void checkAdfileIdIsRequired() throws Exception {
+        int databaseSizeBeforeTest = adRepository.findAll().size();
+        // set the field null
+        ad.setAdfileId(null);
+
+        // Create the Ad, which fails.
+        AdDTO adDTO = adMapper.toDto(ad);
+
+        restAdMockMvc.perform(post("/api/ads")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(adDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<Ad> adList = adRepository.findAll();
+        assertThat(adList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
     public void getAllAds() throws Exception {
         // Initialize the database
         adRepository.saveAndFlush(ad);

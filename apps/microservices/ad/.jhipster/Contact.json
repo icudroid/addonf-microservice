@@ -29,11 +29,21 @@
     "fields": [
         {
             "fieldName": "lastname",
-            "fieldType": "String"
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 60
         },
         {
             "fieldName": "firstname",
-            "fieldType": "String"
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 60
         }
     ],
     "changelogDate": "20180118212637",

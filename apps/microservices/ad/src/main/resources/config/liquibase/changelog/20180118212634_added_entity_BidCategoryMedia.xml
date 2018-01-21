@@ -22,7 +22,7 @@
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="bid" type="decimal(10,2)">
-                <constraints nullable="true" />
+                <constraints nullable="false" />
             </column>
 
             <column name="media_type" type="varchar(255)">

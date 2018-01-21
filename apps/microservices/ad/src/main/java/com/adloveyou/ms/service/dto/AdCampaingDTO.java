@@ -2,6 +2,7 @@ package com.adloveyou.ms.service.dto;
 
 
 import java.time.ZonedDateTime;
+import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.HashSet;
@@ -15,12 +16,17 @@ public class AdCampaingDTO implements Serializable {
 
     private Long id;
 
+    @NotNull
+    @Size(max = 60)
     private String name;
 
+    @NotNull
     private BigDecimal initialAmount;
 
+    @NotNull
     private ZonedDateTime start;
 
+    @NotNull
     private ZonedDateTime end;
 
     private Long brandId;

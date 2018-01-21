@@ -156,6 +156,25 @@ public class BidCategoryMediaResourceIntTest {
 
     @Test
     @Transactional
+    public void checkBidIsRequired() throws Exception {
+        int databaseSizeBeforeTest = bidCategoryMediaRepository.findAll().size();
+        // set the field null
+        bidCategoryMedia.setBid(null);
+
+        // Create the BidCategoryMedia, which fails.
+        BidCategoryMediaDTO bidCategoryMediaDTO = bidCategoryMediaMapper.toDto(bidCategoryMedia);
+
+        restBidCategoryMediaMockMvc.perform(post("/api/bid-category-medias")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(bidCategoryMediaDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<BidCategoryMedia> bidCategoryMediaList = bidCategoryMediaRepository.findAll();
+        assertThat(bidCategoryMediaList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
     public void getAllBidCategoryMedias() throws Exception {
         // Initialize the database
         bidCategoryMediaRepository.saveAndFlush(bidCategoryMedia);

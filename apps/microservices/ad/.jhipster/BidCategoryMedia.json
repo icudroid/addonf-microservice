@@ -23,7 +23,10 @@
     "fields": [
         {
             "fieldName": "bid",
-            "fieldType": "BigDecimal"
+            "fieldType": "BigDecimal",
+            "fieldValidateRules": [
+                "required"
+            ]
         },
         {
             "fieldName": "mediaType",

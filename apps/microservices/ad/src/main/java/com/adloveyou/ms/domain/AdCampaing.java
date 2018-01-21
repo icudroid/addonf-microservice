@@ -5,6 +5,7 @@ import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
+import javax.validation.constraints.*;
 
 import org.springframework.data.elasticsearch.annotations.Document;
 import java.io.Serializable;
@@ -30,16 +31,21 @@ public class AdCampaing implements Serializable {
     @SequenceGenerator(name = "sequenceGenerator")
     private Long id;
 
-    @Column(name = "name")
+    @NotNull
+    @Size(max = 60)
+    @Column(name = "name", length = 60, nullable = false)
     private String name;
 
-    @Column(name = "initial_amount", precision=10, scale=2)
+    @NotNull
+    @Column(name = "initial_amount", precision=10, scale=2, nullable = false)
     private BigDecimal initialAmount;
 
-    @Column(name = "jhi_start")
+    @NotNull
+    @Column(name = "jhi_start", nullable = false)
     private ZonedDateTime start;
 
-    @Column(name = "jhi_end")
+    @NotNull
+    @Column(name = "jhi_end", nullable = false)
     private ZonedDateTime end;
 
     @OneToMany(mappedBy = "adCampaing")

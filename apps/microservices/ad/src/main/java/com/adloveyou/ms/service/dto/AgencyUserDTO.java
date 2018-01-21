@@ -1,6 +1,7 @@
 package com.adloveyou.ms.service.dto;
 
 
+import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
@@ -13,6 +14,7 @@ public class AgencyUserDTO implements Serializable {
 
     private Long id;
 
+    @NotNull
     private Long userId;
 
     private Long agencyId;

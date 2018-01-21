@@ -16,6 +16,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 
@@ -51,7 +52,7 @@ public class BrandUserResource {
      */
     @PostMapping("/brand-users")
     @Timed
-    public ResponseEntity<BrandUserDTO> createBrandUser(@RequestBody BrandUserDTO brandUserDTO) throws URISyntaxException {
+    public ResponseEntity<BrandUserDTO> createBrandUser(@Valid @RequestBody BrandUserDTO brandUserDTO) throws URISyntaxException {
         log.debug("REST request to save BrandUser : {}", brandUserDTO);
         if (brandUserDTO.getId() != null) {
             throw new BadRequestAlertException("A new brandUser cannot already have an ID", ENTITY_NAME, "idexists");
@@ -73,7 +74,7 @@ public class BrandUserResource {
      */
     @PutMapping("/brand-users")
     @Timed
-    public ResponseEntity<BrandUserDTO> updateBrandUser(@RequestBody BrandUserDTO brandUserDTO) throws URISyntaxException {
+    public ResponseEntity<BrandUserDTO> updateBrandUser(@Valid @RequestBody BrandUserDTO brandUserDTO) throws URISyntaxException {
         log.debug("REST request to update BrandUser : {}", brandUserDTO);
         if (brandUserDTO.getId() == null) {
             return createBrandUser(brandUserDTO);

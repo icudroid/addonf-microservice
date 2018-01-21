@@ -5,6 +5,7 @@ import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
+import javax.validation.constraints.*;
 
 import org.springframework.data.elasticsearch.annotations.Document;
 import java.io.Serializable;
@@ -30,13 +31,18 @@ public class Media implements Serializable {
     @SequenceGenerator(name = "sequenceGenerator")
     private Long id;
 
-    @Column(name = "name")
+    @NotNull
+    @Size(max = 256)
+    @Column(name = "name", length = 256, nullable = false)
     private String name;
 
-    @Column(name = "pass_phrase")
+    @NotNull
+    @Size(min = 16)
+    @Column(name = "pass_phrase", nullable = false)
     private String passPhrase;
 
-    @Column(name = "ext_id")
+    @NotNull
+    @Column(name = "ext_id", nullable = false)
     private String extId;
 
     @Column(name = "siret")
@@ -49,11 +55,12 @@ public class Media implements Serializable {
     @Column(name = "legal_status")
     private LegalStatus legalStatus;
 
+    @NotNull
     @Lob
-    @Column(name = "logo")
+    @Column(name = "logo", nullable = false)
     private byte[] logo;
 
-    @Column(name = "logo_content_type")
+    @Column(name = "logo_content_type", nullable = false)
     private String logoContentType;
 
     @OneToMany(mappedBy = "media")

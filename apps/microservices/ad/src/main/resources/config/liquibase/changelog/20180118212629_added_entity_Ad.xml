@@ -22,15 +22,15 @@
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="duration" type="bigint">
-                <constraints nullable="true" />
+                <constraints nullable="false" />
             </column>
 
             <column name="status" type="varchar(255)">
-                <constraints nullable="true" />
+                <constraints nullable="false" />
             </column>
 
             <column name="adfile_id" type="bigint">
-                <constraints nullable="true" />
+                <constraints nullable="false" />
             </column>
 
             <column name="ad_campaing_id" type="bigint">

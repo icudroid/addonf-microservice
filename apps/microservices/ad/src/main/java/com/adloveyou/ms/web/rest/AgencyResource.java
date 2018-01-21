@@ -16,6 +16,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 
@@ -51,7 +52,7 @@ public class AgencyResource {
      */
     @PostMapping("/agencies")
     @Timed
-    public ResponseEntity<AgencyDTO> createAgency(@RequestBody AgencyDTO agencyDTO) throws URISyntaxException {
+    public ResponseEntity<AgencyDTO> createAgency(@Valid @RequestBody AgencyDTO agencyDTO) throws URISyntaxException {
         log.debug("REST request to save Agency : {}", agencyDTO);
         if (agencyDTO.getId() != null) {
             throw new BadRequestAlertException("A new agency cannot already have an ID", ENTITY_NAME, "idexists");
@@ -73,7 +74,7 @@ public class AgencyResource {
      */
     @PutMapping("/agencies")
     @Timed
-    public ResponseEntity<AgencyDTO> updateAgency(@RequestBody AgencyDTO agencyDTO) throws URISyntaxException {
+    public ResponseEntity<AgencyDTO> updateAgency(@Valid @RequestBody AgencyDTO agencyDTO) throws URISyntaxException {
         log.debug("REST request to update Agency : {}", agencyDTO);
         if (agencyDTO.getId() == null) {
             return createAgency(agencyDTO);

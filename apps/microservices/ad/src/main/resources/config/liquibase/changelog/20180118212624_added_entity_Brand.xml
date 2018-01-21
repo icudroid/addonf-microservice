@@ -21,8 +21,8 @@
             <column name="id" type="bigint" autoIncrement="${autoIncrement}">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="name" type="varchar(255)">
-                <constraints nullable="true" />
+            <column name="name" type="varchar(60)">
+                <constraints nullable="false" />
             </column>
 
             <column name="user_id" type="bigint">

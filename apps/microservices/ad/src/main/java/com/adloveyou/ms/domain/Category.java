@@ -4,6 +4,7 @@ import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
+import javax.validation.constraints.*;
 
 import org.springframework.data.elasticsearch.annotations.Document;
 import java.io.Serializable;
@@ -25,8 +26,15 @@ public class Category implements Serializable {
     @SequenceGenerator(name = "sequenceGenerator")
     private Long id;
 
-    @Column(name = "jhi_key")
+    @NotNull
+    @Size(max = 60)
+    @Column(name = "jhi_key", length = 60, nullable = false)
     private String key;
+
+    @NotNull
+    @Size(max = 256)
+    @Column(name = "description", length = 256, nullable = false)
+    private String description;
 
     @ManyToOne
     private Category main;
@@ -51,6 +59,19 @@ public class Category implements Serializable {
 
     public void setKey(String key) {
         this.key = key;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public Category description(String description) {
+        this.description = description;
+        return this;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public Category getMain() {
@@ -92,6 +113,7 @@ public class Category implements Serializable {
         return "Category{" +
             "id=" + getId() +
             ", key='" + getKey() + "'" +
+            ", description='" + getDescription() + "'" +
             "}";
     }
 }

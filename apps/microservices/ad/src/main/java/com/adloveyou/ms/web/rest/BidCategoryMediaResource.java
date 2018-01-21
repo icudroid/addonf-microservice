@@ -16,6 +16,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 
@@ -51,7 +52,7 @@ public class BidCategoryMediaResource {
      */
     @PostMapping("/bid-category-medias")
     @Timed
-    public ResponseEntity<BidCategoryMediaDTO> createBidCategoryMedia(@RequestBody BidCategoryMediaDTO bidCategoryMediaDTO) throws URISyntaxException {
+    public ResponseEntity<BidCategoryMediaDTO> createBidCategoryMedia(@Valid @RequestBody BidCategoryMediaDTO bidCategoryMediaDTO) throws URISyntaxException {
         log.debug("REST request to save BidCategoryMedia : {}", bidCategoryMediaDTO);
         if (bidCategoryMediaDTO.getId() != null) {
             throw new BadRequestAlertException("A new bidCategoryMedia cannot already have an ID", ENTITY_NAME, "idexists");
@@ -73,7 +74,7 @@ public class BidCategoryMediaResource {
      */
     @PutMapping("/bid-category-medias")
     @Timed
-    public ResponseEntity<BidCategoryMediaDTO> updateBidCategoryMedia(@RequestBody BidCategoryMediaDTO bidCategoryMediaDTO) throws URISyntaxException {
+    public ResponseEntity<BidCategoryMediaDTO> updateBidCategoryMedia(@Valid @RequestBody BidCategoryMediaDTO bidCategoryMediaDTO) throws URISyntaxException {
         log.debug("REST request to update BidCategoryMedia : {}", bidCategoryMediaDTO);
         if (bidCategoryMediaDTO.getId() == null) {
             return createBidCategoryMedia(bidCategoryMediaDTO);

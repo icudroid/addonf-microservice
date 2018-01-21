@@ -35,19 +35,33 @@
     "fields": [
         {
             "fieldName": "name",
-            "fieldType": "String"
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 60
         },
         {
             "fieldName": "initialAmount",
-            "fieldType": "BigDecimal"
+            "fieldType": "BigDecimal",
+            "fieldValidateRules": [
+                "required"
+            ]
         },
         {
             "fieldName": "start",
-            "fieldType": "ZonedDateTime"
+            "fieldType": "ZonedDateTime",
+            "fieldValidateRules": [
+                "required"
+            ]
         },
         {
             "fieldName": "end",
-            "fieldType": "ZonedDateTime"
+            "fieldType": "ZonedDateTime",
+            "fieldValidateRules": [
+                "required"
+            ]
         }
     ],
     "changelogDate": "20180118212623",
