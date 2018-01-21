@@ -1,0 +1,38 @@
+{
+    "adminBoApp": {
+        "brand" : {
+            "home": {
+                "title": "Brands",
+                "createLabel": "Créer un nouveau Brand",
+                "createOrEditLabel": "Créer ou éditer un Brand",
+                "search": "Recherche pour Brand"
+            },
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Brand {{ id }} ?"
+            },
+            "detail": {
+                "title": "Brand"
+            },
+            "name": "Name",
+            "userId": "User Id",
+            "siret": "Siret",
+            "siren": "Siren",
+            "legalStatus": "Legal Status",
+            "logo": "Logo",
+            "products": "Products",
+            "targets": "Targets",
+            "targetsMedia": "Targets Media",
+            "users": "Users",
+            "contacts": "Contacts",
+            "attachements": "Attachements",
+            "sector": "Sector"
+        }
+    },
+    "adApp": {
+        "brand" : {
+            "created": "Un nouveau Brand a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Brand avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Brand avec l'identifiant {{ param }} a été supprimé"
+        }
+    }
+}

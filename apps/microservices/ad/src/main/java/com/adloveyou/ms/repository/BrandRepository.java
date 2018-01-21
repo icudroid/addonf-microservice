@@ -1,6 +1,6 @@
 package com.adloveyou.ms.repository;
 
-import com.adloveyou.ms.domain.Brand;
+import com.adloveyou.ms.domain.brand.Brand;
 import org.springframework.stereotype.Repository;
 
 import org.springframework.data.jpa.repository.*;

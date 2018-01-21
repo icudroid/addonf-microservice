@@ -4,7 +4,7 @@ import com.adloveyou.ms.AdApp;
 
 import com.adloveyou.ms.config.SecurityBeanOverrideConfiguration;
 
-import com.adloveyou.ms.domain.Product;
+import com.adloveyou.ms.domain.ad.Product;
 import com.adloveyou.ms.repository.ProductRepository;
 import com.adloveyou.ms.service.ProductService;
 import com.adloveyou.ms.repository.search.ProductSearchRepository;

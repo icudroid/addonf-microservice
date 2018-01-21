@@ -1,0 +1,33 @@
+{
+    "adminBoApp": {
+        "agency" : {
+            "home": {
+                "title": "Agencies",
+                "createLabel": "Créer un nouveau Agency",
+                "createOrEditLabel": "Créer ou éditer un Agency",
+                "search": "Recherche pour Agency"
+            },
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Agency {{ id }} ?"
+            },
+            "detail": {
+                "title": "Agency"
+            },
+            "name": "Name",
+            "siret": "Siret",
+            "siren": "Siren",
+            "legalStatus": "Legal Status",
+            "logo": "Logo",
+            "users": "Users",
+            "contacts": "Contacts",
+            "attachements": "Attachements"
+        }
+    },
+    "adApp": {
+        "agency" : {
+            "created": "Un nouveau Agency a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Agency avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Agency avec l'identifiant {{ param }} a été supprimé"
+        }
+    }
+}

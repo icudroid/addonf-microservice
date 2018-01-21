@@ -1,6 +1,6 @@
 package com.adloveyou.ms.service.mapper;
 
-import com.adloveyou.ms.domain.*;
+import com.adloveyou.ms.domain.ad.Category;
 import com.adloveyou.ms.service.dto.CategoryDTO;
 
 import org.mapstruct.*;
@@ -12,7 +12,7 @@ import org.mapstruct.*;
 public interface CategoryMapper extends EntityMapper<CategoryDTO, Category> {
 
     @Mapping(source = "main.id", target = "mainId")
-    CategoryDTO toDto(Category category); 
+    CategoryDTO toDto(Category category);
 
     @Mapping(source = "mainId", target = "main")
     Category toEntity(CategoryDTO categoryDTO);

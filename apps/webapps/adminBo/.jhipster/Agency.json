@@ -1,0 +1,60 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "users",
+            "otherEntityName": "agencyUser",
+            "otherEntityRelationshipName": "agency"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "contacts",
+            "otherEntityName": "contact",
+            "otherEntityRelationshipName": "agency"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "attachements",
+            "otherEntityName": "fileAttachement",
+            "otherEntityRelationshipName": "agency"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 60
+        },
+        {
+            "fieldName": "siret",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "siren",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "legalStatus",
+            "fieldType": "LegalStatus",
+            "fieldValues": "SARL,SA,SAS,SASU,SNC,EURL,EI,ASSOCIATION,AUTO_ENTREPRENEUR"
+        },
+        {
+            "fieldName": "logo",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "image"
+        }
+    ],
+    "changelogDate": "20180121125100",
+    "entityTableName": "agency",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "microserviceName": "ad",
+    "searchEngine": "elasticsearch"
+}

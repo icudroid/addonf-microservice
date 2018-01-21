@@ -4,7 +4,7 @@ import com.adloveyou.ms.AdApp;
 
 import com.adloveyou.ms.config.SecurityBeanOverrideConfiguration;
 
-import com.adloveyou.ms.domain.MediaUser;
+import com.adloveyou.ms.domain.media.MediaUser;
 import com.adloveyou.ms.repository.MediaUserRepository;
 import com.adloveyou.ms.service.MediaUserService;
 import com.adloveyou.ms.repository.search.MediaUserSearchRepository;

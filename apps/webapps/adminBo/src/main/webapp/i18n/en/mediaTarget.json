@@ -1,0 +1,27 @@
+{
+    "adminBoApp": {
+        "mediaTarget" : {
+            "home": {
+                "title": "Media Targets",
+                "createLabel": "Create a new Media Target",
+                "createOrEditLabel": "Create or edit a Media Target",
+                "search": "Search for Media Target"
+            },
+            "delete": {
+                "question": "Are you sure you want to delete Media Target {{ id }}?"
+            },
+            "detail": {
+                "title": "Media Target"
+            },
+            "mediaType": "Media Type",
+            "brand": "Brand"
+        }
+    },
+    "adApp": {
+        "mediaTarget" : {
+            "created": "A new Media Target is created with identifier {{ param }}",
+            "updated": "A Media Target is updated with identifier {{ param }}",
+            "deleted": "A Media Target is deleted with identifier {{ param }}"
+        }
+    }
+}

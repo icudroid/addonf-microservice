@@ -1,0 +1,28 @@
+{
+    "adminBoApp": {
+        "meanOfContact" : {
+            "home": {
+                "title": "MeanOfContacts",
+                "createLabel": "Créer un nouveau Mean Of Contact",
+                "createOrEditLabel": "Créer ou éditer un Mean Of Contact",
+                "search": "Recherche pour Mean Of Contact"
+            },
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Mean Of Contact {{ id }} ?"
+            },
+            "detail": {
+                "title": "Mean Of Contact"
+            },
+            "value": "Value",
+            "type": "Type",
+            "contact": "Contact"
+        }
+    },
+    "adApp": {
+        "meanOfContact" : {
+            "created": "Un nouveau Mean Of Contact a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Mean Of Contact avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Mean Of Contact avec l'identifiant {{ param }} a été supprimé"
+        }
+    }
+}

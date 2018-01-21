@@ -1,0 +1,32 @@
+
+<div *ngIf="brandUser">
+    <h2><span jhiTranslate="advertiserBoApp.brandUser.detail.title">Brand User</span> {{brandUser.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="advertiserBoApp.brandUser.userId">User Id</span></dt>
+        <dd>
+            <span>{{brandUser.userId}}</span>
+        </dd>
+        <dt><span jhiTranslate="advertiserBoApp.brandUser.brand">Brand</span></dt>
+        <dd>
+            <div *ngIf="brandUser.brandId">
+                <a [routerLink]="['/brand', brandUser.brandId]">{{brandUser.brandId}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'brand-user/'+ brandUser.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

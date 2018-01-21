@@ -1,0 +1,93 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myBrandLabel" jhiTranslate="adminBoApp.brand.home.createOrEditLabel">Create or edit a Brand</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!brand.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="brand.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="adminBoApp.brand.name" for="field_name">Name</label>
+            <input type="text" class="form-control" name="name" id="field_name"
+                [(ngModel)]="brand.name" required maxlength="60"/>
+            <div [hidden]="!(editForm.controls.name?.dirty && editForm.controls.name?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.name?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.name?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 60 }">
+                   This field cannot be longer than 60 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="adminBoApp.brand.userId" for="field_userId">User Id</label>
+            <input type="number" class="form-control" name="userId" id="field_userId"
+                [(ngModel)]="brand.userId" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="adminBoApp.brand.siret" for="field_siret">Siret</label>
+            <input type="text" class="form-control" name="siret" id="field_siret"
+                [(ngModel)]="brand.siret" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="adminBoApp.brand.siren" for="field_siren">Siren</label>
+            <input type="text" class="form-control" name="siren" id="field_siren"
+                [(ngModel)]="brand.siren" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="adminBoApp.brand.legalStatus" for="field_legalStatus">Legal Status</label>
+            <select class="form-control" name="legalStatus" [(ngModel)]="brand.legalStatus" id="field_legalStatus" >
+                <option value="SARL">{{'adminBoApp.LegalStatus.SARL' | translate}}</option>
+                <option value="SA">{{'adminBoApp.LegalStatus.SA' | translate}}</option>
+                <option value="SAS">{{'adminBoApp.LegalStatus.SAS' | translate}}</option>
+                <option value="SASU">{{'adminBoApp.LegalStatus.SASU' | translate}}</option>
+                <option value="SNC">{{'adminBoApp.LegalStatus.SNC' | translate}}</option>
+                <option value="EURL">{{'adminBoApp.LegalStatus.EURL' | translate}}</option>
+                <option value="EI">{{'adminBoApp.LegalStatus.EI' | translate}}</option>
+                <option value="ASSOCIATION">{{'adminBoApp.LegalStatus.ASSOCIATION' | translate}}</option>
+                <option value="AUTO_ENTREPRENEUR">{{'adminBoApp.LegalStatus.AUTO_ENTREPRENEUR' | translate}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="adminBoApp.brand.logo" for="field_logo">Logo</label>
+            <div>
+                <img [src]="'data:' + brand.logoContentType + ';base64,' + brand.logo" style="max-height: 100px;" *ngIf="brand.logo" alt="brand image"/>
+                <div *ngIf="brand.logo" class="form-text text-danger clearfix">
+                    <span class="pull-left">{{brand.logoContentType}}, {{byteSize(brand.logo)}}</span>
+                    <button type="button" (click)="clearInputImage('logo', 'logoContentType', 'fileImage')" class="btn btn-secondary btn-xs pull-right">
+                        <span class="fa fa-times"></span>
+                    </button>
+                </div>
+                <input type="file" id="file_logo" (change)="setFileData($event, brand, 'logo', true)" accept="image/*" jhiTranslate="entity.action.addimage"/>
+            </div>
+            <input type="hidden" class="form-control" name="logo" id="field_logo"
+                [(ngModel)]="brand.logo" />
+            <input type="hidden" class="form-control" name="logoContentType" id="field_logoContentType"
+                [(ngModel)]="brand.logoContentType" />
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="adminBoApp.brand.sector" for="field_sector">Sector</label>
+            <select class="form-control" id="field_sector" name="sector" [(ngModel)]="brand.sectorId" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="sectorOption.id" *ngFor="let sectorOption of sectors; trackBy: trackSectorById">{{sectorOption.id}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

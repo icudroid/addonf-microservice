@@ -1,0 +1,30 @@
+{
+    "advertiserBoApp": {
+        "bidCategoryMedia" : {
+            "home": {
+                "title": "Bid Category Medias",
+                "createLabel": "Create a new Bid Category Media",
+                "createOrEditLabel": "Create or edit a Bid Category Media",
+                "search": "Search for Bid Category Media"
+            },
+            "delete": {
+                "question": "Are you sure you want to delete Bid Category Media {{ id }}?"
+            },
+            "detail": {
+                "title": "Bid Category Media"
+            },
+            "bid": "Bid",
+            "mediaType": "Media Type",
+            "ad": "Ad",
+            "category": "Category",
+            "media": "Media"
+        }
+    },
+    "adApp": {
+        "bidCategoryMedia" : {
+            "created": "A new Bid Category Media is created with identifier {{ param }}",
+            "updated": "A Bid Category Media is updated with identifier {{ param }}",
+            "deleted": "A Bid Category Media is deleted with identifier {{ param }}"
+        }
+    }
+}

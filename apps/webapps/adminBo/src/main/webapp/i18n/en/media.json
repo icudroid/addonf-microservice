@@ -1,0 +1,35 @@
+{
+    "adminBoApp": {
+        "media" : {
+            "home": {
+                "title": "Media",
+                "createLabel": "Create a new Media",
+                "createOrEditLabel": "Create or edit a Media",
+                "search": "Search for Media"
+            },
+            "delete": {
+                "question": "Are you sure you want to delete Media {{ id }}?"
+            },
+            "detail": {
+                "title": "Media"
+            },
+            "name": "Name",
+            "passPhrase": "Pass Phrase",
+            "extId": "Ext Id",
+            "siret": "Siret",
+            "siren": "Siren",
+            "legalStatus": "Legal Status",
+            "logo": "Logo",
+            "users": "Users",
+            "contacts": "Contacts",
+            "attachements": "Attachements"
+        }
+    },
+    "adApp": {
+        "media" : {
+            "created": "A new Media is created with identifier {{ param }}",
+            "updated": "A Media is updated with identifier {{ param }}",
+            "deleted": "A Media is deleted with identifier {{ param }}"
+        }
+    }
+}

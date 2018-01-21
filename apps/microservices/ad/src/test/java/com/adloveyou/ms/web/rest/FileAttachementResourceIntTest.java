@@ -4,7 +4,7 @@ import com.adloveyou.ms.AdApp;
 
 import com.adloveyou.ms.config.SecurityBeanOverrideConfiguration;
 
-import com.adloveyou.ms.domain.FileAttachement;
+import com.adloveyou.ms.domain.ad.FileAttachement;
 import com.adloveyou.ms.repository.FileAttachementRepository;
 import com.adloveyou.ms.service.FileAttachementService;
 import com.adloveyou.ms.repository.search.FileAttachementSearchRepository;

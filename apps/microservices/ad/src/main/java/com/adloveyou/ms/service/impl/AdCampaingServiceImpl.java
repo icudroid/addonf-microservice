@@ -1,7 +1,7 @@
 package com.adloveyou.ms.service.impl;
 
 import com.adloveyou.ms.service.AdCampaingService;
-import com.adloveyou.ms.domain.AdCampaing;
+import com.adloveyou.ms.domain.ad.AdCampaing;
 import com.adloveyou.ms.repository.AdCampaingRepository;
 import com.adloveyou.ms.repository.search.AdCampaingSearchRepository;
 import com.adloveyou.ms.service.dto.AdCampaingDTO;

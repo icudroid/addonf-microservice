@@ -1,0 +1,57 @@
+
+<div *ngIf="brand">
+    <h2><span jhiTranslate="advertiserBoApp.brand.detail.title">Brand</span> {{brand.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="advertiserBoApp.brand.name">Name</span></dt>
+        <dd>
+            <span>{{brand.name}}</span>
+        </dd>
+        <dt><span jhiTranslate="advertiserBoApp.brand.userId">User Id</span></dt>
+        <dd>
+            <span>{{brand.userId}}</span>
+        </dd>
+        <dt><span jhiTranslate="advertiserBoApp.brand.siret">Siret</span></dt>
+        <dd>
+            <span>{{brand.siret}}</span>
+        </dd>
+        <dt><span jhiTranslate="advertiserBoApp.brand.siren">Siren</span></dt>
+        <dd>
+            <span>{{brand.siren}}</span>
+        </dd>
+        <dt><span jhiTranslate="advertiserBoApp.brand.legalStatus">Legal Status</span></dt>
+        <dd>
+            <span jhiTranslate="{{'advertiserBoApp.LegalStatus.' + brand.legalStatus}}">{{brand.legalStatus}}</span>
+        </dd>
+        <dt><span jhiTranslate="advertiserBoApp.brand.logo">Logo</span></dt>
+        <dd>
+            <div *ngIf="brand.logo">
+                <a (click)="openFile(brand.logoContentType, brand.logo)">
+                    <img [src]="'data:' + brand.logoContentType + ';base64,' + brand.logo" style="max-width: 100%;" alt="brand image"/>
+                </a>
+                {{brand.logoContentType}}, {{byteSize(brand.logo)}}
+            </div>
+        </dd>
+        <dt><span jhiTranslate="advertiserBoApp.brand.sector">Sector</span></dt>
+        <dd>
+            <div *ngIf="brand.sectorId">
+                <a [routerLink]="['/sector', brand.sectorId]">{{brand.sectorId}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'brand/'+ brand.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

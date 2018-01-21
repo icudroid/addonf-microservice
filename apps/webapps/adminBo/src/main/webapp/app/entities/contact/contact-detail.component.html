@@ -1,0 +1,48 @@
+
+<div *ngIf="contact">
+    <h2><span jhiTranslate="adminBoApp.contact.detail.title">Contact</span> {{contact.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="adminBoApp.contact.lastname">Lastname</span></dt>
+        <dd>
+            <span>{{contact.lastname}}</span>
+        </dd>
+        <dt><span jhiTranslate="adminBoApp.contact.firstname">Firstname</span></dt>
+        <dd>
+            <span>{{contact.firstname}}</span>
+        </dd>
+        <dt><span jhiTranslate="adminBoApp.contact.brand">Brand</span></dt>
+        <dd>
+            <div *ngIf="contact.brandId">
+                <a [routerLink]="['/brand', contact.brandId]">{{contact.brandId}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="adminBoApp.contact.agency">Agency</span></dt>
+        <dd>
+            <div *ngIf="contact.agencyId">
+                <a [routerLink]="['/agency', contact.agencyId]">{{contact.agencyId}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="adminBoApp.contact.media">Media</span></dt>
+        <dd>
+            <div *ngIf="contact.mediaId">
+                <a [routerLink]="['/media', contact.mediaId]">{{contact.mediaId}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'contact/'+ contact.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

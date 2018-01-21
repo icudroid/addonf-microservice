@@ -1,0 +1,102 @@
+<div>
+    <h2>
+        <span jhiTranslate="advertiserBoApp.fileAttachement.home.title">File Attachements</span>
+        <button class="btn btn-primary float-right jh-create-entity create-file-attachement" [routerLink]="['/', { outlets: { popup: ['file-attachement-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span class="hidden-sm-down"  jhiTranslate="advertiserBoApp.fileAttachement.home.createLabel">
+            Create new File Attachement
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'advertiserBoApp.fileAttachement.home.search' | translate }}">
+                    <button class="input-group-addon btn btn-info" (click)="search(currentSearch)">
+                        <span class="fa fa-search"></span>
+                    </button>
+                    <button class="input-group-addon btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <span class="fa fa-trash-o"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="fileAttachements">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="file"><span jhiTranslate="advertiserBoApp.fileAttachement.file">File</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="brandId"><span jhiTranslate="advertiserBoApp.fileAttachement.brand">Brand</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="agencyId"><span jhiTranslate="advertiserBoApp.fileAttachement.agency">Agency</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="mediaId"><span jhiTranslate="advertiserBoApp.fileAttachement.media">Media</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let fileAttachement of fileAttachements ;trackBy: trackId">
+                <td><a [routerLink]="['../file-attachement', fileAttachement.id ]">{{fileAttachement.id}}</a></td>
+                <td>
+                    <a *ngIf="fileAttachement.file" (click)="openFile(fileAttachement.fileContentType, fileAttachement.file)">
+                        <img [src]="'data:' + fileAttachement.fileContentType + ';base64,' + fileAttachement.file" style="max-height: 30px;" alt="fileAttachement image"/>
+                    </a>
+                    <span *ngIf="fileAttachement.file">{{fileAttachement.fileContentType}}, {{byteSize(fileAttachement.file)}}</span>
+                </td>
+                <td>
+                    <div *ngIf="fileAttachement.brandId">
+                        <a [routerLink]="['../brand', fileAttachement.brandId  ]" >{{fileAttachement.brandId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="fileAttachement.agencyId">
+                        <a [routerLink]="['../agency', fileAttachement.agencyId  ]" >{{fileAttachement.agencyId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="fileAttachement.mediaId">
+                        <a [routerLink]="['../media', fileAttachement.mediaId  ]" >{{fileAttachement.mediaId}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../file-attachement', fileAttachement.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'file-attachement/'+ fileAttachement.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'file-attachement/'+ fileAttachement.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="fileAttachements && fileAttachements.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

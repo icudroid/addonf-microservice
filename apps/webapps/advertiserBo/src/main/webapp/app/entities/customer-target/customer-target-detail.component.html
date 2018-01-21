@@ -1,0 +1,36 @@
+
+<div *ngIf="customerTarget">
+    <h2><span jhiTranslate="advertiserBoApp.customerTarget.detail.title">Customer Target</span> {{customerTarget.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="advertiserBoApp.customerTarget.sex">Sex</span></dt>
+        <dd>
+            <span jhiTranslate="{{'advertiserBoApp.Sex.' + customerTarget.sex}}">{{customerTarget.sex}}</span>
+        </dd>
+        <dt><span jhiTranslate="advertiserBoApp.customerTarget.age">Age</span></dt>
+        <dd>
+            <span jhiTranslate="{{'advertiserBoApp.AgeGroup.' + customerTarget.age}}">{{customerTarget.age}}</span>
+        </dd>
+        <dt><span jhiTranslate="advertiserBoApp.customerTarget.brand">Brand</span></dt>
+        <dd>
+            <div *ngIf="customerTarget.brandId">
+                <a [routerLink]="['/brand', customerTarget.brandId]">{{customerTarget.brandId}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'customer-target/'+ customerTarget.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

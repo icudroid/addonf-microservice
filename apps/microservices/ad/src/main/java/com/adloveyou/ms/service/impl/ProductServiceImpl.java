@@ -1,7 +1,7 @@
 package com.adloveyou.ms.service.impl;
 
 import com.adloveyou.ms.service.ProductService;
-import com.adloveyou.ms.domain.Product;
+import com.adloveyou.ms.domain.ad.Product;
 import com.adloveyou.ms.service.dto.ProductDTO;
 import com.adloveyou.ms.service.mapper.EntityMapper;
 import org.springframework.data.elasticsearch.repository.ElasticsearchRepository;

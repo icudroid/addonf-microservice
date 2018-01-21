@@ -4,7 +4,7 @@ import com.adloveyou.ms.AdApp;
 
 import com.adloveyou.ms.config.SecurityBeanOverrideConfiguration;
 
-import com.adloveyou.ms.domain.Agency;
+import com.adloveyou.ms.domain.agency.Agency;
 import com.adloveyou.ms.repository.AgencyRepository;
 import com.adloveyou.ms.service.AgencyService;
 import com.adloveyou.ms.repository.search.AgencySearchRepository;

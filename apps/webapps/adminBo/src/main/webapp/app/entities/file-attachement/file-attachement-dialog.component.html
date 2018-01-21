@@ -1,0 +1,69 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myFileAttachementLabel" jhiTranslate="adminBoApp.fileAttachement.home.createOrEditLabel">Create or edit a File Attachement</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!fileAttachement.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="fileAttachement.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="adminBoApp.fileAttachement.file" for="field_file">File</label>
+            <div>
+                <img [src]="'data:' + fileAttachement.fileContentType + ';base64,' + fileAttachement.file" style="max-height: 100px;" *ngIf="fileAttachement.file" alt="fileAttachement image"/>
+                <div *ngIf="fileAttachement.file" class="form-text text-danger clearfix">
+                    <span class="pull-left">{{fileAttachement.fileContentType}}, {{byteSize(fileAttachement.file)}}</span>
+                    <button type="button" (click)="clearInputImage('file', 'fileContentType', 'fileImage')" class="btn btn-secondary btn-xs pull-right">
+                        <span class="fa fa-times"></span>
+                    </button>
+                </div>
+                <input type="file" id="file_file" (change)="setFileData($event, fileAttachement, 'file', true)" accept="image/*" jhiTranslate="entity.action.addimage"/>
+            </div>
+            <input type="hidden" class="form-control" name="file" id="field_file"
+                [(ngModel)]="fileAttachement.file" required/>
+            <input type="hidden" class="form-control" name="fileContentType" id="field_fileContentType"
+                [(ngModel)]="fileAttachement.fileContentType" />
+            <div [hidden]="!(editForm.controls.file?.dirty && editForm.controls.file?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.file?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="adminBoApp.fileAttachement.brand" for="field_brand">Brand</label>
+            <select class="form-control" id="field_brand" name="brand" [(ngModel)]="fileAttachement.brandId" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="brandOption.id" *ngFor="let brandOption of brands; trackBy: trackBrandById">{{brandOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="adminBoApp.fileAttachement.agency" for="field_agency">Agency</label>
+            <select class="form-control" id="field_agency" name="agency" [(ngModel)]="fileAttachement.agencyId" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="agencyOption.id" *ngFor="let agencyOption of agencies; trackBy: trackAgencyById">{{agencyOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="adminBoApp.fileAttachement.media" for="field_media">Media</label>
+            <select class="form-control" id="field_media" name="media" [(ngModel)]="fileAttachement.mediaId" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="mediaOption.id" *ngFor="let mediaOption of media; trackBy: trackMediaById">{{mediaOption.id}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

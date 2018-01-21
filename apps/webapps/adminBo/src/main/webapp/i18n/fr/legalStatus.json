@@ -1,0 +1,16 @@
+{
+    "adminBoApp": {
+        "LegalStatus" : {
+            "null": "",
+            "SARL": "SARL",
+            "SA": "SA",
+            "SAS": "SAS",
+            "SASU": "SASU",
+            "SNC": "SNC",
+            "EURL": "EURL",
+            "EI": "EI",
+            "ASSOCIATION": "ASSOCIATION",
+            "AUTO_ENTREPRENEUR": "AUTO_ENTREPRENEUR"
+        }
+    }
+}

@@ -1,0 +1,56 @@
+
+<div *ngIf="adCampaing">
+    <h2><span jhiTranslate="advertiserBoApp.adCampaing.detail.title">Ad Campaing</span> {{adCampaing.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="advertiserBoApp.adCampaing.name">Name</span></dt>
+        <dd>
+            <span>{{adCampaing.name}}</span>
+        </dd>
+        <dt><span jhiTranslate="advertiserBoApp.adCampaing.initialAmount">Initial Amount</span></dt>
+        <dd>
+            <span>{{adCampaing.initialAmount}}</span>
+        </dd>
+        <dt><span jhiTranslate="advertiserBoApp.adCampaing.start">Start</span></dt>
+        <dd>
+            <span>{{adCampaing.start | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="advertiserBoApp.adCampaing.end">End</span></dt>
+        <dd>
+            <span>{{adCampaing.end | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="advertiserBoApp.adCampaing.brand">Brand</span></dt>
+        <dd>
+            <div *ngIf="adCampaing.brandId">
+                <a [routerLink]="['/brand', adCampaing.brandId]">{{adCampaing.brandId}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="advertiserBoApp.adCampaing.sector">Sector</span></dt>
+        <dd>
+            <div *ngIf="adCampaing.sectorId">
+                <a [routerLink]="['/sector', adCampaing.sectorId]">{{adCampaing.sectorId}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="advertiserBoApp.adCampaing.providedBy">Provided By</span></dt>
+        <dd>
+            <div *ngIf="adCampaing.providedById">
+                <a [routerLink]="['/agency', adCampaing.providedById]">{{adCampaing.providedById}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'ad-campaing/'+ adCampaing.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

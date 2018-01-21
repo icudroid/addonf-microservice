@@ -1,6 +1,6 @@
 package com.adloveyou.ms.repository;
 
-import com.adloveyou.ms.domain.MediaTarget;
+import com.adloveyou.ms.domain.ad.MediaTarget;
 import org.springframework.stereotype.Repository;
 
 import org.springframework.data.jpa.repository.*;

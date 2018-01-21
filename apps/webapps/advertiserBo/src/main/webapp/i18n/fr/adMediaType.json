@@ -1,0 +1,13 @@
+{
+    "advertiserBoApp": {
+        "AdMediaType" : {
+            "null": "",
+            "WEB": "WEB",
+            "MOBILE": "MOBILE",
+            "RADIO": "RADIO",
+            "TV": "TV",
+            "STREAMING_VIDEO": "STREAMING_VIDEO",
+            "STREAMING_AUDIO": "STREAMING_AUDIO"
+        }
+    }
+}

@@ -1,0 +1,32 @@
+
+<div *ngIf="mediaUser">
+    <h2><span jhiTranslate="adminBoApp.mediaUser.detail.title">Media User</span> {{mediaUser.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="adminBoApp.mediaUser.userId">User Id</span></dt>
+        <dd>
+            <span>{{mediaUser.userId}}</span>
+        </dd>
+        <dt><span jhiTranslate="adminBoApp.mediaUser.media">Media</span></dt>
+        <dd>
+            <div *ngIf="mediaUser.mediaId">
+                <a [routerLink]="['/media', mediaUser.mediaId]">{{mediaUser.mediaId}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'media-user/'+ mediaUser.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

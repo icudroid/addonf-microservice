@@ -1,6 +1,6 @@
 package com.adloveyou.ms.service.mapper;
 
-import com.adloveyou.ms.domain.*;
+import com.adloveyou.ms.domain.ad.AdCampaing;
 import com.adloveyou.ms.service.dto.AdCampaingDTO;
 
 import org.mapstruct.*;
@@ -14,7 +14,7 @@ public interface AdCampaingMapper extends EntityMapper<AdCampaingDTO, AdCampaing
     @Mapping(source = "brand.id", target = "brandId")
     @Mapping(source = "sector.id", target = "sectorId")
     @Mapping(source = "providedBy.id", target = "providedById")
-    AdCampaingDTO toDto(AdCampaing adCampaing); 
+    AdCampaingDTO toDto(AdCampaing adCampaing);
 
     @Mapping(target = "ads", ignore = true)
     @Mapping(target = "products", ignore = true)

@@ -1,0 +1,31 @@
+{
+    "advertiserBoApp": {
+        "ad" : {
+            "home": {
+                "title": "Ads",
+                "createLabel": "Créer un nouveau Ad",
+                "createOrEditLabel": "Créer ou éditer un Ad",
+                "search": "Recherche pour Ad"
+            },
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Ad {{ id }} ?"
+            },
+            "detail": {
+                "title": "Ad"
+            },
+            "duration": "Duration",
+            "status": "Status",
+            "adfileId": "Adfile Id",
+            "adCampaing": "Ad Campaing",
+            "bids": "Bids",
+            "rules": "Rules"
+        }
+    },
+    "adApp": {
+        "ad" : {
+            "created": "Un nouveau Ad a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Ad avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Ad avec l'identifiant {{ param }} a été supprimé"
+        }
+    }
+}

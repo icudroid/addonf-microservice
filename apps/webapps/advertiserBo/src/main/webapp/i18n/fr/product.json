@@ -1,0 +1,32 @@
+{
+    "advertiserBoApp": {
+        "product" : {
+            "home": {
+                "title": "Products",
+                "createLabel": "Créer un nouveau Product",
+                "createOrEditLabel": "Créer ou éditer un Product",
+                "search": "Recherche pour Product"
+            },
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Product {{ id }} ?"
+            },
+            "detail": {
+                "title": "Product"
+            },
+            "name": "Name",
+            "description": "Description",
+            "publicPrice": "Public Price",
+            "adPrice": "Ad Price",
+            "image": "Image",
+            "adCampaing": "Ad Campaing",
+            "brand": "Brand"
+        }
+    },
+    "adApp": {
+        "product" : {
+            "created": "Un nouveau Product a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Product avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Product avec l'identifiant {{ param }} a été supprimé"
+        }
+    }
+}

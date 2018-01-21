@@ -1,0 +1,47 @@
+
+<div *ngIf="agency">
+    <h2><span jhiTranslate="adminBoApp.agency.detail.title">Agency</span> {{agency.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="adminBoApp.agency.name">Name</span></dt>
+        <dd>
+            <span>{{agency.name}}</span>
+        </dd>
+        <dt><span jhiTranslate="adminBoApp.agency.siret">Siret</span></dt>
+        <dd>
+            <span>{{agency.siret}}</span>
+        </dd>
+        <dt><span jhiTranslate="adminBoApp.agency.siren">Siren</span></dt>
+        <dd>
+            <span>{{agency.siren}}</span>
+        </dd>
+        <dt><span jhiTranslate="adminBoApp.agency.legalStatus">Legal Status</span></dt>
+        <dd>
+            <span jhiTranslate="{{'adminBoApp.LegalStatus.' + agency.legalStatus}}">{{agency.legalStatus}}</span>
+        </dd>
+        <dt><span jhiTranslate="adminBoApp.agency.logo">Logo</span></dt>
+        <dd>
+            <div *ngIf="agency.logo">
+                <a (click)="openFile(agency.logoContentType, agency.logo)">
+                    <img [src]="'data:' + agency.logoContentType + ';base64,' + agency.logo" style="max-width: 100%;" alt="agency image"/>
+                </a>
+                {{agency.logoContentType}}, {{byteSize(agency.logo)}}
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'agency/'+ agency.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

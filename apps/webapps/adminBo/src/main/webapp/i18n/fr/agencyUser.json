@@ -1,0 +1,27 @@
+{
+    "adminBoApp": {
+        "agencyUser" : {
+            "home": {
+                "title": "AgencyUsers",
+                "createLabel": "Créer un nouveau Agency User",
+                "createOrEditLabel": "Créer ou éditer un Agency User",
+                "search": "Recherche pour Agency User"
+            },
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Agency User {{ id }} ?"
+            },
+            "detail": {
+                "title": "Agency User"
+            },
+            "userId": "User Id",
+            "agency": "Agency"
+        }
+    },
+    "adApp": {
+        "agencyUser" : {
+            "created": "Un nouveau Agency User a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Agency User avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Agency User avec l'identifiant {{ param }} a été supprimé"
+        }
+    }
+}

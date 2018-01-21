@@ -1,0 +1,48 @@
+
+<div *ngIf="bidCategoryMedia">
+    <h2><span jhiTranslate="advertiserBoApp.bidCategoryMedia.detail.title">Bid Category Media</span> {{bidCategoryMedia.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="advertiserBoApp.bidCategoryMedia.bid">Bid</span></dt>
+        <dd>
+            <span>{{bidCategoryMedia.bid}}</span>
+        </dd>
+        <dt><span jhiTranslate="advertiserBoApp.bidCategoryMedia.mediaType">Media Type</span></dt>
+        <dd>
+            <span jhiTranslate="{{'advertiserBoApp.AdMediaType.' + bidCategoryMedia.mediaType}}">{{bidCategoryMedia.mediaType}}</span>
+        </dd>
+        <dt><span jhiTranslate="advertiserBoApp.bidCategoryMedia.ad">Ad</span></dt>
+        <dd>
+            <div *ngIf="bidCategoryMedia.adId">
+                <a [routerLink]="['/ad', bidCategoryMedia.adId]">{{bidCategoryMedia.adId}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="advertiserBoApp.bidCategoryMedia.category">Category</span></dt>
+        <dd>
+            <div *ngIf="bidCategoryMedia.categoryId">
+                <a [routerLink]="['/category', bidCategoryMedia.categoryId]">{{bidCategoryMedia.categoryId}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="advertiserBoApp.bidCategoryMedia.media">Media</span></dt>
+        <dd>
+            <div *ngIf="bidCategoryMedia.mediaId">
+                <a [routerLink]="['/media', bidCategoryMedia.mediaId]">{{bidCategoryMedia.mediaId}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'bid-category-media/'+ bidCategoryMedia.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

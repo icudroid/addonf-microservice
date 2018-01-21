@@ -1,0 +1,27 @@
+{
+    "advertiserBoApp": {
+        "mediaTarget" : {
+            "home": {
+                "title": "MediaTargets",
+                "createLabel": "Créer un nouveau Media Target",
+                "createOrEditLabel": "Créer ou éditer un Media Target",
+                "search": "Recherche pour Media Target"
+            },
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Media Target {{ id }} ?"
+            },
+            "detail": {
+                "title": "Media Target"
+            },
+            "mediaType": "Media Type",
+            "brand": "Brand"
+        }
+    },
+    "adApp": {
+        "mediaTarget" : {
+            "created": "Un nouveau Media Target a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Media Target avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Media Target avec l'identifiant {{ param }} a été supprimé"
+        }
+    }
+}

@@ -1,0 +1,55 @@
+
+<div *ngIf="media">
+    <h2><span jhiTranslate="advertiserBoApp.media.detail.title">Media</span> {{media.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="advertiserBoApp.media.name">Name</span></dt>
+        <dd>
+            <span>{{media.name}}</span>
+        </dd>
+        <dt><span jhiTranslate="advertiserBoApp.media.passPhrase">Pass Phrase</span></dt>
+        <dd>
+            <span>{{media.passPhrase}}</span>
+        </dd>
+        <dt><span jhiTranslate="advertiserBoApp.media.extId">Ext Id</span></dt>
+        <dd>
+            <span>{{media.extId}}</span>
+        </dd>
+        <dt><span jhiTranslate="advertiserBoApp.media.siret">Siret</span></dt>
+        <dd>
+            <span>{{media.siret}}</span>
+        </dd>
+        <dt><span jhiTranslate="advertiserBoApp.media.siren">Siren</span></dt>
+        <dd>
+            <span>{{media.siren}}</span>
+        </dd>
+        <dt><span jhiTranslate="advertiserBoApp.media.legalStatus">Legal Status</span></dt>
+        <dd>
+            <span jhiTranslate="{{'advertiserBoApp.LegalStatus.' + media.legalStatus}}">{{media.legalStatus}}</span>
+        </dd>
+        <dt><span jhiTranslate="advertiserBoApp.media.logo">Logo</span></dt>
+        <dd>
+            <div *ngIf="media.logo">
+                <a (click)="openFile(media.logoContentType, media.logo)">
+                    <img [src]="'data:' + media.logoContentType + ';base64,' + media.logo" style="max-width: 100%;" alt="media image"/>
+                </a>
+                {{media.logoContentType}}, {{byteSize(media.logo)}}
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'media/'+ media.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

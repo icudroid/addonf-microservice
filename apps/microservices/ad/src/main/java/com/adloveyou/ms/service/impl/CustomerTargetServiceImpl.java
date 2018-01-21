@@ -1,7 +1,7 @@
 package com.adloveyou.ms.service.impl;
 
 import com.adloveyou.ms.service.CustomerTargetService;
-import com.adloveyou.ms.domain.CustomerTarget;
+import com.adloveyou.ms.domain.ad.CustomerTarget;
 import com.adloveyou.ms.service.dto.CustomerTargetDTO;
 import com.adloveyou.ms.service.mapper.EntityMapper;
 import org.springframework.data.elasticsearch.repository.ElasticsearchRepository;

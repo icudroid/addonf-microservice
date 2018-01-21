@@ -1,6 +1,6 @@
 package com.adloveyou.ms.service.mapper;
 
-import com.adloveyou.ms.domain.*;
+import com.adloveyou.ms.domain.ad.MediaTarget;
 import com.adloveyou.ms.service.dto.MediaTargetDTO;
 
 import org.mapstruct.*;
@@ -12,7 +12,7 @@ import org.mapstruct.*;
 public interface MediaTargetMapper extends EntityMapper<MediaTargetDTO, MediaTarget> {
 
     @Mapping(source = "brand.id", target = "brandId")
-    MediaTargetDTO toDto(MediaTarget mediaTarget); 
+    MediaTargetDTO toDto(MediaTarget mediaTarget);
 
     @Mapping(source = "brandId", target = "brand")
     MediaTarget toEntity(MediaTargetDTO mediaTargetDTO);

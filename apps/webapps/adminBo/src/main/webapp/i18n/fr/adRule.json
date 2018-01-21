@@ -1,0 +1,26 @@
+{
+    "adminBoApp": {
+        "adRule" : {
+            "home": {
+                "title": "AdRules",
+                "createLabel": "Créer un nouveau Ad Rule",
+                "createOrEditLabel": "Créer ou éditer un Ad Rule",
+                "search": "Recherche pour Ad Rule"
+            },
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Ad Rule {{ id }} ?"
+            },
+            "detail": {
+                "title": "Ad Rule"
+            },
+            "ad": "Ad"
+        }
+    },
+    "adApp": {
+        "adRule" : {
+            "created": "Un nouveau Ad Rule a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Ad Rule avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Ad Rule avec l'identifiant {{ param }} a été supprimé"
+        }
+    }
+}

@@ -1,6 +1,6 @@
 package com.adloveyou.ms.service.mapper;
 
-import com.adloveyou.ms.domain.*;
+import com.adloveyou.ms.domain.agency.Agency;
 import com.adloveyou.ms.service.dto.AgencyDTO;
 
 import org.mapstruct.*;
@@ -11,7 +11,7 @@ import org.mapstruct.*;
 @Mapper(componentModel = "spring", uses = {})
 public interface AgencyMapper extends EntityMapper<AgencyDTO, Agency> {
 
-    
+
 
     @Mapping(target = "users", ignore = true)
     @Mapping(target = "contacts", ignore = true)

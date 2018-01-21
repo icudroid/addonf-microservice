@@ -4,7 +4,7 @@ import com.adloveyou.ms.AdApp;
 
 import com.adloveyou.ms.config.SecurityBeanOverrideConfiguration;
 
-import com.adloveyou.ms.domain.Sector;
+import com.adloveyou.ms.domain.ad.Sector;
 import com.adloveyou.ms.repository.SectorRepository;
 import com.adloveyou.ms.service.SectorService;
 import com.adloveyou.ms.repository.search.SectorSearchRepository;

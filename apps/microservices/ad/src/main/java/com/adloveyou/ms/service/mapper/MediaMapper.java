@@ -1,6 +1,6 @@
 package com.adloveyou.ms.service.mapper;
 
-import com.adloveyou.ms.domain.*;
+import com.adloveyou.ms.domain.media.Media;
 import com.adloveyou.ms.service.dto.MediaDTO;
 
 import org.mapstruct.*;
@@ -11,7 +11,7 @@ import org.mapstruct.*;
 @Mapper(componentModel = "spring", uses = {})
 public interface MediaMapper extends EntityMapper<MediaDTO, Media> {
 
-    
+
 
     @Mapping(target = "users", ignore = true)
     @Mapping(target = "contacts", ignore = true)

@@ -1,6 +1,6 @@
 package com.adloveyou.ms.repository;
 
-import com.adloveyou.ms.domain.Contact;
+import com.adloveyou.ms.domain.contact.Contact;
 import org.springframework.stereotype.Repository;
 
 import org.springframework.data.jpa.repository.*;

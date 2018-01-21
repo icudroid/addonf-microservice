@@ -143,6 +143,22 @@ entity MediaTarget{
     mediaType AdMediaType required
 }
 
+entity City {
+	zipcode String required
+    name String required
+    lon BigDecimal required
+    lat BigDecimal required
+
+}
+
+entity Country {
+	code String required
+}
+
+relationship ManyToOne {
+	City{country} to Country
+}
+
 relationship ManyToOne {
     Brand{sector} to Sector
 }
@@ -206,8 +222,6 @@ dto all with mapstruct
 service all with serviceImpl
 search all with elasticsearch
 
-
-
-
+microservice * with ad
 
 

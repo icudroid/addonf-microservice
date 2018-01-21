@@ -1,0 +1,27 @@
+{
+    "adminBoApp": {
+        "mediaUser" : {
+            "home": {
+                "title": "MediaUsers",
+                "createLabel": "Créer un nouveau Media User",
+                "createOrEditLabel": "Créer ou éditer un Media User",
+                "search": "Recherche pour Media User"
+            },
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Media User {{ id }} ?"
+            },
+            "detail": {
+                "title": "Media User"
+            },
+            "userId": "User Id",
+            "media": "Media"
+        }
+    },
+    "adApp": {
+        "mediaUser" : {
+            "created": "Un nouveau Media User a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Media User avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Media User avec l'identifiant {{ param }} a été supprimé"
+        }
+    }
+}

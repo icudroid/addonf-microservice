@@ -1,6 +1,6 @@
 package com.adloveyou.ms.service;
 
-import com.adloveyou.ms.domain.Media;
+import com.adloveyou.ms.domain.media.Media;
 import com.adloveyou.ms.service.dto.MediaDTO;
 
 /**

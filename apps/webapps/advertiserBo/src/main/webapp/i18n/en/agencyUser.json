@@ -1,0 +1,27 @@
+{
+    "advertiserBoApp": {
+        "agencyUser" : {
+            "home": {
+                "title": "Agency Users",
+                "createLabel": "Create a new Agency User",
+                "createOrEditLabel": "Create or edit a Agency User",
+                "search": "Search for Agency User"
+            },
+            "delete": {
+                "question": "Are you sure you want to delete Agency User {{ id }}?"
+            },
+            "detail": {
+                "title": "Agency User"
+            },
+            "userId": "User Id",
+            "agency": "Agency"
+        }
+    },
+    "adApp": {
+        "agencyUser" : {
+            "created": "A new Agency User is created with identifier {{ param }}",
+            "updated": "A Agency User is updated with identifier {{ param }}",
+            "deleted": "A Agency User is deleted with identifier {{ param }}"
+        }
+    }
+}

@@ -4,7 +4,7 @@ import com.adloveyou.ms.AdApp;
 
 import com.adloveyou.ms.config.SecurityBeanOverrideConfiguration;
 
-import com.adloveyou.ms.domain.BidCategoryMedia;
+import com.adloveyou.ms.domain.ad.BidCategoryMedia;
 import com.adloveyou.ms.repository.BidCategoryMediaRepository;
 import com.adloveyou.ms.service.BidCategoryMediaService;
 import com.adloveyou.ms.repository.search.BidCategoryMediaSearchRepository;

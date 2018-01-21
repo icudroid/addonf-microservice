@@ -1,6 +1,6 @@
 package com.adloveyou.ms.repository.search;
 
-import com.adloveyou.ms.domain.Product;
+import com.adloveyou.ms.domain.ad.Product;
 import org.springframework.data.elasticsearch.repository.ElasticsearchRepository;
 
 /**

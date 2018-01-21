@@ -1,0 +1,35 @@
+{
+    "adminBoApp": {
+        "media" : {
+            "home": {
+                "title": "Media",
+                "createLabel": "Créer un nouveau Media",
+                "createOrEditLabel": "Créer ou éditer un Media",
+                "search": "Recherche pour Media"
+            },
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Media {{ id }} ?"
+            },
+            "detail": {
+                "title": "Media"
+            },
+            "name": "Name",
+            "passPhrase": "Pass Phrase",
+            "extId": "Ext Id",
+            "siret": "Siret",
+            "siren": "Siren",
+            "legalStatus": "Legal Status",
+            "logo": "Logo",
+            "users": "Users",
+            "contacts": "Contacts",
+            "attachements": "Attachements"
+        }
+    },
+    "adApp": {
+        "media" : {
+            "created": "Un nouveau Media a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Media avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Media avec l'identifiant {{ param }} a été supprimé"
+        }
+    }
+}

@@ -1,6 +1,6 @@
 package com.adloveyou.ms.service.mapper;
 
-import com.adloveyou.ms.domain.*;
+import com.adloveyou.ms.domain.contact.MeanOfContact;
 import com.adloveyou.ms.service.dto.MeanOfContactDTO;
 
 import org.mapstruct.*;
@@ -12,7 +12,7 @@ import org.mapstruct.*;
 public interface MeanOfContactMapper extends EntityMapper<MeanOfContactDTO, MeanOfContact> {
 
     @Mapping(source = "contact.id", target = "contactId")
-    MeanOfContactDTO toDto(MeanOfContact meanOfContact); 
+    MeanOfContactDTO toDto(MeanOfContact meanOfContact);
 
     @Mapping(source = "contactId", target = "contact")
     MeanOfContact toEntity(MeanOfContactDTO meanOfContactDTO);

@@ -1,0 +1,55 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "adCampaing",
+            "otherEntityName": "adCampaing",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "bids",
+            "otherEntityName": "bidCategoryMedia",
+            "otherEntityRelationshipName": "ad"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "rules",
+            "otherEntityName": "adRule",
+            "otherEntityRelationshipName": "ad"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "duration",
+            "fieldType": "Long",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "status",
+            "fieldType": "AdStatus",
+            "fieldValues": "UPLOADING,UPLOADED,ENCODED,DELETED,READY_TO_USE",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "adfileId",
+            "fieldType": "Long",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "changelogDate": "20180121124728",
+    "entityTableName": "ad",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "microserviceName": "ad",
+    "searchEngine": "elasticsearch"
+}

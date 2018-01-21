@@ -1,6 +1,6 @@
 package com.adloveyou.ms.service.mapper;
 
-import com.adloveyou.ms.domain.*;
+import com.adloveyou.ms.domain.agency.AgencyUser;
 import com.adloveyou.ms.service.dto.AgencyUserDTO;
 
 import org.mapstruct.*;
@@ -12,7 +12,7 @@ import org.mapstruct.*;
 public interface AgencyUserMapper extends EntityMapper<AgencyUserDTO, AgencyUser> {
 
     @Mapping(source = "agency.id", target = "agencyId")
-    AgencyUserDTO toDto(AgencyUser agencyUser); 
+    AgencyUserDTO toDto(AgencyUser agencyUser);
 
     @Mapping(source = "agencyId", target = "agency")
     AgencyUser toEntity(AgencyUserDTO agencyUserDTO);

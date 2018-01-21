@@ -1,7 +1,7 @@
 package com.adloveyou.ms.service.impl;
 
 import com.adloveyou.ms.service.FileAttachementService;
-import com.adloveyou.ms.domain.FileAttachement;
+import com.adloveyou.ms.domain.ad.FileAttachement;
 import com.adloveyou.ms.service.dto.FileAttachementDTO;
 import com.adloveyou.ms.service.mapper.EntityMapper;
 import org.springframework.data.elasticsearch.repository.ElasticsearchRepository;

@@ -1,7 +1,7 @@
 package com.adloveyou.ms.service.impl;
 
 import com.adloveyou.ms.service.AdRuleService;
-import com.adloveyou.ms.domain.AdRule;
+import com.adloveyou.ms.domain.rule.AdRule;
 import com.adloveyou.ms.service.dto.AdRuleDTO;
 import com.adloveyou.ms.service.mapper.EntityMapper;
 import org.springframework.data.elasticsearch.repository.ElasticsearchRepository;

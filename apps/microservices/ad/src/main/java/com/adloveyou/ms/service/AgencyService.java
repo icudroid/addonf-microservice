@@ -1,6 +1,6 @@
 package com.adloveyou.ms.service;
 
-import com.adloveyou.ms.domain.Agency;
+import com.adloveyou.ms.domain.agency.Agency;
 import com.adloveyou.ms.service.dto.AgencyDTO;
 
 /**

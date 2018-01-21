@@ -1,0 +1,27 @@
+{
+    "advertiserBoApp": {
+        "brandUser" : {
+            "home": {
+                "title": "Brand Users",
+                "createLabel": "Create a new Brand User",
+                "createOrEditLabel": "Create or edit a Brand User",
+                "search": "Search for Brand User"
+            },
+            "delete": {
+                "question": "Are you sure you want to delete Brand User {{ id }}?"
+            },
+            "detail": {
+                "title": "Brand User"
+            },
+            "userId": "User Id",
+            "brand": "Brand"
+        }
+    },
+    "adApp": {
+        "brandUser" : {
+            "created": "A new Brand User is created with identifier {{ param }}",
+            "updated": "A Brand User is updated with identifier {{ param }}",
+            "deleted": "A Brand User is deleted with identifier {{ param }}"
+        }
+    }
+}

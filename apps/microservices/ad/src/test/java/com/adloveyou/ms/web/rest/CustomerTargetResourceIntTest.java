@@ -4,7 +4,7 @@ import com.adloveyou.ms.AdApp;
 
 import com.adloveyou.ms.config.SecurityBeanOverrideConfiguration;
 
-import com.adloveyou.ms.domain.CustomerTarget;
+import com.adloveyou.ms.domain.ad.CustomerTarget;
 import com.adloveyou.ms.repository.CustomerTargetRepository;
 import com.adloveyou.ms.service.CustomerTargetService;
 import com.adloveyou.ms.repository.search.CustomerTargetSearchRepository;

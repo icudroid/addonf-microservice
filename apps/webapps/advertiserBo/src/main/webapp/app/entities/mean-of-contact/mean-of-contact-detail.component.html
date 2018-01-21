@@ -1,0 +1,36 @@
+
+<div *ngIf="meanOfContact">
+    <h2><span jhiTranslate="advertiserBoApp.meanOfContact.detail.title">Mean Of Contact</span> {{meanOfContact.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="advertiserBoApp.meanOfContact.value">Value</span></dt>
+        <dd>
+            <span>{{meanOfContact.value}}</span>
+        </dd>
+        <dt><span jhiTranslate="advertiserBoApp.meanOfContact.type">Type</span></dt>
+        <dd>
+            <span jhiTranslate="{{'advertiserBoApp.MeanOfContactType.' + meanOfContact.type}}">{{meanOfContact.type}}</span>
+        </dd>
+        <dt><span jhiTranslate="advertiserBoApp.meanOfContact.contact">Contact</span></dt>
+        <dd>
+            <div *ngIf="meanOfContact.contactId">
+                <a [routerLink]="['/contact', meanOfContact.contactId]">{{meanOfContact.contactId}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'mean-of-contact/'+ meanOfContact.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

@@ -1,0 +1,28 @@
+{
+    "advertiserBoApp": {
+        "customerTarget" : {
+            "home": {
+                "title": "Customer Targets",
+                "createLabel": "Create a new Customer Target",
+                "createOrEditLabel": "Create or edit a Customer Target",
+                "search": "Search for Customer Target"
+            },
+            "delete": {
+                "question": "Are you sure you want to delete Customer Target {{ id }}?"
+            },
+            "detail": {
+                "title": "Customer Target"
+            },
+            "sex": "Sex",
+            "age": "Age",
+            "brand": "Brand"
+        }
+    },
+    "adApp": {
+        "customerTarget" : {
+            "created": "A new Customer Target is created with identifier {{ param }}",
+            "updated": "A Customer Target is updated with identifier {{ param }}",
+            "deleted": "A Customer Target is deleted with identifier {{ param }}"
+        }
+    }
+}

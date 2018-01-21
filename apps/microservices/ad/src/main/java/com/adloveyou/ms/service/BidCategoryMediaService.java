@@ -1,6 +1,6 @@
 package com.adloveyou.ms.service;
 
-import com.adloveyou.ms.domain.BidCategoryMedia;
+import com.adloveyou.ms.domain.ad.BidCategoryMedia;
 import com.adloveyou.ms.service.dto.BidCategoryMediaDTO;
 
 /**

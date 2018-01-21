@@ -1,0 +1,29 @@
+{
+    "advertiserBoApp": {
+        "fileAttachement" : {
+            "home": {
+                "title": "File Attachements",
+                "createLabel": "Create a new File Attachement",
+                "createOrEditLabel": "Create or edit a File Attachement",
+                "search": "Search for File Attachement"
+            },
+            "delete": {
+                "question": "Are you sure you want to delete File Attachement {{ id }}?"
+            },
+            "detail": {
+                "title": "File Attachement"
+            },
+            "file": "File",
+            "brand": "Brand",
+            "agency": "Agency",
+            "media": "Media"
+        }
+    },
+    "adApp": {
+        "fileAttachement" : {
+            "created": "A new File Attachement is created with identifier {{ param }}",
+            "updated": "A File Attachement is updated with identifier {{ param }}",
+            "deleted": "A File Attachement is deleted with identifier {{ param }}"
+        }
+    }
+}

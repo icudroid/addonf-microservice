@@ -1,0 +1,40 @@
+
+<div *ngIf="ad">
+    <h2><span jhiTranslate="advertiserBoApp.ad.detail.title">Ad</span> {{ad.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="advertiserBoApp.ad.duration">Duration</span></dt>
+        <dd>
+            <span>{{ad.duration}}</span>
+        </dd>
+        <dt><span jhiTranslate="advertiserBoApp.ad.status">Status</span></dt>
+        <dd>
+            <span jhiTranslate="{{'advertiserBoApp.AdStatus.' + ad.status}}">{{ad.status}}</span>
+        </dd>
+        <dt><span jhiTranslate="advertiserBoApp.ad.adfileId">Adfile Id</span></dt>
+        <dd>
+            <span>{{ad.adfileId}}</span>
+        </dd>
+        <dt><span jhiTranslate="advertiserBoApp.ad.adCampaing">Ad Campaing</span></dt>
+        <dd>
+            <div *ngIf="ad.adCampaingId">
+                <a [routerLink]="['/ad-campaing', ad.adCampaingId]">{{ad.adCampaingId}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'ad/'+ ad.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

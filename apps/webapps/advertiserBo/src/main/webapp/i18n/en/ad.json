@@ -1,0 +1,31 @@
+{
+    "advertiserBoApp": {
+        "ad" : {
+            "home": {
+                "title": "Ads",
+                "createLabel": "Create a new Ad",
+                "createOrEditLabel": "Create or edit a Ad",
+                "search": "Search for Ad"
+            },
+            "delete": {
+                "question": "Are you sure you want to delete Ad {{ id }}?"
+            },
+            "detail": {
+                "title": "Ad"
+            },
+            "duration": "Duration",
+            "status": "Status",
+            "adfileId": "Adfile Id",
+            "adCampaing": "Ad Campaing",
+            "bids": "Bids",
+            "rules": "Rules"
+        }
+    },
+    "adApp": {
+        "ad" : {
+            "created": "A new Ad is created with identifier {{ param }}",
+            "updated": "A Ad is updated with identifier {{ param }}",
+            "deleted": "A Ad is deleted with identifier {{ param }}"
+        }
+    }
+}

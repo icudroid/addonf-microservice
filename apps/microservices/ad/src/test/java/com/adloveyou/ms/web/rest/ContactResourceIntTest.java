@@ -4,7 +4,7 @@ import com.adloveyou.ms.AdApp;
 
 import com.adloveyou.ms.config.SecurityBeanOverrideConfiguration;
 
-import com.adloveyou.ms.domain.Contact;
+import com.adloveyou.ms.domain.contact.Contact;
 import com.adloveyou.ms.repository.ContactRepository;
 import com.adloveyou.ms.service.ContactService;
 import com.adloveyou.ms.repository.search.ContactSearchRepository;

@@ -1,0 +1,26 @@
+{
+    "advertiserBoApp": {
+        "adRule" : {
+            "home": {
+                "title": "Ad Rules",
+                "createLabel": "Create a new Ad Rule",
+                "createOrEditLabel": "Create or edit a Ad Rule",
+                "search": "Search for Ad Rule"
+            },
+            "delete": {
+                "question": "Are you sure you want to delete Ad Rule {{ id }}?"
+            },
+            "detail": {
+                "title": "Ad Rule"
+            },
+            "ad": "Ad"
+        }
+    },
+    "adApp": {
+        "adRule" : {
+            "created": "A new Ad Rule is created with identifier {{ param }}",
+            "updated": "A Ad Rule is updated with identifier {{ param }}",
+            "deleted": "A Ad Rule is deleted with identifier {{ param }}"
+        }
+    }
+}

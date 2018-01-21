@@ -1,0 +1,76 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myContactLabel" jhiTranslate="advertiserBoApp.contact.home.createOrEditLabel">Create or edit a Contact</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!contact.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="contact.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="advertiserBoApp.contact.lastname" for="field_lastname">Lastname</label>
+            <input type="text" class="form-control" name="lastname" id="field_lastname"
+                [(ngModel)]="contact.lastname" required maxlength="60"/>
+            <div [hidden]="!(editForm.controls.lastname?.dirty && editForm.controls.lastname?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.lastname?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.lastname?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 60 }">
+                   This field cannot be longer than 60 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="advertiserBoApp.contact.firstname" for="field_firstname">Firstname</label>
+            <input type="text" class="form-control" name="firstname" id="field_firstname"
+                [(ngModel)]="contact.firstname" required maxlength="60"/>
+            <div [hidden]="!(editForm.controls.firstname?.dirty && editForm.controls.firstname?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.firstname?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.firstname?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 60 }">
+                   This field cannot be longer than 60 characters.
+                </small>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="advertiserBoApp.contact.brand" for="field_brand">Brand</label>
+            <select class="form-control" id="field_brand" name="brand" [(ngModel)]="contact.brandId" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="brandOption.id" *ngFor="let brandOption of brands; trackBy: trackBrandById">{{brandOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="advertiserBoApp.contact.agency" for="field_agency">Agency</label>
+            <select class="form-control" id="field_agency" name="agency" [(ngModel)]="contact.agencyId" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="agencyOption.id" *ngFor="let agencyOption of agencies; trackBy: trackAgencyById">{{agencyOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="advertiserBoApp.contact.media" for="field_media">Media</label>
+            <select class="form-control" id="field_media" name="media" [(ngModel)]="contact.mediaId" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="mediaOption.id" *ngFor="let mediaOption of media; trackBy: trackMediaById">{{mediaOption.id}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

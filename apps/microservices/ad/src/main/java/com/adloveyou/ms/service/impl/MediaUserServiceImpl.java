@@ -1,7 +1,7 @@
 package com.adloveyou.ms.service.impl;
 
 import com.adloveyou.ms.service.MediaUserService;
-import com.adloveyou.ms.domain.MediaUser;
+import com.adloveyou.ms.domain.media.MediaUser;
 import com.adloveyou.ms.service.dto.MediaUserDTO;
 import com.adloveyou.ms.service.mapper.EntityMapper;
 import org.springframework.data.elasticsearch.repository.ElasticsearchRepository;

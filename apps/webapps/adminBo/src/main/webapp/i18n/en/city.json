@@ -1,0 +1,30 @@
+{
+    "adminBoApp": {
+        "city" : {
+            "home": {
+                "title": "Cities",
+                "createLabel": "Create a new City",
+                "createOrEditLabel": "Create or edit a City",
+                "search": "Search for City"
+            },
+            "delete": {
+                "question": "Are you sure you want to delete City {{ id }}?"
+            },
+            "detail": {
+                "title": "City"
+            },
+            "zipcode": "Zipcode",
+            "name": "Name",
+            "lon": "Lon",
+            "lat": "Lat",
+            "country": "Country"
+        }
+    },
+    "adApp": {
+        "city" : {
+            "created": "A new City is created with identifier {{ param }}",
+            "updated": "A City is updated with identifier {{ param }}",
+            "deleted": "A City is deleted with identifier {{ param }}"
+        }
+    }
+}

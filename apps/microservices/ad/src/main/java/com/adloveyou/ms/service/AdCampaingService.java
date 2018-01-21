@@ -1,6 +1,6 @@
 package com.adloveyou.ms.service;
 
-import com.adloveyou.ms.domain.AdCampaing;
+import com.adloveyou.ms.domain.ad.AdCampaing;
 import com.adloveyou.ms.service.dto.AdCampaingDTO;
 
 /**

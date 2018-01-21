@@ -4,7 +4,7 @@ import com.adloveyou.ms.AdApp;
 
 import com.adloveyou.ms.config.SecurityBeanOverrideConfiguration;
 
-import com.adloveyou.ms.domain.BrandUser;
+import com.adloveyou.ms.domain.brand.BrandUser;
 import com.adloveyou.ms.repository.BrandUserRepository;
 import com.adloveyou.ms.service.BrandUserService;
 import com.adloveyou.ms.repository.search.BrandUserSearchRepository;

@@ -1,0 +1,28 @@
+{
+    "advertiserBoApp": {
+        "customerTarget" : {
+            "home": {
+                "title": "CustomerTargets",
+                "createLabel": "Créer un nouveau Customer Target",
+                "createOrEditLabel": "Créer ou éditer un Customer Target",
+                "search": "Recherche pour Customer Target"
+            },
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Customer Target {{ id }} ?"
+            },
+            "detail": {
+                "title": "Customer Target"
+            },
+            "sex": "Sex",
+            "age": "Age",
+            "brand": "Brand"
+        }
+    },
+    "adApp": {
+        "customerTarget" : {
+            "created": "Un nouveau Customer Target a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Customer Target avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Customer Target avec l'identifiant {{ param }} a été supprimé"
+        }
+    }
+}

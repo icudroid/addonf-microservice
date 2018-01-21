@@ -1,0 +1,88 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "products",
+            "otherEntityName": "product",
+            "otherEntityRelationshipName": "brand"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "targets",
+            "otherEntityName": "customerTarget",
+            "otherEntityRelationshipName": "brand"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "targetsMedia",
+            "otherEntityName": "mediaTarget",
+            "otherEntityRelationshipName": "brand"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "users",
+            "otherEntityName": "brandUser",
+            "otherEntityRelationshipName": "brand"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "contacts",
+            "otherEntityName": "contact",
+            "otherEntityRelationshipName": "brand"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "attachements",
+            "otherEntityName": "fileAttachement",
+            "otherEntityRelationshipName": "brand"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "sector",
+            "otherEntityName": "sector",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 60
+        },
+        {
+            "fieldName": "userId",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "siret",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "siren",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "legalStatus",
+            "fieldType": "LegalStatus",
+            "fieldValues": "SARL,SA,SAS,SASU,SNC,EURL,EI,ASSOCIATION,AUTO_ENTREPRENEUR"
+        },
+        {
+            "fieldName": "logo",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "image"
+        }
+    ],
+    "changelogDate": "20180121124723",
+    "entityTableName": "brand",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "microserviceName": "ad",
+    "searchEngine": "elasticsearch"
+}

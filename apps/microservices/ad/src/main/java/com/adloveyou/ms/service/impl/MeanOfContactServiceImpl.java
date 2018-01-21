@@ -1,7 +1,7 @@
 package com.adloveyou.ms.service.impl;
 
 import com.adloveyou.ms.service.MeanOfContactService;
-import com.adloveyou.ms.domain.MeanOfContact;
+import com.adloveyou.ms.domain.contact.MeanOfContact;
 import com.adloveyou.ms.service.dto.MeanOfContactDTO;
 import com.adloveyou.ms.service.mapper.EntityMapper;
 import org.springframework.data.elasticsearch.repository.ElasticsearchRepository;

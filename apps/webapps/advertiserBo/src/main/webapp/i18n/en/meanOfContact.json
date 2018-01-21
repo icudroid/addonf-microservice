@@ -1,0 +1,28 @@
+{
+    "advertiserBoApp": {
+        "meanOfContact" : {
+            "home": {
+                "title": "Mean Of Contacts",
+                "createLabel": "Create a new Mean Of Contact",
+                "createOrEditLabel": "Create or edit a Mean Of Contact",
+                "search": "Search for Mean Of Contact"
+            },
+            "delete": {
+                "question": "Are you sure you want to delete Mean Of Contact {{ id }}?"
+            },
+            "detail": {
+                "title": "Mean Of Contact"
+            },
+            "value": "Value",
+            "type": "Type",
+            "contact": "Contact"
+        }
+    },
+    "adApp": {
+        "meanOfContact" : {
+            "created": "A new Mean Of Contact is created with identifier {{ param }}",
+            "updated": "A Mean Of Contact is updated with identifier {{ param }}",
+            "deleted": "A Mean Of Contact is deleted with identifier {{ param }}"
+        }
+    }
+}

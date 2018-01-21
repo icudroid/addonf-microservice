@@ -1,0 +1,10 @@
+{
+    "adminBoApp": {
+        "MeanOfContactType" : {
+            "null": "",
+            "EMAIL": "EMAIL",
+            "ADDRESS": "ADDRESS",
+            "PHONE": "PHONE"
+        }
+    }
+}

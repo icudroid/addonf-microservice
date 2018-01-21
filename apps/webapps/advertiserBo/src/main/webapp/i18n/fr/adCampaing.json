@@ -1,0 +1,34 @@
+{
+    "advertiserBoApp": {
+        "adCampaing" : {
+            "home": {
+                "title": "AdCampaings",
+                "createLabel": "Créer un nouveau Ad Campaing",
+                "createOrEditLabel": "Créer ou éditer un Ad Campaing",
+                "search": "Recherche pour Ad Campaing"
+            },
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Ad Campaing {{ id }} ?"
+            },
+            "detail": {
+                "title": "Ad Campaing"
+            },
+            "name": "Name",
+            "initialAmount": "Initial Amount",
+            "start": "Start",
+            "end": "End",
+            "ads": "Ads",
+            "products": "Products",
+            "brand": "Brand",
+            "sector": "Sector",
+            "providedBy": "Provided By"
+        }
+    },
+    "adApp": {
+        "adCampaing" : {
+            "created": "Un nouveau Ad Campaing a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Ad Campaing avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Ad Campaing avec l'identifiant {{ param }} a été supprimé"
+        }
+    }
+}

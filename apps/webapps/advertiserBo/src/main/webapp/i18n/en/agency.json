@@ -1,0 +1,33 @@
+{
+    "advertiserBoApp": {
+        "agency" : {
+            "home": {
+                "title": "Agencies",
+                "createLabel": "Create a new Agency",
+                "createOrEditLabel": "Create or edit a Agency",
+                "search": "Search for Agency"
+            },
+            "delete": {
+                "question": "Are you sure you want to delete Agency {{ id }}?"
+            },
+            "detail": {
+                "title": "Agency"
+            },
+            "name": "Name",
+            "siret": "Siret",
+            "siren": "Siren",
+            "legalStatus": "Legal Status",
+            "logo": "Logo",
+            "users": "Users",
+            "contacts": "Contacts",
+            "attachements": "Attachements"
+        }
+    },
+    "adApp": {
+        "agency" : {
+            "created": "A new Agency is created with identifier {{ param }}",
+            "updated": "A Agency is updated with identifier {{ param }}",
+            "deleted": "A Agency is deleted with identifier {{ param }}"
+        }
+    }
+}

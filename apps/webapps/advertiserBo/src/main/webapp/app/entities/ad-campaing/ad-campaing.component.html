@@ -1,0 +1,103 @@
+<div>
+    <h2>
+        <span jhiTranslate="advertiserBoApp.adCampaing.home.title">Ad Campaings</span>
+        <button class="btn btn-primary float-right jh-create-entity create-ad-campaing" [routerLink]="['/', { outlets: { popup: ['ad-campaing-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span class="hidden-sm-down"  jhiTranslate="advertiserBoApp.adCampaing.home.createLabel">
+            Create new Ad Campaing
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'advertiserBoApp.adCampaing.home.search' | translate }}">
+                    <button class="input-group-addon btn btn-info" (click)="search(currentSearch)">
+                        <span class="fa fa-search"></span>
+                    </button>
+                    <button class="input-group-addon btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <span class="fa fa-trash-o"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="adCampaings">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="name"><span jhiTranslate="advertiserBoApp.adCampaing.name">Name</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="initialAmount"><span jhiTranslate="advertiserBoApp.adCampaing.initialAmount">Initial Amount</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="start"><span jhiTranslate="advertiserBoApp.adCampaing.start">Start</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="end"><span jhiTranslate="advertiserBoApp.adCampaing.end">End</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="brandId"><span jhiTranslate="advertiserBoApp.adCampaing.brand">Brand</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="sectorId"><span jhiTranslate="advertiserBoApp.adCampaing.sector">Sector</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="providedById"><span jhiTranslate="advertiserBoApp.adCampaing.providedBy">Provided By</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let adCampaing of adCampaings ;trackBy: trackId">
+                <td><a [routerLink]="['../ad-campaing', adCampaing.id ]">{{adCampaing.id}}</a></td>
+                <td>{{adCampaing.name}}</td>
+                <td>{{adCampaing.initialAmount}}</td>
+                <td>{{adCampaing.start | date:'medium'}}</td>
+                <td>{{adCampaing.end | date:'medium'}}</td>
+                <td>
+                    <div *ngIf="adCampaing.brandId">
+                        <a [routerLink]="['../brand', adCampaing.brandId  ]" >{{adCampaing.brandId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="adCampaing.sectorId">
+                        <a [routerLink]="['../sector', adCampaing.sectorId  ]" >{{adCampaing.sectorId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="adCampaing.providedById">
+                        <a [routerLink]="['../agency', adCampaing.providedById  ]" >{{adCampaing.providedById}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../ad-campaing', adCampaing.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'ad-campaing/'+ adCampaing.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'ad-campaing/'+ adCampaing.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="adCampaings && adCampaings.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

@@ -23,6 +23,8 @@
     <include file="config/liquibase/changelog/20180118212638_added_entity_MeanOfContact.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20180118212639_added_entity_FileAttachement.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20180118212640_added_entity_MediaTarget.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180121131136_added_entity_City.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180121131137_added_entity_Country.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <include file="config/liquibase/changelog/20180118212623_added_entity_constraints_AdCampaing.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20180118212624_added_entity_constraints_Brand.xml" relativeToChangelogFile="false"/>
@@ -39,5 +41,6 @@
     <include file="config/liquibase/changelog/20180118212638_added_entity_constraints_MeanOfContact.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20180118212639_added_entity_constraints_FileAttachement.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20180118212640_added_entity_constraints_MediaTarget.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180121131136_added_entity_constraints_City.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>

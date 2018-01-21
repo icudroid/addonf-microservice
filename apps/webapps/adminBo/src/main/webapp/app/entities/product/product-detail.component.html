@@ -1,0 +1,59 @@
+
+<div *ngIf="product">
+    <h2><span jhiTranslate="adminBoApp.product.detail.title">Product</span> {{product.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="adminBoApp.product.name">Name</span></dt>
+        <dd>
+            <span>{{product.name}}</span>
+        </dd>
+        <dt><span jhiTranslate="adminBoApp.product.description">Description</span></dt>
+        <dd>
+            <span>{{product.description}}</span>
+        </dd>
+        <dt><span jhiTranslate="adminBoApp.product.publicPrice">Public Price</span></dt>
+        <dd>
+            <span>{{product.publicPrice}}</span>
+        </dd>
+        <dt><span jhiTranslate="adminBoApp.product.adPrice">Ad Price</span></dt>
+        <dd>
+            <span>{{product.adPrice}}</span>
+        </dd>
+        <dt><span jhiTranslate="adminBoApp.product.image">Image</span></dt>
+        <dd>
+            <div *ngIf="product.image">
+                <a (click)="openFile(product.imageContentType, product.image)">
+                    <img [src]="'data:' + product.imageContentType + ';base64,' + product.image" style="max-width: 100%;" alt="product image"/>
+                </a>
+                {{product.imageContentType}}, {{byteSize(product.image)}}
+            </div>
+        </dd>
+        <dt><span jhiTranslate="adminBoApp.product.adCampaing">Ad Campaing</span></dt>
+        <dd>
+            <div *ngIf="product.adCampaingId">
+                <a [routerLink]="['/ad-campaing', product.adCampaingId]">{{product.adCampaingId}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="adminBoApp.product.brand">Brand</span></dt>
+        <dd>
+            <div *ngIf="product.brandId">
+                <a [routerLink]="['/brand', product.brandId]">{{product.brandId}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'product/'+ product.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

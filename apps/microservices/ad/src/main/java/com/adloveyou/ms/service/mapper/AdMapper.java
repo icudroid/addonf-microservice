@@ -1,6 +1,6 @@
 package com.adloveyou.ms.service.mapper;
 
-import com.adloveyou.ms.domain.*;
+import com.adloveyou.ms.domain.ad.Ad;
 import com.adloveyou.ms.service.dto.AdDTO;
 
 import org.mapstruct.*;
@@ -12,7 +12,7 @@ import org.mapstruct.*;
 public interface AdMapper extends EntityMapper<AdDTO, Ad> {
 
     @Mapping(source = "adCampaing.id", target = "adCampaingId")
-    AdDTO toDto(Ad ad); 
+    AdDTO toDto(Ad ad);
 
     @Mapping(source = "adCampaingId", target = "adCampaing")
     @Mapping(target = "bids", ignore = true)

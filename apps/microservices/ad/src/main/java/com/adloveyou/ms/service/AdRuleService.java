@@ -1,6 +1,6 @@
 package com.adloveyou.ms.service;
 
-import com.adloveyou.ms.domain.AdRule;
+import com.adloveyou.ms.domain.rule.AdRule;
 import com.adloveyou.ms.service.dto.AdRuleDTO;
 
 /**

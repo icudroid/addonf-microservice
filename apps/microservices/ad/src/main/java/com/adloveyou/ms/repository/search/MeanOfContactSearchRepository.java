@@ -1,6 +1,6 @@
 package com.adloveyou.ms.repository.search;
 
-import com.adloveyou.ms.domain.MeanOfContact;
+import com.adloveyou.ms.domain.contact.MeanOfContact;
 import org.springframework.data.elasticsearch.repository.ElasticsearchRepository;
 
 /**

@@ -1,6 +1,6 @@
 package com.adloveyou.ms.service.mapper;
 
-import com.adloveyou.ms.domain.*;
+import com.adloveyou.ms.domain.ad.FileAttachement;
 import com.adloveyou.ms.service.dto.FileAttachementDTO;
 
 import org.mapstruct.*;
@@ -14,7 +14,7 @@ public interface FileAttachementMapper extends EntityMapper<FileAttachementDTO, 
     @Mapping(source = "brand.id", target = "brandId")
     @Mapping(source = "agency.id", target = "agencyId")
     @Mapping(source = "media.id", target = "mediaId")
-    FileAttachementDTO toDto(FileAttachement fileAttachement); 
+    FileAttachementDTO toDto(FileAttachement fileAttachement);
 
     @Mapping(source = "brandId", target = "brand")
     @Mapping(source = "agencyId", target = "agency")

@@ -1,6 +1,6 @@
 package com.adloveyou.ms.service.mapper;
 
-import com.adloveyou.ms.domain.*;
+import com.adloveyou.ms.domain.brand.Brand;
 import com.adloveyou.ms.service.dto.BrandDTO;
 
 import org.mapstruct.*;
@@ -12,7 +12,7 @@ import org.mapstruct.*;
 public interface BrandMapper extends EntityMapper<BrandDTO, Brand> {
 
     @Mapping(source = "sector.id", target = "sectorId")
-    BrandDTO toDto(Brand brand); 
+    BrandDTO toDto(Brand brand);
 
     @Mapping(target = "products", ignore = true)
     @Mapping(target = "targets", ignore = true)

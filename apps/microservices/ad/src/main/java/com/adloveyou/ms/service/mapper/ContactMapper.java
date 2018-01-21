@@ -1,6 +1,6 @@
 package com.adloveyou.ms.service.mapper;
 
-import com.adloveyou.ms.domain.*;
+import com.adloveyou.ms.domain.contact.Contact;
 import com.adloveyou.ms.service.dto.ContactDTO;
 
 import org.mapstruct.*;
@@ -14,7 +14,7 @@ public interface ContactMapper extends EntityMapper<ContactDTO, Contact> {
     @Mapping(source = "brand.id", target = "brandId")
     @Mapping(source = "agency.id", target = "agencyId")
     @Mapping(source = "media.id", target = "mediaId")
-    ContactDTO toDto(Contact contact); 
+    ContactDTO toDto(Contact contact);
 
     @Mapping(source = "brandId", target = "brand")
     @Mapping(source = "agencyId", target = "agency")

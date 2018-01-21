@@ -1,6 +1,6 @@
 package com.adloveyou.ms.service.mapper;
 
-import com.adloveyou.ms.domain.*;
+import com.adloveyou.ms.domain.ad.BidCategoryMedia;
 import com.adloveyou.ms.service.dto.BidCategoryMediaDTO;
 
 import org.mapstruct.*;
@@ -14,7 +14,7 @@ public interface BidCategoryMediaMapper extends EntityMapper<BidCategoryMediaDTO
     @Mapping(source = "ad.id", target = "adId")
     @Mapping(source = "category.id", target = "categoryId")
     @Mapping(source = "media.id", target = "mediaId")
-    BidCategoryMediaDTO toDto(BidCategoryMedia bidCategoryMedia); 
+    BidCategoryMediaDTO toDto(BidCategoryMedia bidCategoryMedia);
 
     @Mapping(source = "adId", target = "ad")
     @Mapping(source = "categoryId", target = "category")

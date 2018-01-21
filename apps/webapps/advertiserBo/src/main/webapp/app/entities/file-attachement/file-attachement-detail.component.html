@@ -1,0 +1,49 @@
+
+<div *ngIf="fileAttachement">
+    <h2><span jhiTranslate="advertiserBoApp.fileAttachement.detail.title">File Attachement</span> {{fileAttachement.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="advertiserBoApp.fileAttachement.file">File</span></dt>
+        <dd>
+            <div *ngIf="fileAttachement.file">
+                <a (click)="openFile(fileAttachement.fileContentType, fileAttachement.file)">
+                    <img [src]="'data:' + fileAttachement.fileContentType + ';base64,' + fileAttachement.file" style="max-width: 100%;" alt="fileAttachement image"/>
+                </a>
+                {{fileAttachement.fileContentType}}, {{byteSize(fileAttachement.file)}}
+            </div>
+        </dd>
+        <dt><span jhiTranslate="advertiserBoApp.fileAttachement.brand">Brand</span></dt>
+        <dd>
+            <div *ngIf="fileAttachement.brandId">
+                <a [routerLink]="['/brand', fileAttachement.brandId]">{{fileAttachement.brandId}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="advertiserBoApp.fileAttachement.agency">Agency</span></dt>
+        <dd>
+            <div *ngIf="fileAttachement.agencyId">
+                <a [routerLink]="['/agency', fileAttachement.agencyId]">{{fileAttachement.agencyId}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="advertiserBoApp.fileAttachement.media">Media</span></dt>
+        <dd>
+            <div *ngIf="fileAttachement.mediaId">
+                <a [routerLink]="['/media', fileAttachement.mediaId]">{{fileAttachement.mediaId}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'file-attachement/'+ fileAttachement.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

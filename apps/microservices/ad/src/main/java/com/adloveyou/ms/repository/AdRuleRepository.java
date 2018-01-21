@@ -1,6 +1,6 @@
 package com.adloveyou.ms.repository;
 
-import com.adloveyou.ms.domain.AdRule;
+import com.adloveyou.ms.domain.rule.AdRule;
 import org.springframework.stereotype.Repository;
 
 import org.springframework.data.jpa.repository.*;

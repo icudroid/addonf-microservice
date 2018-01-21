@@ -1,0 +1,12 @@
+{
+    "adminBoApp": {
+        "AdStatus" : {
+            "null": "",
+            "UPLOADING": "UPLOADING",
+            "UPLOADED": "UPLOADED",
+            "ENCODED": "ENCODED",
+            "DELETED": "DELETED",
+            "READY_TO_USE": "READY_TO_USE"
+        }
+    }
+}
