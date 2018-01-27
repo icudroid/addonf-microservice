@@ -1,0 +1,11 @@
+version: '2'
+services:
+    referentiel-postgresql:
+        image: postgres:9.6.5
+        # volumes:
+        #     - ~/volumes/jhipster/referentiel/postgresql/:/var/lib/postgresql/data/
+        environment:
+            - POSTGRES_USER=referentiel
+            - POSTGRES_PASSWORD=
+        ports:
+            - 5432:5432

@@ -5,7 +5,7 @@ import org.springframework.cloud.stream.messaging.Source;
 
 /**
  * Configures Spring Cloud Stream support.
- *
+ * <p>
  * See http://docs.spring.io/spring-cloud-stream/docs/current/reference/htmlsingle/
  * for more information.
  */

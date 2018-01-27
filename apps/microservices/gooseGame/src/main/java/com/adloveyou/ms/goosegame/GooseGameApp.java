@@ -1,9 +1,11 @@
 package com.adloveyou.ms.goosegame;
 
 import com.adloveyou.core.DomainConfiguration;
-import com.adloveyou.ms.goosegame.client.OAuth2InterceptedFeignConfiguration;
+import com.adloveyou.ms.MsTemplateConfiguration;
+import com.adloveyou.ms.client.OAuth2InterceptedFeignConfiguration;
+import com.adloveyou.ms.config.MsApplicationProperties;
 import com.adloveyou.ms.goosegame.config.ApplicationProperties;
-import com.adloveyou.ms.goosegame.config.DefaultProfileUtil;
+import com.adloveyou.ms.config.DefaultProfileUtil;
 
 import io.github.jhipster.config.JHipsterConstants;
 
@@ -31,9 +33,9 @@ import java.util.Collection;
 )
 @ComponentScan({"com.adloveyou.ms.goosegame","com.adloveyou.core"})
 @EnableAutoConfiguration(exclude = {MetricFilterAutoConfiguration.class, MetricRepositoryAutoConfiguration.class})
-@EnableConfigurationProperties({LiquibaseProperties.class, ApplicationProperties.class})
+@EnableConfigurationProperties({LiquibaseProperties.class, ApplicationProperties.class, MsApplicationProperties.class})
 @EnableDiscoveryClient
-@Import({DomainConfiguration.class})
+@Import({DomainConfiguration.class, MsTemplateConfiguration.class})
 public class GooseGameApp {
 
     private static final Logger log = LoggerFactory.getLogger(GooseGameApp.class);

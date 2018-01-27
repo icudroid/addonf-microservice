@@ -1,0 +1,56 @@
+enum WinStatus {
+    NOT_TRANFERED, TRANSERFERIN, TRANSEFRED
+}
+
+enum GooseGameStatus {
+    ENABLED, DISABLED
+}
+
+entity GooseWin {
+    value Integer
+    status WinStatus
+    won ZonedDateTime
+    playerId Long
+}
+
+entity GooseGame {
+    name String
+    created ZonedDateTime
+    status GooseGameStatus
+}
+
+entity GooseToken {
+    playerId Long
+}
+
+entity GooseLevel {
+    level Integer
+    limitedTime Long
+    nbMaxAdByPlay Integer
+}
+
+entity GooseCase {
+    name String
+}
+
+relationship OneToOne {
+    GooseLevel{start} to GooseCase
+    GooseLevel{end} to GooseCase
+}
+
+relationship OneToMany {
+    GooseLevel{cases} to GooseCase
+}
+
+relationship OneToMany {
+    GooseGame{levels} to GooseLevel
+}
+
+relationship ManyToOne {
+    GooseToken{where} to GooseCase
+}
+
+// Set pagination options
+paginate all with pagination
+dto all with mapstruct
+service all with serviceImpl

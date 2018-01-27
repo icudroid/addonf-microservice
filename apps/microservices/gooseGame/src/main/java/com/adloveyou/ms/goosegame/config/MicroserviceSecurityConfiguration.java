@@ -1,9 +1,9 @@
 package com.adloveyou.ms.goosegame.config;
 
-import com.adloveyou.ms.goosegame.config.oauth2.OAuth2JwtAccessTokenConverter;
-import com.adloveyou.ms.goosegame.config.oauth2.OAuth2Properties;
-import com.adloveyou.ms.goosegame.security.AuthoritiesConstants;
-import com.adloveyou.ms.goosegame.security.oauth2.OAuth2SignatureVerifierClient;
+import com.adloveyou.ms.config.oauth2.OAuth2JwtAccessTokenConverter;
+import com.adloveyou.ms.config.oauth2.OAuth2Properties;
+import com.adloveyou.ms.security.AuthoritiesConstants;
+import com.adloveyou.ms.security.oauth2.OAuth2SignatureVerifierClient;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.cloud.client.loadbalancer.RestTemplateCustomizer;
 import org.springframework.context.annotation.Bean;

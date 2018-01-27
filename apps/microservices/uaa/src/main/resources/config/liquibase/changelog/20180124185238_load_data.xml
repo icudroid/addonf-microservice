@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity Profile.
+    -->
+    <changeSet id="20180124185238-2" author="jhipster">
+
+        <loadData encoding="UTF-8"
+                  file="config/liquibase/users.csv"
+                  separator=";"
+                  tableName="jhi_user">
+            <column name="activated" type="boolean"/>
+            <column name="created_date" type="timestamp"/>
+        </loadData>
+        <dropDefaultValue tableName="jhi_user" columnName="created_date" columnDataType="datetime"/>
+
+
+        <loadData encoding="UTF-8"
+                  file="config/liquibase/profiles.csv"
+                  separator=";"
+                  tableName="profile"/>
+
+        <loadData encoding="UTF-8"
+                  file="config/liquibase/roles.csv"
+                  separator=";"
+                  tableName="role"/>
+
+
+        <loadData encoding="UTF-8"
+                  file="config/liquibase/permissions.csv"
+                  separator=";"
+                  tableName="permission"/>
+
+
+        <loadData encoding="UTF-8"
+                  file="config/liquibase/users_profiles.csv"
+                  separator=";"
+                  tableName="jhi_user_profiles"/>
+
+
+
+        <loadData encoding="UTF-8"
+                  file="config/liquibase/profiles_roles.csv"
+                  separator=";"
+                  tableName="profile_roles"/>
+
+
+
+        <loadData encoding="UTF-8"
+                  file="config/liquibase/roles_permissions.csv"
+                  separator=";"
+                  tableName="role_permissions"/>
+
+
+    </changeSet>
+</databaseChangeLog>

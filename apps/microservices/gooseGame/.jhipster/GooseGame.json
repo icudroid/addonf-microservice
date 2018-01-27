@@ -1,0 +1,33 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "levels",
+            "otherEntityName": "gooseLevel",
+            "otherEntityRelationshipName": "gooseGame"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "created",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "status",
+            "fieldType": "GooseGameStatus",
+            "fieldValues": "ENABLED,DISABLED"
+        }
+    ],
+    "changelogDate": "20180122194239",
+    "entityTableName": "goose_game",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "microserviceName": "gooseGame"
+}

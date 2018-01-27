@@ -1,0 +1,25 @@
+entity City {
+	zipcode String required
+    name String required
+    lon BigDecimal required
+    lat BigDecimal required
+
+}
+
+entity Country {
+	code String required
+}
+
+relationship ManyToOne {
+	City{country} to Country
+}
+
+paginate all with pagination
+dto all with mapstruct
+service all with serviceImpl
+
+
+
+
+
+

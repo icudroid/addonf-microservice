@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity Ad.
+    -->
+    <changeSet id="20180123183615-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="brand_id"
+                                 baseTableName="ad"
+                                 constraintName="fk_ad_brand_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="brand"/>
+
+        <addForeignKeyConstraint baseColumnNames="sector_id"
+                                 baseTableName="ad"
+                                 constraintName="fk_ad_sector_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="sector"/>
+
+        <addForeignKeyConstraint baseColumnNames="provided_by_id"
+                                 baseTableName="ad"
+                                 constraintName="fk_ad_provided_by_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="agency"/>
+
+    </changeSet>
+</databaseChangeLog>

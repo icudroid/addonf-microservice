@@ -1,0 +1,40 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "adScore",
+            "otherEntityName": "adScore",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "",
+            "relationshipName": "responses",
+            "otherEntityName": "possibility",
+            "otherEntityField": "id",
+            "ownerSide": true
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "number",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "correctAnswer",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "played",
+            "fieldType": "Boolean"
+        }
+    ],
+    "changelogDate": "20180122215811",
+    "entityTableName": "ad_player_response",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "microserviceName": "game"
+}

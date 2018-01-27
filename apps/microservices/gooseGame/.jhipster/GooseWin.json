@@ -1,0 +1,30 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "value",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "status",
+            "fieldType": "WinStatus",
+            "fieldValues": "NOT_TRANFERED,TRANSERFERIN,TRANSEFRED"
+        },
+        {
+            "fieldName": "won",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "playerId",
+            "fieldType": "Long"
+        }
+    ],
+    "changelogDate": "20180122194238",
+    "entityTableName": "goose_win",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "microserviceName": "gooseGame"
+}

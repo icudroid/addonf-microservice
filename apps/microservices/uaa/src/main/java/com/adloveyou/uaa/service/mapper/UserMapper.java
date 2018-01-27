@@ -1,12 +1,14 @@
 package com.adloveyou.uaa.service.mapper;
 
-import com.adloveyou.uaa.domain.Authority;
+import com.adloveyou.uaa.domain.Permission;
+import com.adloveyou.uaa.domain.Profile;
 import com.adloveyou.uaa.domain.User;
 import com.adloveyou.uaa.service.dto.UserDTO;
-
 import org.springframework.stereotype.Service;
 
-import java.util.*;
+import java.util.List;
+import java.util.Objects;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 /**
@@ -42,9 +44,9 @@ public class UserMapper {
             user.setImageUrl(userDTO.getImageUrl());
             user.setActivated(userDTO.isActivated());
             user.setLangKey(userDTO.getLangKey());
-            Set<Authority> authorities = this.authoritiesFromStrings(userDTO.getAuthorities());
-            if (authorities != null) {
-                user.setAuthorities(authorities);
+            Set<Profile> profiles = this.authoritiesFromStrings(userDTO.getProfiles());
+            if (profiles != null) {
+                user.setProfiles(profiles);
             }
             return user;
         }
@@ -66,9 +68,9 @@ public class UserMapper {
         return user;
     }
 
-    public Set<Authority> authoritiesFromStrings(Set<String> strings) {
+    public Set<Profile> authoritiesFromStrings(Set<String> strings) {
         return strings.stream().map(string -> {
-            Authority auth = new Authority();
+            Profile auth = new Profile();
             auth.setName(string);
             return auth;
         }).collect(Collectors.toSet());

@@ -1,0 +1,56 @@
+enum GameStatus {
+    WIN, LOST, PLAYING
+}
+
+entity AdGame {
+    created ZonedDateTime
+    status GameStatus
+    playerId Long
+}
+
+entity AdChoise {
+    number Integer
+    question String
+    bidId Long
+    adConfigId Long
+}
+
+entity Possibility {
+    adId Long
+}
+
+entity AdScore {
+    score Integer
+}
+entity AdPlayerResponse {
+    number Integer
+    correctAnswer Boolean
+    played Boolean
+
+}
+
+relationship ManyToMany {
+    AdPlayerResponse{responses} to Possibility
+}
+
+relationship OneToOne {
+    AdGame{score} to AdScore
+}
+
+relationship OneToMany {
+    AdGame{choises} to AdChoise
+    AdScore{answers} to AdPlayerResponse
+}
+
+relationship OneToMany {
+    AdChoise{corrects} to Possibility{correct}
+}
+
+relationship OneToMany {
+    AdChoise{possiblities} to Possibility{possible}
+}
+
+// Set pagination options
+paginate all with pagination
+dto all with mapstruct
+service all with serviceImpl

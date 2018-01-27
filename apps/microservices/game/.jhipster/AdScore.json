@@ -1,0 +1,24 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "answers",
+            "otherEntityName": "adPlayerResponse",
+            "otherEntityRelationshipName": "adScore"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "score",
+            "fieldType": "Integer"
+        }
+    ],
+    "changelogDate": "20180122215810",
+    "entityTableName": "ad_score",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "microserviceName": "game"
+}

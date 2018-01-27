@@ -1,14 +1,16 @@
 package com.adloveyou.uaa.service;
 
 import com.adloveyou.core.config.Constants;
-import com.adloveyou.uaa.domain.Authority;
+import com.adloveyou.uaa.domain.Profile;
 import com.adloveyou.uaa.domain.User;
-import com.adloveyou.uaa.repository.AuthorityRepository;
+import com.adloveyou.uaa.repository.ProfileRepository;
 import com.adloveyou.uaa.repository.UserRepository;
+import com.adloveyou.uaa.repository.querydsl.UserQueryDslRepository;
 import com.adloveyou.uaa.security.AuthoritiesConstants;
 import com.adloveyou.uaa.security.SecurityUtils;
 import com.adloveyou.uaa.service.dto.UserDTO;
 import com.adloveyou.uaa.service.util.RandomUtil;
+import com.adloveyou.uaa.web.rest.errors.InternalServerErrorException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.cache.CacheManager;
@@ -40,16 +42,19 @@ public class UserService {
 
     private final UserRepository userRepository;
 
+    private final UserQueryDslRepository userQueryDslRepository;
+
     private final PasswordEncoder passwordEncoder;
 
-    private final AuthorityRepository authorityRepository;
+    private final ProfileRepository profileRepository;
 
     private final CacheManager cacheManager;
 
-    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder, AuthorityRepository authorityRepository, CacheManager cacheManager) {
+    public UserService(UserRepository userRepository, UserQueryDslRepository userQueryDslRepository, PasswordEncoder passwordEncoder, ProfileRepository profileRepository, CacheManager cacheManager) {
         this.userRepository = userRepository;
+        this.userQueryDslRepository = userQueryDslRepository;
         this.passwordEncoder = passwordEncoder;
-        this.authorityRepository = authorityRepository;
+        this.profileRepository = profileRepository;
         this.cacheManager = cacheManager;
     }
 
@@ -94,8 +99,8 @@ public class UserService {
     public User registerUser(UserDTO userDTO, String password) {
 
         User newUser = new User();
-        Authority authority = authorityRepository.findOne(AuthoritiesConstants.USER);
-        Set<Authority> authorities = new HashSet<>();
+        Profile profile = profileRepository.findByName(AuthoritiesConstants.PROFILE_USER);
+        Set<Profile> authorities = new HashSet<>();
         String encryptedPassword = passwordEncoder.encode(password);
         newUser.setLogin(userDTO.getLogin());
         // new user gets initially a generated password
@@ -109,8 +114,8 @@ public class UserService {
         newUser.setActivated(false);
         // new user gets registration key
         newUser.setActivationKey(RandomUtil.generateActivationKey());
-        authorities.add(authority);
-        newUser.setAuthorities(authorities);
+        authorities.add(profile);
+        newUser.setProfiles(authorities);
         userRepository.save(newUser);
         log.debug("Created Information for User: {}", newUser);
         return newUser;
@@ -128,11 +133,11 @@ public class UserService {
         } else {
             user.setLangKey(userDTO.getLangKey());
         }
-        if (userDTO.getAuthorities() != null) {
-            Set<Authority> authorities = userDTO.getAuthorities().stream()
-                .map(authorityRepository::findOne)
+        if (userDTO.getProfiles() != null) {
+            Set<Profile> authorities = userDTO.getProfiles().stream()
+                .map(profileRepository::findByName)
                 .collect(Collectors.toSet());
-            user.setAuthorities(authorities);
+            user.setProfiles(authorities);
         }
         String encryptedPassword = passwordEncoder.encode(RandomUtil.generatePassword());
         user.setPassword(encryptedPassword);
@@ -184,10 +189,10 @@ public class UserService {
                 user.setImageUrl(userDTO.getImageUrl());
                 user.setActivated(userDTO.isActivated());
                 user.setLangKey(userDTO.getLangKey());
-                Set<Authority> managedAuthorities = user.getAuthorities();
+                Set<Profile> managedAuthorities = user.getProfiles();
                 managedAuthorities.clear();
-                userDTO.getAuthorities().stream()
-                    .map(authorityRepository::findOne)
+                userDTO.getProfiles().stream()
+                    .map(profileRepository::findByName)
                     .forEach(managedAuthorities::add);
                 cacheManager.getCache(USERS_CACHE).evict(user.getLogin());
                 log.debug("Changed Information for User: {}", user);
@@ -221,18 +226,19 @@ public class UserService {
     }
 
     @Transactional(readOnly = true)
-    public Optional<User> getUserWithAuthoritiesByLogin(String login) {
-        return userRepository.findOneWithAuthoritiesByLogin(login);
+    public Optional<UserDTO> getUserWithAuthoritiesByLogin(String login) {
+        return userRepository.findOneByLogin(login).map(UserDTO::new);
     }
 
     @Transactional(readOnly = true)
     public Optional<User> getUserWithAuthorities(Long id) {
-        return userRepository.findOneWithAuthoritiesById(id);
+        User user = userRepository.findOne(id);
+        return (user != null) ? Optional.of(user) : Optional.empty();
     }
 
     @Transactional(readOnly = true)
-    public Optional<User> getUserWithAuthorities() {
-        return SecurityUtils.getCurrentUserLogin().flatMap(userRepository::findOneWithAuthoritiesByLogin);
+    public Optional<UserDTO> getUserWithAuthorities() throws InternalServerErrorException {
+        return SecurityUtils.getCurrentUserLogin().flatMap(userRepository::findOneByLogin).map(UserDTO::new);
     }
 
     /**
@@ -254,7 +260,7 @@ public class UserService {
      * @return a list of all the authorities
      */
     public List<String> getAuthorities() {
-        return authorityRepository.findAll().stream().map(Authority::getName).collect(Collectors.toList());
+        return profileRepository.findAll().stream().map(Profile::getName).collect(Collectors.toList());
     }
 
 }

@@ -1,13 +1,13 @@
 {
   "generator-jhipster": {
     "promptValues": {
-      "packageName": "com.adloveyou.ms",
+      "packageName": "com.adloveyou.ms.ad",
       "nativeLanguage": "fr"
     },
-    "jhipsterVersion": "4.13.0",
+    "jhipsterVersion": "4.13.3",
     "baseName": "ad",
-    "packageName": "com.adloveyou.ms",
-    "packageFolder": "com/adloveyou/ms",
+    "packageName": "com.adloveyou.ms.ad",
+    "packageFolder": "com/adloveyou/ms/ad",
     "serverPort": "8081",
     "authenticationType": "uaa",
     "uaaBaseName": "uaa",
@@ -38,6 +38,8 @@
     ],
     "clientPackageManager": "yarn",
     "skipClient": true,
-    "skipUserManagement": true
+    "skipUserManagement": true,
+    "cacheProvider": "hazelcast",
+    "enableHibernateCache": true
   }
 }

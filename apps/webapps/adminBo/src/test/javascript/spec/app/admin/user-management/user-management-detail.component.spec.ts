@@ -40,7 +40,7 @@ describe('Component Tests', () => {
             it('Should call load all on init', () => {
                 // GIVEN
 
-                spyOn(service, 'find').and.returnValue(Observable.of(new User(1, 'user', 'first', 'last', 'first@last.com', true, 'en', ['ROLE_USER'], 'admin', null, null, null)));
+                spyOn(service, 'find').and.returnValue(Observable.of(new User(1, 'user', 'first', 'last', 'first@last.com', true, 'en', ['ROLE_USER'], ['USER'],'admin', null, null, null)));
 
                 // WHEN
                 comp.ngOnInit();
@@ -56,6 +56,7 @@ describe('Component Tests', () => {
                     activated: true,
                     langKey: 'en',
                     authorities: ['ROLE_USER'],
+                    profiles: ['USER'],
                     createdBy: 'admin',
                     createdDate: null,
                     lastModifiedBy: null,
@@ -67,3 +68,4 @@ describe('Component Tests', () => {
     });
 
 });
+

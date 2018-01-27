@@ -1,7 +1,7 @@
 package com.adloveyou.uaa.web.rest;
 
 import com.adloveyou.uaa.UaaApp;
-import com.adloveyou.uaa.domain.Authority;
+import com.adloveyou.uaa.domain.Profile;
 import com.adloveyou.uaa.domain.User;
 import com.adloveyou.uaa.repository.UserRepository;
 import com.adloveyou.uaa.security.AuthoritiesConstants;
@@ -151,7 +151,7 @@ public class UserResourceIntTest {
         managedUserVM.setActivated(true);
         managedUserVM.setImageUrl(DEFAULT_IMAGEURL);
         managedUserVM.setLangKey(DEFAULT_LANGKEY);
-        managedUserVM.setAuthorities(Collections.singleton(AuthoritiesConstants.USER));
+        managedUserVM.setProfiles(Collections.singleton(AuthoritiesConstants.PROFILE_USER));
 
         restUserMockMvc.perform(post("/api/users")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -185,7 +185,7 @@ public class UserResourceIntTest {
         managedUserVM.setActivated(true);
         managedUserVM.setImageUrl(DEFAULT_IMAGEURL);
         managedUserVM.setLangKey(DEFAULT_LANGKEY);
-        managedUserVM.setAuthorities(Collections.singleton(AuthoritiesConstants.USER));
+        managedUserVM.setProfiles(Collections.singleton(AuthoritiesConstants.PROFILE_USER));
 
         // An entity with an existing ID cannot be created, so this API call must fail
         restUserMockMvc.perform(post("/api/users")
@@ -214,7 +214,7 @@ public class UserResourceIntTest {
         managedUserVM.setActivated(true);
         managedUserVM.setImageUrl(DEFAULT_IMAGEURL);
         managedUserVM.setLangKey(DEFAULT_LANGKEY);
-        managedUserVM.setAuthorities(Collections.singleton(AuthoritiesConstants.USER));
+        managedUserVM.setProfiles(Collections.singleton(AuthoritiesConstants.PROFILE_USER));
 
         // Create the User
         restUserMockMvc.perform(post("/api/users")
@@ -243,7 +243,7 @@ public class UserResourceIntTest {
         managedUserVM.setActivated(true);
         managedUserVM.setImageUrl(DEFAULT_IMAGEURL);
         managedUserVM.setLangKey(DEFAULT_LANGKEY);
-        managedUserVM.setAuthorities(Collections.singleton(AuthoritiesConstants.USER));
+        managedUserVM.setProfiles(Collections.singleton(AuthoritiesConstants.PROFILE_USER));
 
         // Create the User
         restUserMockMvc.perform(post("/api/users")
@@ -324,7 +324,7 @@ public class UserResourceIntTest {
         managedUserVM.setCreatedDate(updatedUser.getCreatedDate());
         managedUserVM.setLastModifiedBy(updatedUser.getLastModifiedBy());
         managedUserVM.setLastModifiedDate(updatedUser.getLastModifiedDate());
-        managedUserVM.setAuthorities(Collections.singleton(AuthoritiesConstants.USER));
+        managedUserVM.setProfiles(Collections.singleton(AuthoritiesConstants.PROFILE_USER));
 
         restUserMockMvc.perform(put("/api/users")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -366,7 +366,7 @@ public class UserResourceIntTest {
         managedUserVM.setCreatedDate(updatedUser.getCreatedDate());
         managedUserVM.setLastModifiedBy(updatedUser.getLastModifiedBy());
         managedUserVM.setLastModifiedDate(updatedUser.getLastModifiedDate());
-        managedUserVM.setAuthorities(Collections.singleton(AuthoritiesConstants.USER));
+        managedUserVM.setProfiles(Collections.singleton(AuthoritiesConstants.PROFILE_USER));
 
         restUserMockMvc.perform(put("/api/users")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -419,7 +419,7 @@ public class UserResourceIntTest {
         managedUserVM.setCreatedDate(updatedUser.getCreatedDate());
         managedUserVM.setLastModifiedBy(updatedUser.getLastModifiedBy());
         managedUserVM.setLastModifiedDate(updatedUser.getLastModifiedDate());
-        managedUserVM.setAuthorities(Collections.singleton(AuthoritiesConstants.USER));
+        managedUserVM.setProfiles(Collections.singleton(AuthoritiesConstants.PROFILE_USER));
 
         restUserMockMvc.perform(put("/api/users")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -461,7 +461,7 @@ public class UserResourceIntTest {
         managedUserVM.setCreatedDate(updatedUser.getCreatedDate());
         managedUserVM.setLastModifiedBy(updatedUser.getLastModifiedBy());
         managedUserVM.setLastModifiedDate(updatedUser.getLastModifiedDate());
-        managedUserVM.setAuthorities(Collections.singleton(AuthoritiesConstants.USER));
+        managedUserVM.setProfiles(Collections.singleton(AuthoritiesConstants.PROFILE_USER));
 
         restUserMockMvc.perform(put("/api/users")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -495,7 +495,7 @@ public class UserResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$").isArray())
-            .andExpect(jsonPath("$").value(containsInAnyOrder(AuthoritiesConstants.USER, AuthoritiesConstants.ADMIN)));
+            .andExpect(jsonPath("$").value(containsInAnyOrder(AuthoritiesConstants.PROFILE_USER, AuthoritiesConstants.PROFILE_ADMIN)));
     }
 
     @Test
@@ -532,7 +532,7 @@ public class UserResourceIntTest {
         userDTO.setLangKey(DEFAULT_LANGKEY);
         userDTO.setCreatedBy(DEFAULT_LOGIN);
         userDTO.setLastModifiedBy(DEFAULT_LOGIN);
-        userDTO.setAuthorities(Collections.singleton(AuthoritiesConstants.USER));
+        userDTO.setProfiles(Collections.singleton(AuthoritiesConstants.PROFILE_USER));
 
         User user = userMapper.userDTOToUser(userDTO);
         assertThat(user.getId()).isEqualTo(DEFAULT_ID);
@@ -547,7 +547,7 @@ public class UserResourceIntTest {
         assertThat(user.getCreatedDate()).isNotNull();
         assertThat(user.getLastModifiedBy()).isNull();
         assertThat(user.getLastModifiedDate()).isNotNull();
-        assertThat(user.getAuthorities()).extracting("name").containsExactly(AuthoritiesConstants.USER);
+        assertThat(user.getProfiles()).extracting("name").containsExactly(AuthoritiesConstants.PROFILE_USER);
     }
 
     @Test
@@ -557,11 +557,11 @@ public class UserResourceIntTest {
         user.setCreatedDate(Instant.now());
         user.setLastModifiedBy(DEFAULT_LOGIN);
         user.setLastModifiedDate(Instant.now());
-        Set<Authority> authorities = new HashSet<>();
-        Authority authority = new Authority();
-        authority.setName(AuthoritiesConstants.USER);
+        Set<Profile> authorities = new HashSet<>();
+        Profile authority = new Profile();
+        authority.setName(AuthoritiesConstants.PROFILE_USER);
         authorities.add(authority);
-        user.setAuthorities(authorities);
+        user.setProfiles(authorities);
 
         UserDTO userDTO = userMapper.userToUserDTO(user);
 
@@ -577,29 +577,29 @@ public class UserResourceIntTest {
         assertThat(userDTO.getCreatedDate()).isEqualTo(user.getCreatedDate());
         assertThat(userDTO.getLastModifiedBy()).isEqualTo(DEFAULT_LOGIN);
         assertThat(userDTO.getLastModifiedDate()).isEqualTo(user.getLastModifiedDate());
-        assertThat(userDTO.getAuthorities()).containsExactly(AuthoritiesConstants.USER);
+        assertThat(userDTO.getProfiles()).containsExactly(AuthoritiesConstants.PROFILE_USER);
         assertThat(userDTO.toString()).isNotNull();
     }
 
     @Test
     public void testAuthorityEquals() throws Exception {
-        Authority authorityA = new Authority();
+        Profile authorityA = new Profile();
         assertThat(authorityA).isEqualTo(authorityA);
         assertThat(authorityA).isNotEqualTo(null);
         assertThat(authorityA).isNotEqualTo(new Object());
-        assertThat(authorityA.hashCode()).isEqualTo(0);
+        //assertThat(authorityA.hashCode()).isEqualTo(0);
         assertThat(authorityA.toString()).isNotNull();
 
-        Authority authorityB = new Authority();
-        assertThat(authorityA).isEqualTo(authorityB);
+        Profile authorityB = new Profile();
+        //assertThat(authorityA).isEqualTo(authorityB);
 
-        authorityB.setName(AuthoritiesConstants.ADMIN);
+        authorityB.setName(AuthoritiesConstants.PROFILE_ADMIN);
         assertThat(authorityA).isNotEqualTo(authorityB);
 
-        authorityA.setName(AuthoritiesConstants.USER);
+        authorityA.setName(AuthoritiesConstants.PROFILE_USER);
         assertThat(authorityA).isNotEqualTo(authorityB);
 
-        authorityB.setName(AuthoritiesConstants.USER);
+        authorityB.setName(AuthoritiesConstants.PROFILE_USER);
         assertThat(authorityA).isEqualTo(authorityB);
         assertThat(authorityA.hashCode()).isEqualTo(authorityB.hashCode());
     }

@@ -20,6 +20,9 @@ import { AdminBoFileAttachementModule } from './file-attachement/file-attachemen
 import { AdminBoMediaTargetModule } from './media-target/media-target.module';
 import { AdminBoCityModule } from './city/city.module';
 import { AdminBoCountryModule } from './country/country.module';
+import { AdminBoProfileModule } from './profile/profile.module';
+import { AdminBoRoleModule } from './role/role.module';
+import { AdminBoPermissionModule } from './permission/permission.module';
 /* jhipster-needle-add-entity-module-import - JHipster will add entity modules imports here */
 
 @NgModule({
@@ -44,6 +47,9 @@ import { AdminBoCountryModule } from './country/country.module';
         AdminBoMediaTargetModule,
         AdminBoCityModule,
         AdminBoCountryModule,
+        AdminBoProfileModule,
+        AdminBoRoleModule,
+        AdminBoPermissionModule,
         /* jhipster-needle-add-entity-module - JHipster will add entity modules here */
     ],
     declarations: [],

@@ -27,6 +27,9 @@
                 "mediaTarget": "Media Target",
                 "city": "City",
                 "country": "Country",
+                "profile": "Profile",
+                "role": "Role",
+                "permission": "Permission",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

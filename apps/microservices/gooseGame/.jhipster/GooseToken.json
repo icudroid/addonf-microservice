@@ -1,0 +1,24 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "where",
+            "otherEntityName": "gooseCase",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "playerId",
+            "fieldType": "Long"
+        }
+    ],
+    "changelogDate": "20180122194240",
+    "entityTableName": "goose_token",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "microserviceName": "gooseGame"
+}

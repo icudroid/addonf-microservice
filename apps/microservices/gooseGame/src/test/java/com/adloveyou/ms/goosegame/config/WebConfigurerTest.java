@@ -1,5 +1,6 @@
 package com.adloveyou.ms.goosegame.config;
 
+import com.adloveyou.ms.config.WebConfigurer;
 import com.codahale.metrics.MetricRegistry;
 import com.codahale.metrics.servlet.InstrumentedFilter;
 import com.codahale.metrics.servlets.MetricsServlet;
@@ -18,7 +19,6 @@ import io.github.jhipster.config.JHipsterProperties;
 import io.undertow.Undertow;
 import io.undertow.Undertow.Builder;
 import io.undertow.UndertowOptions;
-import org.apache.commons.io.FilenameUtils;
 import org.h2.server.web.WebServlet;
 import org.junit.Before;
 import org.junit.Test;
@@ -282,11 +282,6 @@ public class WebConfigurerTest {
         }
 
         @Override
-        public void setRunAsRole(String roleName) {
-
-        }
-
-        @Override
         public void setAsyncSupported(boolean isAsyncSupported) {
 
         }
@@ -304,6 +299,11 @@ public class WebConfigurerTest {
         @Override
         public String getRunAsRole() {
             return null;
+        }
+
+        @Override
+        public void setRunAsRole(String roleName) {
+
         }
 
         @Override

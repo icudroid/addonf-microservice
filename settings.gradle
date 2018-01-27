@@ -20,6 +20,7 @@ rootProject.name = 'addonf-v2'
 
 include 'apps:microservices:uaa'
 include 'apps:microservices:ad'
+include 'apps:microservices:referentiel'
 include 'apps:microservices:billing'
 include 'apps:microservices:game'
 include 'apps:microservices:gooseGame'
@@ -33,13 +34,13 @@ include 'apps:webapps:enrollAdvertiser'
 include 'apps:webapps:enrollPlayer'
 include 'apps:webapps:homeBo'
 
-include 'apps:utils:gateway-template'
-include 'apps:utils:microservice-template'
 
 include 'tools'
 include 'core:domain'
+
+
+include 'apps:utils:gateway-template'
+include 'apps:utils:microservice-template'
 include 'apps:utils:test-utils'
-findProject(':apps:utils:test-utils')?.name = 'test-utils'
 include 'apps:utils:common-template'
-findProject(':apps:utils:common-template')?.name = 'common-template'
 

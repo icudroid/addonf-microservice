@@ -15,7 +15,7 @@ export class UserMgmtDialogComponent implements OnInit {
 
     user: User;
     languages: any[];
-    authorities: any[];
+    profiles: any[];
     isSaving: Boolean;
 
     constructor(
@@ -27,9 +27,9 @@ export class UserMgmtDialogComponent implements OnInit {
 
     ngOnInit() {
         this.isSaving = false;
-        this.authorities = [];
-        this.userService.authorities().subscribe((authorities) => {
-            this.authorities = authorities;
+        this.profiles = [];
+        this.userService.profiles().subscribe((profiles) => {
+            this.profiles = profiles;
         });
         this.languageHelper.getAll().then((languages) => {
             this.languages = languages;

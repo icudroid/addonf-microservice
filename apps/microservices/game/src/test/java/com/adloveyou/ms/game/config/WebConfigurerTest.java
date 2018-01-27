@@ -1,5 +1,6 @@
 package com.adloveyou.ms.game.config;
 
+import com.adloveyou.ms.config.WebConfigurer;
 import com.codahale.metrics.MetricRegistry;
 import com.codahale.metrics.servlet.InstrumentedFilter;
 import com.codahale.metrics.servlets.MetricsServlet;

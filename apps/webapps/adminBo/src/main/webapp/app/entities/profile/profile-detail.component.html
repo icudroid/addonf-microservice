@@ -1,0 +1,36 @@
+
+<div *ngIf="profile">
+    <h2><span jhiTranslate="adminBoApp.profile.detail.title">Profile</span> {{profile.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="adminBoApp.profile.name">Name</span></dt>
+        <dd>
+            <span>{{profile.name}}</span>
+        </dd>
+        <dt><span jhiTranslate="adminBoApp.profile.description">Description</span></dt>
+        <dd>
+            <span>{{profile.description}}</span>
+        </dd>
+        <dt><span jhiTranslate="adminBoApp.profile.roles">Roles</span></dt>
+        <dd>
+            <span *ngFor="let roles of profile.roles; let last = last">
+                <a [routerLink]="['/role', roles?.id ]">{{roles.id}}</a>{{last ? '' : ', '}}
+            </span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'profile/'+ profile.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

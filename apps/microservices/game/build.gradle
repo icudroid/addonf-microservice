@@ -11,6 +11,7 @@ buildscript {
         classpath "org.springframework.boot:spring-boot-gradle-plugin:${spring_boot_version}"
         classpath "io.spring.gradle:propdeps-plugin:0.0.9.RELEASE"
         classpath "gradle.plugin.org.detoeuf:swagger-codegen-plugin:1.7.4"
+        classpath "gradle.plugin.com.ewerk.gradle.plugins:querydsl-plugin:1.0.9"
         //jhipster-needle-gradle-buildscript-dependency - JHipster will add additional gradle build script plugins here
     }
 }
@@ -34,23 +35,24 @@ apply plugin: 'org.springframework.boot'
 apply plugin: 'war'
 apply plugin: 'propdeps'
 apply plugin: 'io.spring.dependency-management'
+apply plugin: 'idea'
 
 dependencyManagement {
-  imports {
-    mavenBom 'io.github.jhipster:jhipster-dependencies:' + jhipster_dependencies_version
-    //jhipster-needle-gradle-dependency-management - JHipster will add additional dependencies management here
-  }
+    imports {
+        mavenBom 'io.github.jhipster:jhipster-dependencies:' + jhipster_dependencies_version
+        //jhipster-needle-gradle-dependency-management - JHipster will add additional dependencies management here
+    }
 }
 
 defaultTasks 'bootRun'
 
-group = 'com.adloveyou.ms.game'
+group = 'com.adloveyou.ms'
 version = '0.0.1-SNAPSHOT'
 
 description = ''
 
 bootRepackage {
-   mainClass = 'com.adloveyou.ms.game.GameApp'
+    mainClass = 'com.adloveyou.ms.AdApp'
 }
 
 war {
@@ -58,7 +60,7 @@ war {
 }
 
 springBoot {
-    mainClass = 'com.adloveyou.ms.game.GameApp'
+    mainClass = 'com.adloveyou.ms.AdApp'
     executable = true
     buildInfo()
 }
@@ -121,30 +123,31 @@ task cucumberTestReport(type: TestReport) {
     reportOn cucumberTest
 }
 
-apply from: 'gradle/docker.gradle'
-apply from: 'gradle/sonar.gradle'
+apply from: project(':apps:utils:microservice-template').file('gradle/docker.gradle').path
+apply from: project(':apps:utils:microservice-template').file('gradle/sonar.gradle').path
 apply from: 'gradle/liquibase.gradle'
-apply from: 'gradle/gatling.gradle'
-apply from: 'gradle/mapstruct.gradle'
+apply from: project(':apps:utils:microservice-template').file('gradle/gatling.gradle').path
+apply from: project(':apps:utils:microservice-template').file('gradle/mapstruct.gradle').path
 apply from: 'gradle/swagger.gradle'
+apply from: 'gradle/querydsl.gradle'
 //jhipster-needle-gradle-apply-from - JHipster will add additional gradle scripts to be applied here
 
 if (project.hasProperty('prod')) {
-    apply from: 'gradle/profile_prod.gradle'
+    apply from: project(':apps:utils:microservice-template').file('gradle/profile_prod.gradle').path
 } else {
-    apply from: 'gradle/profile_dev.gradle'
+    apply from: project(':apps:utils:microservice-template').file('gradle/profile_dev.gradle').path
 }
 
 if (project.hasProperty('graphite')) {
-    apply from: 'gradle/graphite.gradle'
+    apply from: project(':apps:utils:microservice-template').file('gradle/graphite.gradle').path
 }
 
 if (project.hasProperty('prometheus')) {
-    apply from: 'gradle/prometheus.gradle'
+    apply from: project(':apps:utils:microservice-template').file('gradle/prometheus.gradle').path
 }
 
 if (project.hasProperty('zipkin')) {
-    apply from: 'gradle/zipkin.gradle'
+    apply from: project(':apps:utils:microservice-template').file('gradle/zipkin.gradle').path
 }
 
 configurations {
@@ -158,43 +161,6 @@ repositories {
 }
 
 dependencies {
-    compile "io.github.jhipster:jhipster"
-    compile "io.dropwizard.metrics:metrics-core"
-    compile "io.dropwizard.metrics:metrics-json"
-    compile "io.dropwizard.metrics:metrics-jvm"
-    compile "io.dropwizard.metrics:metrics-servlet"
-    compile "io.dropwizard.metrics:metrics-servlets"
-    compile "net.logstash.logback:logstash-logback-encoder"
-    compile "com.fasterxml.jackson.datatype:jackson-datatype-json-org"
-    compile "com.fasterxml.jackson.datatype:jackson-datatype-hppc"
-    compile "com.fasterxml.jackson.datatype:jackson-datatype-jsr310"
-    compile "com.fasterxml.jackson.datatype:jackson-datatype-hibernate5"
-    compile "com.fasterxml.jackson.core:jackson-annotations"
-    compile "com.fasterxml.jackson.core:jackson-databind"
-    compile "com.fasterxml.jackson.module:jackson-module-afterburner"
-    compile "com.ryantenney.metrics:metrics-spring"
-    compile "com.hazelcast:hazelcast"
-    compile "com.hazelcast:hazelcast-hibernate52"
-    compile "com.hazelcast:hazelcast-spring"
-    compile "javax.cache:cache-api"
-    compile "org.hibernate:hibernate-core"
-    compile "com.zaxxer:HikariCP"
-    compile "org.apache.commons:commons-lang3"
-    compile "commons-io:commons-io"
-    compile "javax.transaction:javax.transaction-api"
-    compile "org.hibernate:hibernate-entitymanager"
-    compile "org.hibernate:hibernate-envers"
-    compile "org.hibernate:hibernate-validator"
-    compile "org.liquibase:liquibase-core"
-    compile "com.mattbertolini:liquibase-slf4j"
-    compile "org.springframework.boot:spring-boot-actuator"
-    compile "org.springframework.boot:spring-boot-autoconfigure"
-    compile "org.springframework.boot:spring-boot-loader-tools"
-    compile "org.springframework.boot:spring-boot-starter-mail"
-    compile "org.springframework.boot:spring-boot-starter-logging"
-    compile "org.springframework.boot:spring-boot-starter-aop"
-    compile "org.springframework.boot:spring-boot-starter-data-jpa"
-    compile "org.springframework.boot:spring-boot-starter-data-elasticsearch"
     // needed to get around elasticsearch stacktrace about jna not found
     // https://github.com/elastic/elasticsearch/issues/13245
     compile "net.java.dev.jna:jna"
@@ -205,31 +171,7 @@ dependencies {
     compile ("org.springframework.boot:spring-boot-starter-web") {
         exclude module: 'spring-boot-starter-tomcat'
     }
-    compile "org.springframework.boot:spring-boot-starter-undertow"
-    compile "org.springframework.boot:spring-boot-starter-thymeleaf"
-    compile "org.zalando:problem-spring-web"
-    compile "org.springframework.cloud:spring-cloud-starter"
-    compile "org.springframework.cloud:spring-cloud-starter-ribbon"
-    compile "org.springframework.cloud:spring-cloud-starter-hystrix"
-    compile "org.springframework.cloud:spring-cloud-starter-spectator"
-    compile "org.springframework.retry:spring-retry"
-    compile "org.springframework.cloud:spring-cloud-starter-eureka"
-    compile "org.springframework.cloud:spring-cloud-starter-config"
-    compile "org.springframework.cloud:spring-cloud-security"
-    compile "org.springframework.cloud:spring-cloud-starter-feign"
-    compile "org.springframework.cloud:spring-cloud-spring-service-connector"
-    compile "org.springframework:spring-context-support"
-    compile "org.springframework.security:spring-security-config"
-    compile "org.springframework.security:spring-security-data"
-    compile "org.springframework.security:spring-security-web"
-    compile "org.springframework.security.oauth:spring-security-oauth2"
-    compile "org.springframework.security:spring-security-jwt"
-    compile ("io.springfox:springfox-swagger2") {
-        exclude module: 'mapstruct'
-    }
-    compile "io.springfox:springfox-bean-validators"
-    compile "org.postgresql:postgresql"
-    compile "org.mapstruct:mapstruct-jdk8:${mapstruct_version}"
+
     testCompile "com.jayway.jsonpath:json-path"
     testCompile "info.cukes:cucumber-junit"
     testCompile "info.cukes:cucumber-spring"
@@ -249,13 +191,14 @@ dependencies {
     }
     //jhipster-needle-gradle-dependency - JHipster will add additional dependencies here
 
-    compile project(":core:domain")
+
+    compile project(":apps:utils:microservice-template")
+    testCompile project(":apps:utils:test-utils")
 }
 
 task cleanResources(type: Delete) {
     delete 'build/resources'
 }
-
 
 task stage(dependsOn: 'bootRepackage') {
 }
@@ -263,3 +206,4 @@ task stage(dependsOn: 'bootRepackage') {
 compileJava.dependsOn processResources
 processResources.dependsOn cleanResources,bootBuildInfo
 bootBuildInfo.mustRunAfter cleanResources
+

@@ -1,9 +1,9 @@
 package com.adloveyou.ms.game.config;
 
-import com.adloveyou.ms.game.config.oauth2.OAuth2JwtAccessTokenConverter;
-import com.adloveyou.ms.game.config.oauth2.OAuth2Properties;
-import com.adloveyou.ms.game.security.AuthoritiesConstants;
-import com.adloveyou.ms.game.security.oauth2.OAuth2SignatureVerifierClient;
+import com.adloveyou.ms.config.oauth2.OAuth2JwtAccessTokenConverter;
+import com.adloveyou.ms.config.oauth2.OAuth2Properties;
+import com.adloveyou.ms.security.AuthoritiesConstants;
+import com.adloveyou.ms.security.oauth2.OAuth2SignatureVerifierClient;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.cloud.client.loadbalancer.RestTemplateCustomizer;
 import org.springframework.context.annotation.Bean;
@@ -36,10 +36,10 @@ public class MicroserviceSecurityConfiguration extends ResourceServerConfigurerA
             .headers()
             .frameOptions()
             .disable()
-        .and()
+            .and()
             .sessionManagement()
             .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-        .and()
+            .and()
             .authorizeRequests()
             .antMatchers("/api/profile-info").permitAll()
             .antMatchers("/api/**").authenticated()
@@ -59,7 +59,7 @@ public class MicroserviceSecurityConfiguration extends ResourceServerConfigurerA
     }
 
     @Bean
-	@Qualifier("loadBalancedRestTemplate")
+    @Qualifier("loadBalancedRestTemplate")
     public RestTemplate loadBalancedRestTemplate(RestTemplateCustomizer customizer) {
         RestTemplate restTemplate = new RestTemplate();
         customizer.customize(restTemplate);

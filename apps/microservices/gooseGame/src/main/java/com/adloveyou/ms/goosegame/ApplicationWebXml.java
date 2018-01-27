@@ -1,6 +1,6 @@
 package com.adloveyou.ms.goosegame;
 
-import com.adloveyou.ms.goosegame.config.DefaultProfileUtil;
+import com.adloveyou.ms.config.DefaultProfileUtil;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
 

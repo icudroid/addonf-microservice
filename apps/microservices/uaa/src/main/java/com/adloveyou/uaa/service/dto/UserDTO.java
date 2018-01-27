@@ -2,13 +2,14 @@ package com.adloveyou.uaa.service.dto;
 
 
 import com.adloveyou.core.config.Constants;
-import com.adloveyou.uaa.domain.Authority;
+import com.adloveyou.uaa.domain.Profile;
 import com.adloveyou.uaa.domain.User;
-
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
+import org.springframework.util.StringUtils;
 
-import javax.validation.constraints.*;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 import java.time.Instant;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -53,6 +54,8 @@ public class UserDTO {
 
     private Set<String> authorities;
 
+    private Set<String> profiles;
+
     public UserDTO() {
         // Empty constructor needed for Jackson.
     }
@@ -70,8 +73,15 @@ public class UserDTO {
         this.createdDate = user.getCreatedDate();
         this.lastModifiedBy = user.getLastModifiedBy();
         this.lastModifiedDate = user.getLastModifiedDate();
-        this.authorities = user.getAuthorities().stream()
-            .map(Authority::getName)
+
+        this.profiles = user.getProfiles().stream()
+            .map(Profile::getName)
+            .collect(Collectors.toSet());
+
+        this.authorities = user.getProfiles().stream()
+            .flatMap(profile -> profile.getRoles().stream())
+            .flatMap(roles -> roles.getPermissions().stream())
+            .map(permission -> "ROLE_" + permission.getName() + ((!StringUtils.isEmpty(permission.getExtention())) ? "_" + permission.getExtention() : ""))
             .collect(Collectors.toSet());
     }
 
@@ -179,6 +189,14 @@ public class UserDTO {
         this.authorities = authorities;
     }
 
+    public Set<String> getProfiles() {
+        return profiles;
+    }
+
+    public void setProfiles(Set<String> profiles) {
+        this.profiles = profiles;
+    }
+
     @Override
     public String toString() {
         return "UserDTO{" +
@@ -194,6 +212,7 @@ public class UserDTO {
             ", lastModifiedBy='" + lastModifiedBy + '\'' +
             ", lastModifiedDate=" + lastModifiedDate +
             ", authorities=" + authorities +
+            ", profiles=" + profiles +
             "}";
     }
 }

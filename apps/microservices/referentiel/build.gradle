@@ -1,0 +1,208 @@
+import org.gradle.internal.os.OperatingSystem
+
+buildscript {
+    repositories {
+        mavenLocal()
+        jcenter()
+        maven { url "http://repo.spring.io/plugins-release" }
+        maven { url "https://plugins.gradle.org/m2/" }
+    }
+    dependencies {
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:${spring_boot_version}"
+        classpath "io.spring.gradle:propdeps-plugin:0.0.9.RELEASE"
+        classpath "gradle.plugin.org.detoeuf:swagger-codegen-plugin:1.7.4"
+        classpath "gradle.plugin.com.ewerk.gradle.plugins:querydsl-plugin:1.0.9"
+        //jhipster-needle-gradle-buildscript-dependency - JHipster will add additional gradle build script plugins here
+    }
+}
+
+plugins {
+    id "org.sonarqube" version "2.5"
+    id "net.ltgt.apt" version "0.13"
+    id "io.spring.dependency-management" version "1.0.3.RELEASE"
+    id "com.github.lkishalmi.gatling" version "0.7.1"
+    //jhipster-needle-gradle-plugins - JHipster will add additional gradle plugins here
+}
+
+apply plugin: 'java'
+sourceCompatibility=1.8
+targetCompatibility=1.8
+// Until JHipster supports JDK 9
+assert System.properties['java.specification.version'] == '1.8'
+
+apply plugin: 'maven'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'war'
+apply plugin: 'propdeps'
+apply plugin: 'io.spring.dependency-management'
+apply plugin: 'idea'
+
+dependencyManagement {
+    imports {
+        mavenBom 'io.github.jhipster:jhipster-dependencies:' + jhipster_dependencies_version
+        //jhipster-needle-gradle-dependency-management - JHipster will add additional dependencies management here
+    }
+}
+
+defaultTasks 'bootRun'
+
+group = 'com.adloveyou.ms'
+version = '0.0.1-SNAPSHOT'
+
+description = ''
+
+bootRepackage {
+    mainClass = 'com.adloveyou.ms.AdApp'
+}
+
+war {
+
+}
+
+springBoot {
+    mainClass = 'com.adloveyou.ms.AdApp'
+    executable = true
+    buildInfo()
+}
+
+if (OperatingSystem.current().isWindows()) {
+    task pathingJar(type: Jar) {
+        dependsOn configurations.runtime
+        appendix = 'pathing'
+
+        doFirst {
+            manifest {
+                attributes 'Class-Path': configurations.runtime.files.collect {
+                    it.toURI().toURL().toString().replaceFirst(/file:\/+/, '/').replaceAll(' ', '%20')
+                }.join(' ')
+            }
+        }
+    }
+
+    bootRun {
+        addResources = false
+        dependsOn pathingJar
+        doFirst {
+            classpath = files("$buildDir/classes/java/main", "$buildDir/resources/main", pathingJar.archivePath)
+        }
+    }
+} else {
+    bootRun {
+        addResources = false
+    }
+}
+
+test {
+    exclude '**/CucumberTest*'
+
+    // uncomment if the tests reports are not generated
+    // see https://github.com/jhipster/generator-jhipster/pull/2771 and https://github.com/jhipster/generator-jhipster/pull/4484
+    // ignoreFailures true
+    reports.html.enabled = false
+}
+
+task cucumberTest(type: Test) {
+    description = "Execute cucumber BDD tests."
+    group = "verification"
+    include '**/CucumberTest*'
+
+    // uncomment if the tests reports are not generated
+    // see https://github.com/jhipster/generator-jhipster/pull/2771 and https://github.com/jhipster/generator-jhipster/pull/4484
+    // ignoreFailures true
+    reports.html.enabled = false
+}
+
+check.dependsOn cucumberTest
+task testReport(type: TestReport) {
+    destinationDir = file("$buildDir/reports/tests")
+    reportOn test
+}
+
+task cucumberTestReport(type: TestReport) {
+    destinationDir = file("$buildDir/reports/tests")
+    reportOn cucumberTest
+}
+
+apply from: project(':apps:utils:microservice-template').file('gradle/docker.gradle').path
+apply from: project(':apps:utils:microservice-template').file('gradle/sonar.gradle').path
+apply from: 'gradle/liquibase.gradle'
+apply from: project(':apps:utils:microservice-template').file('gradle/gatling.gradle').path
+apply from: project(':apps:utils:microservice-template').file('gradle/mapstruct.gradle').path
+apply from: 'gradle/swagger.gradle'
+//jhipster-needle-gradle-apply-from - JHipster will add additional gradle scripts to be applied here
+
+if (project.hasProperty('prod')) {
+    apply from: project(':apps:utils:microservice-template').file('gradle/profile_prod.gradle').path
+} else {
+    apply from: project(':apps:utils:microservice-template').file('gradle/profile_dev.gradle').path
+}
+
+if (project.hasProperty('graphite')) {
+    apply from: project(':apps:utils:microservice-template').file('gradle/graphite.gradle').path
+}
+
+if (project.hasProperty('prometheus')) {
+    apply from: project(':apps:utils:microservice-template').file('gradle/prometheus.gradle').path
+}
+
+if (project.hasProperty('zipkin')) {
+    apply from: project(':apps:utils:microservice-template').file('gradle/zipkin.gradle').path
+}
+
+configurations {
+    providedRuntime
+    compile.exclude module: "spring-boot-starter-tomcat"
+}
+
+repositories {
+    mavenLocal()
+    jcenter()
+}
+
+dependencies {
+    // needed to get around elasticsearch stacktrace about jna not found
+    // https://github.com/elastic/elasticsearch/issues/13245
+    compile "net.java.dev.jna:jna"
+    compile "org.springframework.cloud:spring-cloud-stream"
+    compile "org.springframework.cloud:spring-cloud-stream-binder-kafka"
+    compile "org.springframework.kafka:spring-kafka"
+    compile "org.springframework.boot:spring-boot-starter-security"
+    compile ("org.springframework.boot:spring-boot-starter-web") {
+        exclude module: 'spring-boot-starter-tomcat'
+    }
+
+    testCompile "com.jayway.jsonpath:json-path"
+    testCompile "info.cukes:cucumber-junit"
+    testCompile "info.cukes:cucumber-spring"
+    testCompile ("org.springframework.boot:spring-boot-starter-test") {
+        exclude group: 'com.vaadin.external.google', module: 'android-json'
+    }
+    testCompile "org.springframework.security:spring-security-test"
+    testCompile "org.springframework.boot:spring-boot-test"
+    testCompile "org.assertj:assertj-core"
+    testCompile "junit:junit"
+    testCompile "org.mockito:mockito-core"
+    testCompile "com.mattbertolini:liquibase-slf4j"
+    testCompile "org.hamcrest:hamcrest-library"
+    testCompile "org.springframework.cloud:spring-cloud-stream-test-support"
+    optional ("org.springframework.boot:spring-boot-configuration-processor") {
+        exclude group: 'com.vaadin.external.google', module: 'android-json'
+    }
+    //jhipster-needle-gradle-dependency - JHipster will add additional dependencies here
+
+
+    compile project(":apps:utils:microservice-template")
+    testCompile project(":apps:utils:test-utils")
+}
+
+task cleanResources(type: Delete) {
+    delete 'build/resources'
+}
+
+task stage(dependsOn: 'bootRepackage') {
+}
+
+compileJava.dependsOn processResources
+processResources.dependsOn cleanResources,bootBuildInfo
+bootBuildInfo.mustRunAfter cleanResources
+

@@ -43,14 +43,14 @@ describe('Component Tests', () => {
                 inject([],
                     fakeAsync(() => {
                         // GIVEN
-                        spyOn(service, 'authorities').and.returnValue(Observable.of(['USER']));
+                        spyOn(service, 'profiles').and.returnValue(Observable.of(['USER']));
 
                         // WHEN
                         comp.ngOnInit();
 
                         // THEN
-                        expect(service.authorities).toHaveBeenCalled();
-                        expect(comp.authorities).toEqual(['USER']);
+                        expect(service.profiles).toHaveBeenCalled();
+                        expect(comp.profiles).toEqual(['USER']);
                         expect(mockLanguageHelper.getAllSpy).toHaveBeenCalled();
                     })
                 )

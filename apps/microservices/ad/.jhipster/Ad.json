@@ -1,0 +1,109 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "products",
+            "otherEntityName": "product",
+            "otherEntityRelationshipName": "ad"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "configs",
+            "otherEntityName": "adConfiguration",
+            "otherEntityRelationshipName": "ad"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "restrictions",
+            "otherEntityName": "adRestriction",
+            "otherEntityRelationshipName": "ad"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "bids",
+            "otherEntityName": "bidCategoryMedia",
+            "otherEntityRelationshipName": "ad"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "brand",
+            "otherEntityName": "brand",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "sector",
+            "otherEntityName": "sector",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "providedBy",
+            "otherEntityName": "agency",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 60
+        },
+        {
+            "fieldName": "initialAmount",
+            "fieldType": "BigDecimal",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "start",
+            "fieldType": "ZonedDateTime",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "end",
+            "fieldType": "ZonedDateTime",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "duration",
+            "fieldType": "Long",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "status",
+            "fieldType": "AdStatus",
+            "fieldValues": "UPLOADING,UPLOADED,ENCODED,DELETED,READY_TO_USE",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "adfileId",
+            "fieldType": "Long",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "changelogDate": "20180123183615",
+    "entityTableName": "ad",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "searchEngine": "elasticsearch",
+    "microserviceName": "ad"
+}

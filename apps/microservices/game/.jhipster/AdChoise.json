@@ -1,0 +1,48 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "adGame",
+            "otherEntityName": "adGame",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "corrects",
+            "otherEntityName": "possibility",
+            "otherEntityRelationshipName": "correct"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "possiblities",
+            "otherEntityName": "possibility",
+            "otherEntityRelationshipName": "possible"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "number",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "question",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "bidId",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "adConfigId",
+            "fieldType": "Long"
+        }
+    ],
+    "changelogDate": "20180122215808",
+    "entityTableName": "ad_choise",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "microserviceName": "game"
+}

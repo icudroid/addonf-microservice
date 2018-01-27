@@ -1,0 +1,30 @@
+
+entity Profile {
+	name String required maxlength(32)
+    description String required maxlength(256)
+}
+
+entity Role {
+	name String required maxlength(32)
+    description String required maxlength(256)
+}
+
+entity Permission {
+	name String required maxlength(32)
+    extention String maxlength(15)
+    description String required maxlength(256)
+}
+
+
+relationship ManyToMany {
+	//User{profiles} to Profile
+    Profile{roles} to Role
+    Role{permissions} to Permission
+
+}
+
+// Set pagination options
+paginate all with pagination
+dto all with mapstruct
+service all with serviceClass
+microservice * with uaa

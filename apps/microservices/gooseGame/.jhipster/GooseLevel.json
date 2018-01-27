@@ -1,0 +1,54 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "gooseGame",
+            "otherEntityName": "gooseGame",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "start",
+            "otherEntityName": "gooseCase",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "gooseLevel"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "end",
+            "otherEntityName": "gooseCase",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "gooseLevel"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "cases",
+            "otherEntityName": "gooseCase",
+            "otherEntityRelationshipName": "gooseLevel"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "level",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "limitedTime",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "nbMaxAdByPlay",
+            "fieldType": "Integer"
+        }
+    ],
+    "changelogDate": "20180122194241",
+    "entityTableName": "goose_level",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "microserviceName": "gooseGame"
+}

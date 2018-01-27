@@ -1,0 +1,20 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "ad",
+            "otherEntityName": "ad",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [],
+    "changelogDate": "20180123183624",
+    "entityTableName": "ad_configuration",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "searchEngine": "elasticsearch",
+    "microserviceName": "ad"
+}

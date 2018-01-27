@@ -1,0 +1,41 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "score",
+            "otherEntityName": "adScore",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "adGame"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "choises",
+            "otherEntityName": "adChoise",
+            "otherEntityRelationshipName": "adGame"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "created",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "status",
+            "fieldType": "GameStatus",
+            "fieldValues": "WIN,LOST,PLAYING"
+        },
+        {
+            "fieldName": "playerId",
+            "fieldType": "Long"
+        }
+    ],
+    "changelogDate": "20180122215807",
+    "entityTableName": "ad_game",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "microserviceName": "game"
+}

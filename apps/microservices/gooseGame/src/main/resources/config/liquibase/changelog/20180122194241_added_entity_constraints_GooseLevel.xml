@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity GooseLevel.
+    -->
+    <changeSet id="20180122194241-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="goose_game_id"
+                                 baseTableName="goose_level"
+                                 constraintName="fk_goose_level_goose_game_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="goose_game"/>
+
+        <addForeignKeyConstraint baseColumnNames="start_id"
+                                 baseTableName="goose_level"
+                                 constraintName="fk_goose_level_start_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="goose_case"/>
+
+        <addForeignKeyConstraint baseColumnNames="end_id"
+                                 baseTableName="goose_level"
+                                 constraintName="fk_goose_level_end_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="goose_case"/>
+
+    </changeSet>
+</databaseChangeLog>

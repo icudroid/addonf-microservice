@@ -62,7 +62,7 @@ describe('Service Tests', () => {
             it('should return Authorities', () => {
 
                 let authorities;
-                service.authorities().subscribe((_authorities) => {
+                service.profiles().subscribe((_authorities) => {
                     authorities = _authorities;
                 });
 

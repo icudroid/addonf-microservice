@@ -5,7 +5,39 @@
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
 
     <include file="config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
-
+    <include file="config/liquibase/changelog/20180123183615_added_entity_Ad.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180123183616_added_entity_Brand.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180123183617_added_entity_BrandUser.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180123183618_added_entity_CustomerTarget.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180123183619_added_entity_Agency.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180123183620_added_entity_AgencyUser.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180123183621_added_entity_Sector.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180123183622_added_entity_Product.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180123183623_added_entity_AdRestriction.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180123183624_added_entity_AdConfiguration.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180123183625_added_entity_Category.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180123183626_added_entity_BidCategoryMedia.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180123183627_added_entity_Media.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180123183628_added_entity_MediaUser.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180123183629_added_entity_Contact.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180123183630_added_entity_MeanOfContact.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180123183631_added_entity_FileAttachement.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180123183632_added_entity_MediaTarget.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
+    <include file="config/liquibase/changelog/20180123183615_added_entity_constraints_Ad.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180123183616_added_entity_constraints_Brand.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180123183617_added_entity_constraints_BrandUser.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180123183618_added_entity_constraints_CustomerTarget.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180123183620_added_entity_constraints_AgencyUser.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180123183622_added_entity_constraints_Product.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180123183623_added_entity_constraints_AdRestriction.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180123183624_added_entity_constraints_AdConfiguration.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180123183625_added_entity_constraints_Category.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180123183626_added_entity_constraints_BidCategoryMedia.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180123183628_added_entity_constraints_MediaUser.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180123183629_added_entity_constraints_Contact.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180123183630_added_entity_constraints_MeanOfContact.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180123183631_added_entity_constraints_FileAttachement.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180123183632_added_entity_constraints_MediaTarget.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>

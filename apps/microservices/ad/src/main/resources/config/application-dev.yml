@@ -16,7 +16,7 @@
 logging:
     level:
         ROOT: DEBUG
-        com.adloveyou.ms: DEBUG
+        com.adloveyou.ms.ad: DEBUG
         io.github.jhipster: DEBUG
 
 eureka:
